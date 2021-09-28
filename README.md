@@ -21,3 +21,5 @@ Katelyn Itano, Michelle Liu, Pei Tan, Celia Zhou
 **Codebase/Hosting:** GitHub
 
 **Database:** Firebase
+
+**Framwork:** React
