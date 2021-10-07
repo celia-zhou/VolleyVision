@@ -11,17 +11,18 @@ import fourohfour from './pages/404';
 //import { fb } from './components/firebaseConfig';
 
 //import styles
-//import './styles/App.css';
+import './styles/App.css';
 
 function App() {
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Redirect to = "/home" component={Home} />
-          </Route>
+          <Route path= "/home" component={Home} />
           <Route path= "/404" component={fourohfour} />
+          <Route path="/">
+            <Redirect exact from="/" to = "/home"/>
+          </Route>
         </Switch>
       </Router>
     </div>
