@@ -1,0 +1,10 @@
+{
+    "hosting": {
+      "site": "volleyvision",
+      "public": "public",
+       "ignore": [
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  }
