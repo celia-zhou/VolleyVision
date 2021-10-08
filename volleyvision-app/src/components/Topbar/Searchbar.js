@@ -162,7 +162,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar elevation = {0} style={{ background: 'white', color: 'black'}}>
+      <AppBar elevation = {0} style={{ background: '#DBEBFB', color: 'black'}}>
         <Toolbar>
             
           <div className={classes.grow} />
