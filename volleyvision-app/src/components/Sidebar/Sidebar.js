@@ -5,7 +5,7 @@ import Profile from './Profile'
 
 const Container = styled.div`
     background-color: #FFFFFF;
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
