@@ -166,8 +166,7 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
             
           <div className={classes.grow} />
-
-             
+          
           <div style = {{float: 'left'}} className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
