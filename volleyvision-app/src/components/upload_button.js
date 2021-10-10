@@ -35,14 +35,3 @@ const UploadButton = () => {
 }
 
 export default UploadButton
-/* <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
-
-<h2>Animated Buttons - "Pressed Effect"</h2>
-
-<button class="button">Click Me</button>
-
-</body> */
