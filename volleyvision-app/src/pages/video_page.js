@@ -1,14 +1,13 @@
 import React from 'react'
 
-import SideBar from '../components/Sidebar/Sidebar'
 import UploadButton from '../components/upload_button'
 
-const Dashboard = () => {
+const Videos = () => {
     return (
         <div>
-            <SideBar/>
+            <UploadButton/>
         </div>
     )
 }
 
-export default Dashboard
+export default Videos
