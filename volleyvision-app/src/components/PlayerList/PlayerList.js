@@ -1,27 +1,24 @@
-import * as React from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { useDemoData } from '@mui/x-data-grid-generator';
+import React from 'react';
+import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 
-export default function BasicFilteringGrid() {
-  const { data } = useDemoData({
-    dataSet: 'Commodity',
-    rowLength: 100,
-    maxColumns: 6,
-  });
+const rows: GridRowsProp = [
+  { id: 1, col1: 'Hello', col2: 'World' },
+  { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
+  { id: 3, col1: 'MUI', col2: 'is Amazing' },
+];
 
+const columns: GridColDef[] = [
+  { field: 'col1', headerName: 'Name', width: 150 },
+  { field: 'col2', headerName: 'Team', width: 150 },
+  { field: 'col3', headerName: 'Email', width: 150 },
+  { field: 'col4', headerName: 'School', width: 150 },
+  { field: 'col5', headerName: 'Jersey Number', width: 200 },
+];
+
+export default function App() {
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        {...data}
-        components={{
-          Toolbar: GridToolbar,
-        }}
-        filterModel={{
-          items: [
-            { columnField: 'commodity', operatorValue: 'contains', value: 'rice' },
-          ],
-        }}
-      />
+    <div style={{ height: 300, width: '100%' }}>
+      <DataGrid rows={rows} columns={columns} />
     </div>
   );
 }

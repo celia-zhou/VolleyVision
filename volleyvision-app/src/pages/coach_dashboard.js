@@ -17,7 +17,7 @@ const Dash_Container = styled.div`
 const List_Container = styled.div`
     position: absolute;
     left: 300px;
-    top: 300px;
+    top: 200px;
     font: Times New Roman;
     background-color: white;
     font-size: 30px;
