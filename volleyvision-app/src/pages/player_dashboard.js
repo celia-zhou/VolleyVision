@@ -1,5 +1,4 @@
 import React from 'react'
-
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
@@ -14,12 +13,12 @@ const Container = styled.div`
     height: 150px;
 `
 
-const Dashboard = () => {
+const Player_Dashboard = () => {
     return (
         <div>
             <SideBar/>
             <Container>
-                Dashboard
+                Player Dashboard
             </Container>
             <SearchBar/>
     
@@ -27,4 +26,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default Player_Dashboard
