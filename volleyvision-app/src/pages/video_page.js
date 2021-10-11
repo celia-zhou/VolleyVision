@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import UploadButton from '../components/upload_button'
 import SearchBar from '../components/Topbar/Searchbar'
 import Sidebar from '../components/Sidebar/Sidebar'
-import C
 
 
 const Container = styled.div`

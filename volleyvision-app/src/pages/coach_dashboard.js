@@ -1,14 +1,31 @@
 import React from 'react'
-
+import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
-import UploadButton from '../components/upload_button'
+import styled from 'styled-components'
 
-const Dashboard = () => {
+const Container = styled.div`
+    position: absolute;
+    left: 300px;
+    top: 65px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 200px;
+    height: 150px;
+`
+
+const Coach_Dashboard = () => {
     return (
         <div>
             <SideBar/>
+            <Container>
+                Coach Dashboard
+            </Container>
+            <SearchBar/>
+        
         </div>
+
+        
     )
 }
 
-export default Dashboard
+export default Coach_Dashboard

@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-ro
 //import pages
 import Home from './pages/home';
 import Fourohfour from './pages/404';
-import Dashboard from './pages/player_dashboard';
+import Player_Dashboard from './pages/player_dashboard';
+import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
 
 //import components
@@ -25,7 +26,8 @@ function App() {
           {/* <Route path="/">
             <Redirect exact from="/" to = "/home"/>
           </Route> */}
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/player_dashboard" component={Player_Dashboard} />
+          <Route path="/coach_dashboard" component={Coach_Dashboard} />
           <Route path='/videos' component={Videos}/>
         </Switch>
       </Router>
