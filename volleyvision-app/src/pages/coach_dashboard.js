@@ -17,12 +17,12 @@ const Dash_Container = styled.div`
 const List_Container = styled.div`
     position: absolute;
     left: 300px;
-    top: 200px;
+    top: 190px;
     font: Times New Roman;
     background-color: white;
-    font-size: 30px;
-    width: 40%;
-    height: 45%;
+    font-size: 20px;
+    width: 80%;
+    height: 78%;
 `
 
 const Coach_Dashboard = () => {
@@ -33,6 +33,7 @@ const Coach_Dashboard = () => {
                 Coach Dashboard
             </Dash_Container>
 
+        
             <List_Container>
                 Team Roster
                 <PlayerList/>
