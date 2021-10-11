@@ -1,6 +1,5 @@
 import React from 'react'
 
-import UploadButton from '../components/upload_button'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
