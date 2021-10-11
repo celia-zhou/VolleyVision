@@ -2,8 +2,9 @@ import React from 'react'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
+import PlayerList from '../components/PlayerList/PlayerList'
 
-const Container = styled.div`
+const Dash_Container = styled.div`
     position: absolute;
     left: 300px;
     top: 65px;
@@ -13,13 +14,30 @@ const Container = styled.div`
     height: 150px;
 `
 
+const List_Container = styled.div`
+    position: absolute;
+    left: 300px;
+    top: 300px;
+    font: Times New Roman;
+    background-color: white;
+    font-size: 30px;
+    width: 40%;
+    height: 45%;
+`
+
 const Coach_Dashboard = () => {
     return (
         <div>
             <SideBar/>
-            <Container>
+            <Dash_Container>
                 Coach Dashboard
-            </Container>
+            </Dash_Container>
+
+            <List_Container>
+                Team Roster
+                <PlayerList/>
+            </List_Container>
+            
             <SearchBar/>
         
         </div>
