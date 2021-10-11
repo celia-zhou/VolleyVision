@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -66,22 +68,22 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            <ListItem button>
+            <ListItem button component={Link} to="/dashboard">
                 <ListItemIcon><DashboardIcon/></ListItemIcon>
                 <ListItemText>Dashboard</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/schedule">
                 <ListItemIcon><CalendarTodayIcon/></ListItemIcon>
                 <ListItemText>Schedule</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/statistics">
                 <ListItemIcon><FolderIcon/></ListItemIcon>
                 <ListItemText>Statistics</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/videos">
                 <ListItemIcon><VideoLibraryIcon/></ListItemIcon>
                 <ListItemText>Videos</ListItemText>
             </ListItem>
@@ -89,7 +91,7 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
         <List>
-            <ListItem button>
+          <ListItem button component={Link} to="/settings">
                 <ListItemIcon><SettingsIcon/></ListItemIcon>
                 <ListItemText>Settings</ListItemText>
             </ListItem>
