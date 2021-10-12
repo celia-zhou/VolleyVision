@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-ro
 
 //import pages
 import Home from './pages/home';
+import Login from './pages/login';
 import fourohfour from './pages/404';
 
 //import components
@@ -20,6 +21,7 @@ function App() {
         <Switch>
           <Route path= "/home" component={Home} />
           <Route path= "/404" component={fourohfour} />
+          <Route path= "/login" component={Login} />
           <Route path="/">
             <Redirect exact from="/" to = "/home"/>
           </Route>

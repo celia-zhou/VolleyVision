@@ -12,7 +12,7 @@ const fourohfour = () => {
                     <img
                         className="error-logo"
                         src={require('../images/logo-clear.png')}
-                        alt="logo"
+                        alt="volley vision logo"
                     />
                 </a>
 
