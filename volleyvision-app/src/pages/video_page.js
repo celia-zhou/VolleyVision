@@ -15,15 +15,6 @@ const Container = styled.div`
     width: 200px;
     height: 150px;
 `
-const UploadContainer = styled.div`
-    position: absolute;
-    left: 250px;
-    top: 80px;
-    font: Times New Roman;
-    font-size: 30px;
-    width: 200px;
-    height: 150px;
-`
 
 
 const Videos = () => {
@@ -32,10 +23,8 @@ const Videos = () => {
             <Sidebar/>
             <Container>
                 Videos
-            </Container>
-            <UploadContainer>
                 <UploadButton/>
-            </UploadContainer>
+            </Container>
             <SearchBar/>
         </div>
     )
