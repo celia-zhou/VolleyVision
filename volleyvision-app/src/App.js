@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-ro
 import Home from './pages/home';
 import Login from './pages/login';
 import fourohfour from './pages/404';
+import Player from './pages/player_dashboard';
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -22,6 +23,7 @@ function App() {
           <Route path= "/home" component={Home} />
           <Route path= "/404" component={fourohfour} />
           <Route path= "/login" component={Login} />
+          <Route path= "/player_dashboard" component={Player} />
           <Route path="/">
             <Redirect exact from="/" to = "/home"/>
           </Route>
