@@ -17,8 +17,8 @@ const Login = () => {
                     <ul>
                         <div className="links">
                             <li><a href="/login">Login</a></li>
-                            <li><a href="/login">Contact     </a></li>
-                            <li><a href="/login">About    </a></li>
+                            <li><a href="https://rpmsand.com/contact/">Contact     </a></li>
+                            <li><a href="https://rpmsand.com/about/">About    </a></li>
                             <li><a href="/home">Home    </a></li>
                         </div>
                         <li className="left-li" style={{float:'left'}} >
@@ -29,7 +29,7 @@ const Login = () => {
                     </ul>
                 </div>
             </div>
-            <div className="body-container">
+            <div className="body-container" id="homebody">
                 <div className="login-container">
                     <p>USERNAME</p>
                     <p>insert username here</p>
@@ -38,10 +38,14 @@ const Login = () => {
                     <p>insert password here</p>
                     <br></br>
                     <p>LOGIN AS A: </p>
-                    <div class="button"><a href="/player_dashboard">player</a></div>
-                    <div class="button"><a href="/coach_dashboard">coach</a></div>
-                    <div class="button"><a href="/recruiter_dashboard">recruiter</a></div>
-                    <div class="button"><a href="/home">new account</a></div>
+                    <div class = "row">
+                        <div><a class="button" href="/player_dashboard">player</a></div>
+                        <div><a class="button" href="/coach_dashboard">coach</a></div>
+                    </div>
+                    <div class = "row">
+                        <div><a class="button" href="/recruiter_dashboard">recruiter</a></div>
+                        <div><a class="button" href="/home">new account</a></div>
+                    </div>
                 </div>
             </div>
         </div>
