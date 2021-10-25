@@ -1,6 +1,10 @@
-// NPM
-import React from 'react';
+import React from "react";
+import LoginForm from "../components/Login/loginform";
 
+import { Container } from 'react-bootstrap'
+import { AuthProvider } from "../components/Login/authcontext";
+
+import "bootstrap/dist/css/bootstrap.min.css"
 // styles
 import '../styles/login.css'
 
@@ -8,8 +12,7 @@ import '../styles/login.css'
 import logo from '../images/logo-clear.png';
 import phgrey from '../images/placeholder-gray.png';
 
-
-const Login = () => {
+export default function Login() {
     return (
         <div>
             <div className="header-container">
@@ -30,27 +33,19 @@ const Login = () => {
                 </div>
             </div>
             <div className="body-container" id="homebody">
-                <div className="login-container">
-                    <p>USERNAME</p>
-                    <p>insert username here</p>
-                    <br></br>
-                    <p>PASSWORD</p>
-                    <p>insert password here</p>
-                    <br></br>
-                    <p>LOGIN AS A: </p>
-                    <div class = "row">
-                        <div><a class="button" href="/player_dashboard">player</a></div>
-                        <div><a class="button" href="/coach_dashboard">coach</a></div>
-                    </div>
-                    <div class = "row">
-                        <div><a class="button" href="/recruiter_dashboard">recruiter</a></div>
-                        <div><a class="button" href="/home">new account</a></div>
-                    </div>
-                </div>
+                <AuthProvider>
+                    <Container
+                    className="d-flex align-items-center justify-content-center"
+                    style= {{minHeight: "100vh"}}
+                    >
+                        <div className="w-100" style={{ maxWidth: "400px"}}>
+                            <LoginForm />
+                        </div>
+                    </Container>
+                </AuthProvider>                
             </div>
         </div>
         
     );
 }
 
-export default Login;
