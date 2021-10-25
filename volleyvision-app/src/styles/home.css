@@ -10,11 +10,11 @@ ul {
     width: 100%;
 }
   
-li, #navbartext {
+li {
 float: right;
 }
 
-li a, #navbartext {
+li a {
 display: block;
 color: black;
 text-align: center;
@@ -27,6 +27,8 @@ li a:hover, li a:focus, li a:active {
     background-color: whitesmoke;
     color: darkgray;
 }
+
+
 
 .logo {
     width: 150px;
