@@ -9,7 +9,6 @@ export default function LoginForm() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
-    // const { login, currentUser } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -65,10 +64,6 @@ export default function LoginForm() {
                     <h2 className="text-center mb-4">
                         Log In
                     </h2>
-                    {/* <p>This is here for debugging purposes: <br />
-                        Current User: <br />
-                        {currentUser && currentUser.email}
-                    </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
                 
                     <Form onSubmit={handleSubmit}>
