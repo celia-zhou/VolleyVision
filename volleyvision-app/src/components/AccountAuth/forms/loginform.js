@@ -20,12 +20,19 @@ export default function LoginForm() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
         } catch {
             setError('Failed to login')
         }
 
         setLoading(false)
+    }
+
+    function handleClickPlayer() {
+        history.push("/player_dashboard")
+    }
+
+    function handleClickCoach() {
+        history.push("/coach_dashboard")
     }
 
     return (
@@ -51,8 +58,13 @@ export default function LoginForm() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required />
                 </Form.Group>
-                <Button disabled={loading} className="w-100" type="submit">
-                    Log In
+                <br />
+                <Button disabled={loading} className="w-100" type="submit" onClick={handleClickPlayer}>
+                    Log In As Player
+                </Button>
+                <br /><br />
+                <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
+                    Log In As Coach
                 </Button>
             </Form>
             <div className = "w-100 text-center mt-2">
