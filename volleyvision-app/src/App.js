@@ -15,6 +15,7 @@ import Signup from './pages/signup';
 //import components
 //import { fb } from './components/firebaseConfig';
 import { AuthProvider } from './components/AccountAuth/authcontext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 //import styles
 import './styles/App.css';
@@ -30,8 +31,8 @@ function App() {
             <Route path= "/login" component={Login} />
             <Route path = "/signup" component={Signup} />
             <Route path="/player_dashboard" component={Player_Dashboard} />
-            <Route path="/coach_dashboard" component={Coach_Dashboard} />
-            <Route path='/videos' component={Videos}/>
+            <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
+            <PrivateRoute path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
