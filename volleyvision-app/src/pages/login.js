@@ -1,8 +1,8 @@
 import React from "react";
-import LoginForm from "../components/Login/loginform";
+import LoginForm from "../components/AccountAuth/forms/loginform";
 
 import { Container } from 'react-bootstrap'
-import { AuthProvider } from "../components/Login/authcontext";
+import { AuthProvider } from "../components/AccountAuth/authcontext";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 // styles
@@ -10,7 +10,7 @@ import '../styles/login.css'
 
 //images
 import logo from '../images/logo-clear.png';
-import phgrey from '../images/placeholder-gray.png';
+//import phgrey from '../images/placeholder-gray.png';
 
 export default function Login() {
     return (

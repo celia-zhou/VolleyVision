@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../../firebase/firebase'
-import Signup from '../../pages/signup'
-import SignupForm from './signupform'
+// import Signup from '../../pages/signup'
+// import SignupForm from './forms/signupform'
+// import Login from '../../pages/login'
+// import LoginForm from './forms/loginform'
 
 const AuthContext = React.createContext()
 

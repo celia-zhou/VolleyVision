@@ -1,14 +1,16 @@
 import React, {useRef, useState } from "react";
 import { Form, Button, Card, Alert } from 'react-bootstrap'
-import { useAuth } from "./authcontext";
+import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css"
 
-export default function LoginForm() {
+export default function SignupForm() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { login, currentUser } = useAuth()
+    const passwordConfirmRef = useRef()
+    const { signup, currentUser } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -16,13 +18,18 @@ export default function LoginForm() {
     async function handleSubmit(e) {
         e.preventDefault()
 
+        if (passwordRef.current.value !== 
+            passwordConfirmRef.current.value) {
+            return setError('Passwords do not match')
+        }
+
         try {
             setError('')
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            await signup(emailRef.current.value, passwordRef.current.value)
+            history.push("/login")
         } catch {
-            setError('Failed to login')
+            setError('Failed to create an account')
         }
 
         setLoading(false)
@@ -33,9 +40,12 @@ export default function LoginForm() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">
-                        Log In
+                        Sign Up
                     </h2>
-                    {currentUser.email}
+                    <p>This is here for debugging purposes: <br />
+                        Current User: <br />
+                        {currentUser && currentUser.email}
+                    </p>
                     {error && <Alert variant="danger">{error}</Alert>}
                 </Card.Body>
             </Card>
@@ -48,12 +58,16 @@ export default function LoginForm() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required />
                 </Form.Group>
+                <Form.Group id="password-confirm">
+                    <Form.Label>Password Confirmation</Form.Label>
+                    <Form.Control type="password" ref={passwordConfirmRef} required />
+                </Form.Group>
                 <Button disabled={loading} className="w-100" type="submit">
-                    Log In
+                    Sign Up
                 </Button>
             </Form>
             <div className = "w-100 text-center mt-2">
-                Need an account? <Link to="/signup">Sign Up</Link>
+                Already have an account? <Link to="/login"> Log In</Link>
             </div>
         </>
     )

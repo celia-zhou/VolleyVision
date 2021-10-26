@@ -1,8 +1,8 @@
 import React from "react";
-import SignupForm from "../components/Login/signupform";
+import SignupForm from "../components/AccountAuth/forms/signupform";
 
 import { Container } from 'react-bootstrap'
-import { AuthProvider } from "../components/Login/authcontext";
+import { AuthProvider } from "../components/AccountAuth/authcontext";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -18,6 +18,5 @@ export default function Signup() {
                 </div>
             </Container>
         </AuthProvider>
-
     )
 }

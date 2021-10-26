@@ -1,7 +1,7 @@
 //import npm
 //import slogo from './images/logo.svg';
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 //import pages
 import Home from './pages/home';
@@ -14,7 +14,7 @@ import Signup from './pages/signup';
 
 //import components
 //import { fb } from './components/firebaseConfig';
-import { AuthProvider } from './components/Login/authcontext';
+import { AuthProvider } from './components/AccountAuth/authcontext';
 
 //import styles
 import './styles/App.css';
