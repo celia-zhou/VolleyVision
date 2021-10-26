@@ -1,9 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-=======
-
-import UploadButton from '../components/upload_button'
->>>>>>> parent of d9fe166... Navigation Pane Links and Upload Button
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
