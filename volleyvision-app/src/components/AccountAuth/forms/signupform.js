@@ -10,7 +10,8 @@ export default function SignupForm() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { signup, currentUser } = useAuth()
+    const { signup } = useAuth()
+    // const { signup, currentUser } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -42,10 +43,10 @@ export default function SignupForm() {
                     <h2 className="text-center mb-4">
                         Sign Up
                     </h2>
-                    <p>This is here for debugging purposes: <br />
+                    {/* <p>This is here for debugging purposes: <br />
                         Current User: <br />
                         {currentUser && currentUser.email}
-                    </p>
+                    </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
