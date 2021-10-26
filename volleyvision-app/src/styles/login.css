@@ -21,8 +21,8 @@
 
 /* button */
 .button {
-    background-color: darkgray;
-    color: whitesmoke;
+    background-color: darkblue;
+    color: lightblue;
     text-align: center;
     text-decoration: none;
     font-size: 12;
@@ -35,8 +35,8 @@
 }
 
 .button:hover {
-    background-color: lightgray;
-    color: darkgray;
+    background-color: lightblue;
+    color: darkblue;
 }
 
 @media all and (min-width: 480px) {

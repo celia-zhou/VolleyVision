@@ -65,7 +65,20 @@ li a:hover, li a:focus, li a:active {
 
 /* images */
 .phbody {
-    width: 97%;
-    height: 97%;
+    width: 500px;
+    height: 500px;
+}
+
+/* footer  */
+.footer {
+    position: relative;
+    color: rgb(157, 190, 201);
+    background-color: darkblue;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 

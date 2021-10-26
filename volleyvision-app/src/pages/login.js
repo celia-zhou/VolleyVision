@@ -44,6 +44,9 @@ export default function Login() {
                     </Container>
                 </AuthProvider>                
             </div>
+            <div className="footer">
+                <p>Copyright 2021 - All rights reserved by RPM Sand.</p>
+            </div>
         </div>
         
     );
