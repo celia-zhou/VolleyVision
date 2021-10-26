@@ -18,7 +18,6 @@ import FolderIcon from '@material-ui/icons/Folder';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Logout from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -48,17 +47,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
+  const { logout } = useAuth()
 
   const [error, setError] = useState("")
   const { currentUser } = useAuth()
   const history = useHistory()
 
-  async function handleLogOut () {
+  async function handleLogOut (e) {
+    e.preventDefault()
     setError('')
 
     try {
-      await Logout()
-      history.push('/login')
+      await logout()
     } catch {
       setError('Failed to logout')
     }
@@ -114,8 +114,7 @@ export default function PermanentDrawerLeft() {
             <ListItemIcon><SettingsIcon/></ListItemIcon>
             <ListItemText>Settings</ListItemText>
           </ListItem>
-          <ListItem button component={Link} to="/home"
-            onClick={ handleLogOut }>
+          <ListItem button component={Link} onClick={ handleLogOut } >
             <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
             <ListItemText>Log Out</ListItemText>
           </ListItem>

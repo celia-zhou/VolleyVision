@@ -28,12 +28,34 @@ export default function LoginForm() {
         setLoading(false)
     }
 
-    function handleClickPlayer() {
-        history.push("/player_dashboard")
+    async function handleClickPlayer(e) {
+        e.preventDefault()
+
+        try {
+            setError('')
+            setLoading(true)
+            await login(emailRef.current.value, passwordRef.current.value)
+            history.push("/player_dashboard")
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
     }
 
-    function handleClickCoach() {
-        history.push("/coach_dashboard")
+    async function handleClickCoach(e) {
+        e.preventDefault()
+
+        try {
+            setError('')
+            setLoading(true)
+            await login(emailRef.current.value, passwordRef.current.value)
+            history.push("/coach_dashboard")
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
     }
 
     return (

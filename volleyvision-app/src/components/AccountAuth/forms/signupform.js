@@ -24,6 +24,10 @@ export default function SignupForm() {
             return setError('Passwords do not match')
         }
 
+        if (passwordRef.current.value.length < 6){
+            return setError('Password is too short')
+        }
+
         try {
             setError('')
             setLoading(true)
