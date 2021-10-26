@@ -47,26 +47,30 @@ export default function LoginForm() {
                         {currentUser && currentUser.email}
                     </p>
                     {error && <Alert variant="danger">{error}</Alert>}
+                
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group id="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" ref={emailRef} required />
+                        </Form.Group>
+                        <Form.Group id="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" ref={passwordRef} required />
+                        </Form.Group>
+                        <br />
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickPlayer}>
+                            Log In As Player
+                        </Button>
+                        <br /><br />
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
+                            Log In As Coach
+                        </Button>
+                    </Form>
+                    <div className = "w-100 text-center mt-2">
+                        <Link to ="/forgotpassword"> Forgot Password? </Link>
+                    </div>
                 </Card.Body>
             </Card>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group id="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" ref={emailRef} required />
-                </Form.Group>
-                <Form.Group id="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" ref={passwordRef} required />
-                </Form.Group>
-                <br />
-                <Button disabled={loading} className="w-100" type="submit" onClick={handleClickPlayer}>
-                    Log In As Player
-                </Button>
-                <br /><br />
-                <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
-                    Log In As Coach
-                </Button>
-            </Form>
             <div className = "w-100 text-center mt-2">
                 Need an account? <Link to="/signup">Sign Up</Link>
             </div>

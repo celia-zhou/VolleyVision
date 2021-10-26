@@ -11,6 +11,7 @@ import Player_Dashboard from './pages/player_dashboard';
 import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
 import Signup from './pages/signup';
+import ForgotPassword from './pages/forgotpassword';
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -28,11 +29,12 @@ function App() {
           <Switch>
             <Route path= "/home" component={Home} />
             <Route path= "/404" component={fourohfour} />
-            <Route path= "/login" component={Login} />
             <Route path = "/signup" component={Signup} />
-            <Route path="/player_dashboard" component={Player_Dashboard} />
+            <Route path= "/login" component={Login} />
+            <Route path= "/forgotpassword" component={ForgotPassword} />
+            <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
-            <PrivateRoute path='/videos' component={Videos}/>
+            <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
