@@ -4,45 +4,41 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'attack', label: 'Attack', minWidth: 100 },
+  { id: 'set', label: 'SET SCORES', minWidth: 170 },
+  { id: 'one', label: '1', minWidth: 100 },
   {
-    id: 'serve',
-    label: 'Serve',
+    id: 'two',
+    label: '2',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'dig',
-    label: 'Dig',
+    id: 'three',
+    label: '3',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'block',
-    label: 'Block',
+    id: 'score',
+    label: 'SCORE',
     minWidth: 170,
     align: 'right',
-    format: (value) => value.toFixed(2),
+    format: (value) => value.toLocaleString('en-US'),
   },
 ];
 
-function createData(name, attack, serve, dig, block) {
-  return { name, attack, serve, dig, block };
+function createData(set, one, two, three, score) {
+  return { set, one, two, three, score };
 }
 
 const rows = [
-  createData('8 Celia Zhou', 'IN', 1324171354, 3287263, 2),
-  createData('13 Katelyn Itano', 'CN', 1403500365, 9596961, 2),
-  createData('7 Michelle Liu', 'IN', 1324171354, 3287263, 2),
-  createData('10 Pei Tan', 'CN', 1403500365, 9596961, 2),
+  createData('Vanderbilt', 20, 21, 21, 'WIN'),
+  createData('UCLA', 22, 18, 16, 'LOSS'),
 ];
 
 export default function ColumnGroupingTable() {
@@ -62,24 +58,17 @@ export default function ColumnGroupingTable() {
     <Paper sx={{ width: '100%' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={2}>
-                Vanderbilt
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
+        <TableRow>
+            {columns.map((column) => (
+            <TableCell
+                key={column.id}
+                align={column.align}
+                style={{ top: 57, minWidth: column.minWidth }}
+            >
+                {column.label}
+            </TableCell>
+            ))}
+        </TableRow>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -102,15 +91,6 @@ export default function ColumnGroupingTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </Paper>
   );
 }

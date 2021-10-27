@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
-import PlayerList from '../components/PlayerList/PlayerList'
+import SetTable from '../components/Statistics/SetTable'
 import StatisticsTable from '../components/Statistics/StatisticsTable'
 
 const Dash_Container = styled.div`
@@ -15,15 +15,26 @@ const Dash_Container = styled.div`
     height: 150px;
 `
 
-const List_Container = styled.div`
+const List_Container1 = styled.div`
     position: absolute;
     left: 300px;
-    top: 190px;
+    top: 150px;
     font: Times New Roman;
     background-color: white;
     font-size: 20px;
     width: 80%;
-    height: 78%;
+    height: 10%;
+`
+
+const List_Container2 = styled.div`
+    position: absolute;
+    left: 300px;
+    top: 400px;
+    font: Times New Roman;
+    background-color: white;
+    font-size: 20px;
+    width: 80%;
+    height: 37%;
 `
 
 const Statistics_Summary = () => {
@@ -34,10 +45,13 @@ const Statistics_Summary = () => {
                 Statistics
             </Dash_Container>
 
-        
-        
-            Team Roster
-            <StatisticsTable/>
+            <List_Container1>
+                <SetTable/>
+            </List_Container1>
+
+            <List_Container2>
+                <StatisticsTable/>
+            </List_Container2>
             
             
             <SearchBar/>
