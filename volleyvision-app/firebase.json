@@ -1,17 +1,6 @@
 {
-  "hosting": {
-    "site": "volleyvision",
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "hosting": {
+      "site": "volleyvision",
+      "public": "public"
+    }
   }
-}

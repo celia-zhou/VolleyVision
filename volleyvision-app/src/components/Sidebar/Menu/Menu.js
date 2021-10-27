@@ -59,7 +59,6 @@ export default function PermanentDrawerLeft() {
 
     try {
       await logout()
-      history.push('/login')
     } catch {
       setError('Failed to logout')
     }
