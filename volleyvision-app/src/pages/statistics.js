@@ -23,7 +23,6 @@ const List_Container1 = styled.div`
     background-color: white;
     font-size: 20px;
     width: 80%;
-    height: 10%;
 `
 
 const List_Container2 = styled.div`
@@ -34,7 +33,6 @@ const List_Container2 = styled.div`
     background-color: white;
     font-size: 20px;
     width: 80%;
-    height: 37%;
 `
 
 const Statistics_Summary = () => {
