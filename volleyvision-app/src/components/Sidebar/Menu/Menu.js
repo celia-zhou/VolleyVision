@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
+import { useAuth } from '../../AccountAuth/authcontext';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +17,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import FolderIcon from '@material-ui/icons/Folder';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -42,6 +47,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
+  const { logout } = useAuth()
+
+  const [error, setError] = useState("")
+  const { currentUser } = useAuth()
+  const history = useHistory()
+
+  async function handleLogOut (e) {
+    e.preventDefault()
+    setError('')
+
+    try {
+      await logout()
+      history.push('/login')
+    } catch {
+      setError('Failed to logout')
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -66,22 +88,22 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            <ListItem button>
+            <ListItem button component={Link} to="/dashboard">
                 <ListItemIcon><DashboardIcon/></ListItemIcon>
                 <ListItemText>Dashboard</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/schedule">
                 <ListItemIcon><CalendarTodayIcon/></ListItemIcon>
                 <ListItemText>Schedule</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/statistics">
                 <ListItemIcon><FolderIcon/></ListItemIcon>
                 <ListItemText>Statistics</ListItemText>
             </ListItem>
 
-            <ListItem button>
+            <ListItem button component={Link} to="/videos">
                 <ListItemIcon><VideoLibraryIcon/></ListItemIcon>
                 <ListItemText>Videos</ListItemText>
             </ListItem>
@@ -89,10 +111,20 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
         <List>
-            <ListItem button>
-                <ListItemIcon><SettingsIcon/></ListItemIcon>
-                <ListItemText>Settings</ListItemText>
-            </ListItem>
+          <ListItem button component={Link} to="/settings">
+            <ListItemIcon><SettingsIcon/></ListItemIcon>
+            <ListItemText>Settings</ListItemText>
+          </ListItem>
+          <ListItem button component={Link} onClick={ handleLogOut } >
+            <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
+            <ListItemText>Log Out</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>debugging code<br />
+            {error && <Alert variant="danger">{error}</Alert>}
+            current user: {currentUser && currentUser.email}
+            </ListItemText>
+          </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
