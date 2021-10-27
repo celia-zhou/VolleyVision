@@ -9,6 +9,7 @@ import Fourohfour from './pages/404';
 import Player_Dashboard from './pages/player_dashboard';
 import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
+import Statistics from './pages/statistics'
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -28,6 +29,7 @@ function App() {
           </Route> */}
           <Route path="/player_dashboard" component={Player_Dashboard} />
           <Route path="/coach_dashboard" component={Coach_Dashboard} />
+          <Route path="/statistics" component={Statistics} />
           <Route path='/videos' component={Videos}/>
         </Switch>
       </Router>
