@@ -87,7 +87,7 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            <ListItem button component={Link} to="/dashboard">
+            <ListItem button component={Link} to="/player_dashboard">
                 <ListItemIcon><DashboardIcon/></ListItemIcon>
                 <ListItemText>Dashboard</ListItemText>
             </ListItem>

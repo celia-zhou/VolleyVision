@@ -10,6 +10,7 @@ import fourohfour from './pages/404';
 import Player_Dashboard from './pages/player_dashboard';
 import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
+import Statistics from './pages/statistics'
 import Signup from './pages/signup';
 import ForgotPassword from './pages/forgotpassword';
 import Profile from "./pages/profile_page";
@@ -38,6 +39,7 @@ function App() {
             <PrivateRoute path= "/profile" component={Profile} />
             <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
+            <PrivateRoute path="/statistics" component={Statistics} />
             <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
