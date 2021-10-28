@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 const columns = [
   { id: 'opponent', label: 'Opponent', minWidth: 170 },
   { id: 'date', label: 'Date', minWidth: 100 },
-  { id: 'loc', label: 'Location', minWidth: 100 },
+  { id: 'location', label: 'Location', minWidth: 100 },
   {
     id: 'score',
     label: 'Score',
@@ -33,10 +33,10 @@ function createData(opponent, date, location, score, result) {
 }
 
 const rows = [
-  createData('UCLA', 'Oct 8, 2021', 'Nashville', '2-1', 'WIN'),
-  createData('UCLA', 'Jan 8, 2021', 'Nashville', '2-1', 'WIN'),
-  createData('UCLA', 'Jan 8, 2021', 'Nashville', '2-1', 'WIN'),
-  createData('UCLA', 'Jan 8, 2021', 'Nashville', '2-1', 'WIN'),
+  createData('UCLA', 'Oct 8, 2021', 'Nashville, TN', '2-1', 'WIN'),
+  createData('Duke', 'Oct 1, 2021', 'Durham, NC', '2-0', 'WIN'),
+  createData('USC', 'Sept 23, 2021', 'Los Angeles, CA', '1-2', 'LOSS'),
+  createData('LSU', 'Sept 16, 2021', 'Nashville, TN', '2-1', 'WIN'),
 ];
 
 export default function ColumnGroupingTable() {
@@ -58,13 +58,14 @@ export default function ColumnGroupingTable() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell align="center" colSpan={2}>
+              <TableCell sx={{fontWeight: 'bold', fontSize: 20}}align="center" colSpan={2}>
                 Recent Matches
               </TableCell>
             </TableRow>
             <TableRow>
               {columns.map((column) => (
                 <TableCell
+                  sx = {{fontWeight: 'bold'}}
                   key={column.id}
                   align={column.align}
                   style={{ top: 57, minWidth: column.minWidth }}

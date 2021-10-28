@@ -1,4 +1,5 @@
 import React from 'react'
+import EditButton from '../components/Profile/EditButton'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
@@ -20,10 +21,10 @@ const Container = styled.div`
 
 const NameContainer = styled.div`
     position: absolute;
-    left: 700px;
+    left: 670px;
     top: 440px;
     font: Times New Roman;
-    width: 200px;
+    width: 300px;
     height: 150px;
 `
 
@@ -60,8 +61,8 @@ const ProfileContainer3 = styled.div`
 
 const EditContainer = styled.div`
     position: absolute;
-    left: 740px;
-    top: 600px;
+    left: 670px;
+    top: 580px;
     font: Times New Roman;
     font-size: 30px;
     width: 300px;
@@ -114,7 +115,8 @@ const Profile = () => {
             </ProfileContainer3>
 
             <EditContainer>
-                <ListItemText>Edit Profile</ListItemText>
+                {/* <ListItemText>Edit Profile</ListItemText> */}
+                <EditButton/>
             </EditContainer>
             <SearchBar/>
     

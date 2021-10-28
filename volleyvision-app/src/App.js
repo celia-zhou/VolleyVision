@@ -14,6 +14,7 @@ import Statistics from './pages/statistics'
 import Signup from './pages/signup';
 import ForgotPassword from './pages/forgotpassword';
 import Profile from "./pages/profile_page";
+import EditProfile from "./pages/edit_profile_page";
 import RecruiterTeam from './pages/recruiter_team';
 
 //import components
@@ -37,6 +38,7 @@ function App() {
             <Route path= "/forgotpassword" component={ForgotPassword} />
             <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
             <PrivateRoute path= "/profile" component={Profile} />
+            <PrivateRoute path= "/edit_profile" component={EditProfile} />
             <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
             <PrivateRoute path="/statistics" component={Statistics} />

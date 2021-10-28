@@ -7,7 +7,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 export default function StandardImageList() {
     return (
         <div>
-            <ImageList sx={{ position: 'absolute', top: 220, left: 300, width: 1300, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+            <ImageList sx={{ position: 'absolute', top: 220, left: 300, width: 1100, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
             {itemData.map((item) => (
                 <ImageListItem sx={{pb: 1}} key={item.urlLink}>
                     <ReactPlayer

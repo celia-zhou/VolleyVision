@@ -1,10 +1,11 @@
 import React from 'react'
-import MatchTable from '../components/Matches/RecentMatches'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
+import EditableProf from '../components/Profile/EditableProfile'
+import { List } from '@mui/material';
 
-const Container = styled.div`
+const DashContainer = styled.div`
     position: absolute;
     left: 300px;
     top: 65px;
@@ -13,32 +14,36 @@ const Container = styled.div`
     width: 200px;
     height: 150px;
 `
-const List_Container = styled.div`
+
+const ListContainer = styled.div`
     position: absolute;
     left: 300px;
-    top: 200px;
+    top: 150px;
     font: Times New Roman;
     background-color: white;
-    font-size: 30px;
+    font-size: 20px;
     width: 75%;
+    height: 60%;
 `
 
-const Player_Dashboard = () => {
+const Editable_Profile = () => {
     return (
         <div>
             <SideBar/>
-            
-            <Container>
-                Player Dashboard
-            </Container>
-            
-            <List_Container>
-                <MatchTable/>
-            </List_Container>
+            <DashContainer>
+                Edit Profile
+            </DashContainer>
+
+            <ListContainer>
+                <EditableProf/>
+            </ListContainer>
             
             <SearchBar/>
+        
         </div>
+
+        
     )
 }
 
-export default Player_Dashboard
+export default Editable_Profile
