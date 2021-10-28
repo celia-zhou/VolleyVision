@@ -4,7 +4,7 @@ import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
 import PlayerList from '../components/PlayerList/PlayerList'
 
-const Dash_Container = styled.div`
+const DashContainer = styled.div`
     position: absolute;
     left: 300px;
     top: 65px;
@@ -14,29 +14,30 @@ const Dash_Container = styled.div`
     height: 150px;
 `
 
-const List_Container = styled.div`
+const ListContainer = styled.div`
     position: absolute;
     left: 300px;
-    top: 300px;
+    top: 190px;
     font: Times New Roman;
     background-color: white;
-    font-size: 30px;
-    width: 40%;
-    height: 45%;
+    font-size: 20px;
+    width: 80%;
+    height: 78%;
 `
 
 const Coach_Dashboard = () => {
     return (
         <div>
             <SideBar/>
-            <Dash_Container>
+            <DashContainer>
                 Coach Dashboard
-            </Dash_Container>
+            </DashContainer>
 
-            <List_Container>
+        
+            <ListContainer>
                 Team Roster
                 <PlayerList/>
-            </List_Container>
+            </ListContainer>
             
             <SearchBar/>
         
