@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import { useAuth } from '../../AccountAuth/authcontext';
 
->>>>>>> 4b0042d98959264de99b27f44e6b8319fb972226
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -115,12 +110,6 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
         <List>
-<<<<<<< HEAD
-            <ListItem button>
-                <ListItemIcon><SettingsIcon/></ListItemIcon>
-                <ListItemText>Settings</ListItemText>
-            </ListItem>
-=======
           <ListItem button component={Link} to="/settings">
             <ListItemIcon><SettingsIcon/></ListItemIcon>
             <ListItemText>Settings</ListItemText>
@@ -135,7 +124,6 @@ export default function PermanentDrawerLeft() {
             current user: {currentUser && currentUser.email}
             </ListItemText>
           </ListItem>
->>>>>>> 4b0042d98959264de99b27f44e6b8319fb972226
         </List>
       </Drawer>
       <main className={classes.content}>

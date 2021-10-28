@@ -25,27 +25,19 @@ const UploadContainer = styled.div`
     height: 150px;
 `
 
-const VideoContainer = styled.div`
-    position: absolute;
-    left: 300px;
-    top: 220px;
-`
-
 const Videos = () => {
     return (
         <div>
             <Sidebar/>
             <Container>
                 Videos
-            </Container>
+            </Container> 
 
             <UploadContainer>
                 <UploadButton/>
             </UploadContainer>
-            
-            <VideoContainer>
-                <VideoGallery/>
-            </VideoContainer>
+      
+            <VideoGallery/>
 
             <SearchBar/>
         </div>
