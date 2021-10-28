@@ -3,9 +3,9 @@ import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
 import { ListItemText } from '@material-ui/core'
-import photo from './vandy.jpeg'
-import videoScreenshot1 from './videoscreenshot1.png'
-import videoScreenshot2 from './videoscreenshot2.png'
+import photo from '../images/vandy.jpeg'
+import videoScreenshot1 from '../images/videoscreenshot1.png'
+import videoScreenshot2 from '../images/videoscreenshot2.png'
 
 console.log(photo)
 
@@ -97,7 +97,7 @@ const RecruiterTeam = () => {
             </Container>
 
             <ImageContainer>
-                <img src={photo} />;
+                <img src={photo} alt="vanderbilt"/>;
             </ImageContainer>
 
             <SubtitleContainer>

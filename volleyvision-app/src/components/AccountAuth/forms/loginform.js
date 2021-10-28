@@ -58,6 +58,21 @@ export default function LoginForm() {
         setLoading(false)
     }
 
+    async function handleClickRecruiter(e) {
+        e.preventDefault()
+
+        try {
+            setError('')
+            setLoading(true)
+            await login(emailRef.current.value, passwordRef.current.value)
+            history.push("/recruiterteam")
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
+    }
+
     return (
         <>
             <Card>
@@ -87,6 +102,10 @@ export default function LoginForm() {
                         <br /><br />
                         <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
                             Log In As Coach
+                        </Button>
+                        <br /><br />
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickRecruiter}>
+                            Log In As Recruiter
                         </Button>
                     </Form>
                     <div className = "w-100 text-center mt-2">
