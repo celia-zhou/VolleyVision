@@ -120,7 +120,7 @@ export default function PermanentDrawerLeft() {
             <ListItemText>Settings</ListItemText>
           </ListItem>
           <ListItem button component={Link} onClick={ handleLogOut } >
-            <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
+            <ListItemIcon><LogoutIcon /></ListItemIcon>
             <ListItemText>Log Out</ListItemText>
           </ListItem>
           <ListItem>

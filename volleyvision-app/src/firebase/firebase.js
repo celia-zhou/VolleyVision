@@ -4,14 +4,14 @@ import "firebase/compat/auth"
 //import { getAnalytics } from "firebase/analytics";
 
 const fb = firebase.initializeApp({
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+    apiKey: "AIzaSyC4lk1ACdzgs93tnuze1BSkwX2KmvRqu8Q",
+    authDomain: "volleyvision-e6c88.firebaseapp.com",
+    databaseURL: "https://volleyvision-e6c88-default-rtdb.firebaseio.com",
+    projectId: "volleyvision-e6c88",
+    storageBucket: "volleyvision-e6c88.appspot.com",
+    messagingSenderId: "810069680059",
+    appId: "1:810069680059:web:ece16ae4ede793ee826e9e",
+    measurementId: "G-1Z6HRYP7NT"
 })
 
 //const fba = getAnalytics(fb);
