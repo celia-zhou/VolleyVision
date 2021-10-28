@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
+import { useAuth } from '../../AccountAuth/authcontext';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +17,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import FolderIcon from '@material-ui/icons/Folder';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -44,6 +47,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
+  const { logout } = useAuth()
+
+  const [error, setError] = useState("")
+  const { currentUser } = useAuth()
+  const history = useHistory()
+
+  async function handleLogOut (e) {
+    e.preventDefault()
+    setError('')
+
+    try {
+      await logout()
+    } catch {
+      setError('Failed to logout')
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -68,7 +87,7 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-            <ListItem button component={Link} to="/dashboard">
+            <ListItem button component={Link} to="/player_dashboard">
                 <ListItemIcon><DashboardIcon/></ListItemIcon>
                 <ListItemText>Dashboard</ListItemText>
             </ListItem>
@@ -92,9 +111,19 @@ export default function PermanentDrawerLeft() {
         <Divider />
         <List>
           <ListItem button component={Link} to="/settings">
-                <ListItemIcon><SettingsIcon/></ListItemIcon>
-                <ListItemText>Settings</ListItemText>
-            </ListItem>
+            <ListItemIcon><SettingsIcon/></ListItemIcon>
+            <ListItemText>Settings</ListItemText>
+          </ListItem>
+          <ListItem button component={Link} onClick={ handleLogOut } >
+            <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
+            <ListItemText>Log Out</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>debugging code<br />
+            {error && <Alert variant="danger">{error}</Alert>}
+            current user: {currentUser && currentUser.email}
+            </ListItemText>
+          </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import UploadButton from '../components/upload_button'
 import SearchBar from '../components/Topbar/Searchbar'
 import Sidebar from '../components/Sidebar/Sidebar'
-
+import VideoGallery from '../components/video_gallery'
 
 const Container = styled.div`
     position: absolute;
@@ -15,7 +15,15 @@ const Container = styled.div`
     width: 200px;
     height: 150px;
 `
-
+const UploadContainer = styled.div`
+    position: absolute;
+    left: 250px;
+    top: 90px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 200px;
+    height: 150px;
+`
 
 const Videos = () => {
     return (
@@ -23,12 +31,14 @@ const Videos = () => {
             <Sidebar/>
             <Container>
                 Videos
+            </Container> 
+
+            <UploadContainer>
                 <UploadButton/>
-                {/* <CardMedia
-                    component="iframe"
-                    image="https://www.youtube.com/embed/muuK4SpRR5M"
-                /> */}
-            </Container>
+            </UploadContainer>
+      
+            <VideoGallery/>
+
             <SearchBar/>
         </div>
     )
