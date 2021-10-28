@@ -124,9 +124,11 @@ export default function PermanentDrawerLeft() {
             <ListItemText>Log Out</ListItemText>
           </ListItem>
           <ListItem>
-            <ListItemText>debugging code<br />
+            <ListItemText><br />
             {error && <Alert variant="danger">{error}</Alert>}
-            current user: {currentUser && currentUser.email}
+            <br /><br /><br /><br /><br />
+            <p>Welcome,<br/>
+            {currentUser && currentUser.email}</p>
             </ListItemText>
           </ListItem>
         </List>
