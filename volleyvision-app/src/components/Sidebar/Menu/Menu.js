@@ -17,7 +17,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import FolderIcon from '@material-ui/icons/Folder';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from '@material-ui/icons/ExitToApp'
 
 import logo from '../../../images/logo-clear.png';
 
