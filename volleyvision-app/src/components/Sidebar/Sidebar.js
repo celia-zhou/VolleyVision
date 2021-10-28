@@ -5,11 +5,7 @@ import Profile from './Profile'
 
 const Container = styled.div`
     background-color: #FFFFFF;
-<<<<<<< HEAD
-    position: fixed;
-=======
     position: absolute;
->>>>>>> feature/upload/celia
     left: 0;
     top: 0;
     bottom: 0;
@@ -17,8 +13,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
 `
 
 const Sidebar = () => {
