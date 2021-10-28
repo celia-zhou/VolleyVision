@@ -12,7 +12,8 @@ import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
 import Signup from './pages/signup';
 import ForgotPassword from './pages/forgotpassword';
-
+import Profile from "./pages/profile_page";
+import RecruiterTeam from './pages/recruiter_team';
 //import components
 //import { fb } from './components/firebaseConfig';
 import { AuthProvider } from './components/AccountAuth/authcontext';
@@ -32,6 +33,8 @@ function App() {
             <Route path = "/signup" component={Signup} />
             <Route path= "/login" component={Login} />
             <Route path= "/forgotpassword" component={ForgotPassword} />
+            <Route path="/Profile" component={Profile} />
+            <Route path="/RecruiterTeam" component={RecruiterTeam} />
             <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
             <Route path='/videos' component={Videos}/>
