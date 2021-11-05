@@ -40,6 +40,102 @@ export default function SignupForm() {
         setLoading(false)
     }
 
+    async function handleSignUpPlayer(e) {
+        e.preventDefault()
+        var userPreference
+        var email
+
+        try {
+            setError('')
+            alert('Attempted sign-up as a player. Additional verification required.')
+            if (window.confirm("Do you want to continue signing up as a player?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your student email.", "student@vanderbilt.edu")
+                if (email) {
+                    alert("The email you entered is: " + email + ". Sign-up successful!" )
+                    setLoading(true)
+                    history.push("/player_dashboard")
+                } else {
+                    alert("Sign-up unsuccessful. Redirecting to the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Sign-up cancelled!"
+                alert("Sign-up unsuccessful. Redirecting to the login page.")
+                history.push('/login')
+            }
+
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
+    }
+
+    async function handleSignUpCoach(e) {
+        e.preventDefault()
+        var userPreference
+        var email
+
+        try {
+            setError('')
+            alert('Attempted sign-up as a coach. Additional verification required.')
+            if (window.confirm("Do you want to continue signing up as a coach?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your coach email.", "coach@rpmsand.com")
+                if (email) {
+                    alert("The email you entered is: " + email + ". Sign-up successful!" )
+                    setLoading(true)
+                    history.push("/coach_dashboard")
+                } else {
+                    alert("Sign-up unsuccessful. Redirecting to the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Sign-up cancelled!"
+                alert("Sign-up unsuccessful. Redirecting to the login page.")
+                history.push('/login')
+            }
+
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
+    }
+
+    async function handleSignUpRecruiter(e) {
+        e.preventDefault()
+        var userPreference
+        var email
+
+        try {
+            setError('')
+            alert('Attempted sign-up as a recruiter. Additional verification required.')
+            if (window.confirm("Do you want to continue signing up as a recruiter?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your recruiter email.", "recruiter@vanderbilt.edu")
+                if (email) {
+                    alert("The email you entered is: " + email + ". Sign-up successful!" )
+                    setLoading(true)
+                    history.push("/recruiterteam")
+                } else {
+                    alert("Sign-up unsuccessful. Redirecting to the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Sign-up cancelled!"
+                alert("Sign-up unsuccessful. Redirecting to the login page.")
+                history.push('/login')
+            }
+
+        } catch {
+            setError('Failed to login')
+        }
+
+        setLoading(false)
+    }
+
     return (
         <>
             <Card>
@@ -66,8 +162,16 @@ export default function SignupForm() {
                             <Form.Control type="password" ref={passwordConfirmRef} required />
                         </Form.Group>
                         <br />
-                        <Button disabled={loading} className="w-100" type="submit">
-                            Sign Up
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpPlayer}>
+                            Sign Up As Player
+                        </Button>
+                        <br /><br />
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpCoach}>
+                            Sign Up As Coach
+                        </Button>
+                        <br /><br />
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpRecruiter}>
+                            Sign Up As Recruiter
                         </Button>
                     </Form>
                 </Card.Body>
