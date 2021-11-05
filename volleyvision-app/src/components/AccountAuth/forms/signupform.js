@@ -18,6 +18,8 @@ export default function SignupForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
+        var userPreference
+        var email
 
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
@@ -30,9 +32,23 @@ export default function SignupForm() {
 
         try {
             setError('')
-            setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
-            history.push("/login")
+            alert('Attempted sign-up for VolleyVision. Additional verification required.')
+            if (window.confirm("Do you want to continue signing up?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your professional email.", "user@rpmsand.com")
+                if (email) {
+                    alert("The email you entered is: " + email + ". Sign-up successful!" )
+                    setLoading(true)
+                    history.push("/coach_dashboard")
+                } else {
+                    alert("You did not enter a valid sign-up email. Redirecting to the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Sign-up cancelled!"
+                alert("Sign-up failed. Redirecting to the login page.")
+                history.push('/login')
+            }
         } catch {
             setError('Failed to create an account')
         }
