@@ -33,6 +33,7 @@ export default function LoginForm() {
 
         try {
             setError('')
+
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
             history.push("/player_dashboard")
@@ -45,12 +46,29 @@ export default function LoginForm() {
 
     async function handleClickCoach(e) {
         e.preventDefault()
+        var userPreference
+        var email
 
         try {
             setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/coach_dashboard")
+            alert('Attempted login as a coach. Additional verification required.')
+            if (window.confirm("Do you want to continue logging in as a coach?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your RPM Sand email.", "coach@rpmsand.com")
+                if (email) {
+                    alert("The email you entered is: " + email + ". This email matches our records. Login successful!" )
+                    setLoading(true)
+                    await login(emailRef.current.value, passwordRef.current.value)
+                    history.push("/coach_dashboard")
+                } else {
+                    alert("You did not enter an email. Remaining on the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Login cancelled!"
+                history.push('/login')
+            }
+
         } catch {
             setError('Failed to login')
         }
@@ -60,12 +78,28 @@ export default function LoginForm() {
 
     async function handleClickRecruiter(e) {
         e.preventDefault()
+        var userPreference
+        var email
 
         try {
             setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/recruiterteam")
+            alert('Attempted login as a recruiter. Additional verification required.')
+            if (window.confirm("Do you want to continue logging in as a recruiter?") == true) {
+                userPreference = "Proceeding to verification stage."
+                email = prompt("Please enter your university recruiting email.", "recruiter@vanderbilt.edu")
+                if (email) {
+                    alert("The email you entered is: " + email + ". This email matches our records. Login successful!" )
+                    setLoading(true)
+                    await login(emailRef.current.value, passwordRef.current.value)
+                    history.push("/recruiterteam")
+                } else {
+                    alert("You did not enter an email. Remaining on the login page.")
+                    history.push('/login')
+                }
+            } else {
+                userPreference = "Login cancelled!"
+                history.push('/login')
+            }
         } catch {
             setError('Failed to login')
         }
