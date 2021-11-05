@@ -2,6 +2,7 @@ import React from 'react'
 import EditButton from '../components/Profile/EditButton'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
+import AuthButton from '../components/Youtube/AuthorizeButton'
 import styled from 'styled-components'
 import { ListItemText } from '@material-ui/core'
 import ReactRoundedImage from "react-rounded-image"
@@ -68,6 +69,15 @@ const EditContainer = styled.div`
     width: 300px;
     height: 150px;
 `
+const AuthContainer = styled.div`
+    position: absolute;
+    left: 650px;
+    top: 650px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 300px;
+    height: 150px;
+`
 
 const ImageContainer = styled.div`
     position: absolute;
@@ -118,6 +128,11 @@ const Profile = () => {
                 {/* <ListItemText>Edit Profile</ListItemText> */}
                 <EditButton/>
             </EditContainer>
+
+            <AuthContainer>
+                <AuthButton/>
+            </AuthContainer>
+           
             <SearchBar/>
     
         </div>
