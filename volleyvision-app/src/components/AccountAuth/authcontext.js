@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { auth } from '../../firebase/firebase'
+import { db, auth } from '../../firebase/firebase'
+
 // import Signup from '../../pages/signup'
 // import SignupForm from './forms/signupform'
 // import Login from '../../pages/login'
@@ -12,13 +13,46 @@ export function useAuth() {
 }
 
 export function AuthProvider({children}) {
+    
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
     function signup(email, password){
-        return auth.createUserWithEmailAndPassword(email, password)
+        return (dispatch, getState, {getFirebase, getFirestore}) => {
+            const firebase = getFirebase();
+            const firestore = getFirestore();
+            const state = getState();
+            
+            auth.createUserWithEmailAndPassword(email, password)
+            .then((resp) => {
+                return firestore.collection('users').doc(resp.user.uid).set({
+                    id: resp.user.uid,
+                    email: email
+                })
+            }).then(() => {
+                console.log('success')
+            }).catch (err => {
+                console.log('fail')
+            })
+            
+        }
     }
 
+    switch(action.type){
+        case 'SU_SUCCESS':
+            console.log('su success');
+            return {
+                ...state,
+                authError: null
+            }
+        case 'SU_FAIL':
+            console.log('su fail');
+            return {
+                ...state,
+                authError: 'loginfailed'
+            }
+    }
+    
     function login(email, password){
         return auth.signInWithEmailAndPassword(email,password)
     }
