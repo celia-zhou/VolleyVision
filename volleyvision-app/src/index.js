@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorkerRegistration'
 import { applyMiddleware, createStore, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { reduxFirestore, getFirestore } from 'redux-firestore'
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore'
+import { reactReduxFirebase, ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
 import firebaseConfig from './firebase/firebase'
+import firebase from '@firebase/app-compat';
 
 // const functions = require('firebase-functions');
 // const admin = require('firebase-admin');
@@ -27,18 +28,27 @@ import firebaseConfig from './firebase/firebase'
 const store = createStore(rootReducer, 
   compose(
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-    reduxFirestore(firebaseConfig),
-    reactReduxFirebase(firebaseConfig)
+    reduxFirestore(firebase, firebaseConfig)
   )
 );
 
+const rrfProps = {
+  firebase,
+  config: firebaseConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+};
+
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />  
+     <ReactReduxFirebaseProvider {...rrfProps}>
+      <App />  
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWork();
+serviceWorker.unregister();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

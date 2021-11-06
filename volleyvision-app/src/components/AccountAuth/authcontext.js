@@ -38,21 +38,6 @@ export function AuthProvider({children}) {
         }
     }
 
-    switch(action.type){
-        case 'SU_SUCCESS':
-            console.log('su success');
-            return {
-                ...state,
-                authError: null
-            }
-        case 'SU_FAIL':
-            console.log('su fail');
-            return {
-                ...state,
-                authError: 'loginfailed'
-            }
-    }
-    
     function login(email, password){
         return auth.signInWithEmailAndPassword(email,password)
     }

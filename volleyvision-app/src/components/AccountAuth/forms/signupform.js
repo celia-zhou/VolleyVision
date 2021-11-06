@@ -4,6 +4,7 @@ import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
 import { signupForm } from "../../../store/actions/projActions";
 import { connect} from 'react-redux';
+import { Dispatch } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -82,7 +83,7 @@ function SignupForm() {
     )
 }
 
-const mapDispatchTo = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         signupForm: (proj) => dispatch(signupForm(proj))
     }

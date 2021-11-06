@@ -1,6 +1,6 @@
 export const signupForm = (proj) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
-        const firestore = getFirestor();
+        const firestore = getFirestore();
         firestore.collection('projects').add({
             ...proj,
             email: 'a@a.com',
@@ -9,7 +9,7 @@ export const signupForm = (proj) => {
         }).then(() => {
             dispatch({TYPE: 'CREATE_PROJ', proj});
         }).catch((err) => {
-            dispatch({type: 'create_proj_error', err});
+            dispatch({type: 'CREATE_PROJ_ERROR', err});
         })
         
     }
