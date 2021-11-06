@@ -2,10 +2,13 @@ import React, {useRef, useState } from "react";
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
+import { signupForm } from "../../../store/actions/projActions";
+import { connect} from 'react-redux';
+import { Dispatch } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
-export default function SignupForm() {
+function SignupForm() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -47,6 +50,7 @@ export default function SignupForm() {
         try {
             setError('')
             setLoading(true)
+            this.props.signupForm(this.state)
             await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/login")
         } catch {
@@ -269,3 +273,11 @@ export default function SignupForm() {
         </>
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signupForm: (proj) => dispatch(signupForm(proj))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignupForm)
