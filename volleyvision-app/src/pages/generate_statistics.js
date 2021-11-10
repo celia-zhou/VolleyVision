@@ -12,7 +12,6 @@ import AttemptCounter from '../components/attempt_counter'
 import AceCounter from '../components/ace_counter'
 import DigCounter from '../components/dig_counter'
 import BlockCounter from '../components/block_counter'
-import { BreakpointProvider } from 'react-socks';
 
 const Dash_Container = styled.div`
     position: absolute;
