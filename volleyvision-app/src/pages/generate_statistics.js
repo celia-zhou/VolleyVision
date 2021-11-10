@@ -12,6 +12,7 @@ import AttemptCounter from '../components/attempt_counter'
 import AceCounter from '../components/ace_counter'
 import DigCounter from '../components/dig_counter'
 import BlockCounter from '../components/block_counter'
+import MetaTags from 'react-meta-tags';
 
 const Dash_Container = styled.div`
     position: absolute;
@@ -19,7 +20,7 @@ const Dash_Container = styled.div`
     top: 65px;
     font: Times New Roman;
     font-size: 30px;
-    width: 200px;
+    width: 400px;
     height: 150px;
 `
 
@@ -87,15 +88,15 @@ const Generate_Statistics = () => {
     
     return (
         <div>
-            <ImageList sx={{ position: 'absolute', top: 150, left: 300, width: 1300, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+            <ImageList sx={{ position: 'absolute', top: 120, left: 300, width: 1300, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
             {itemData.map((item) => (
                 <ImageListItem sx={{pb: 1}} key={item.urlLink}>
                     <ReactPlayer
                         url={item.urlLink}
                         width = "1050px"
-                        height = "400px"
+                        height = "440px"
                     />
-                  <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
+                <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
                 </ImageListItem>
             ))}
             </ImageList>
@@ -121,7 +122,7 @@ const Generate_Statistics = () => {
             <UploadContainer5>
                 <AceCounter/>
             </UploadContainer5>
-            
+
             <UploadContainer4>
                 <DigCounter/>
             </UploadContainer4>
@@ -131,10 +132,7 @@ const Generate_Statistics = () => {
             </UploadContainer6>
 
             <SearchBar/>
-        
         </div>
-
-        
     )
 }
 
