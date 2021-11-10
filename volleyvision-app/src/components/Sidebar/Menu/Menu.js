@@ -121,7 +121,7 @@ export default function PermanentDrawerLeft() {
 
             <ListItem button component={Link} to="/generate_statistics">
                 <ListItemIcon><AssessmentIcon/></ListItemIcon>
-                <ListItemText>Generate</ListItemText>
+                <ListItemText>Generate Stats</ListItemText>
             </ListItem>
 
             <ListItem button component={Link} to="/videos">
