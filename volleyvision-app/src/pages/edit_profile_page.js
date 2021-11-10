@@ -3,7 +3,6 @@ import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
 import EditableProf from '../components/Profile/EditableProfile'
-import { List } from '@mui/material';
 
 const DashContainer = styled.div`
     position: absolute;

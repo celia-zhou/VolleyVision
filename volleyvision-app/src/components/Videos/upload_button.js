@@ -11,6 +11,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// function uploadVideo() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('POST',
+//         'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true&access_token=' + sessionStorage.getItem('access_token'));
+//   xhr.onreadystatechange = function (e) {
+//       if (xhr.readyState === 4 && xhr.status === 200) {
+//         var jsonResp = JSON.parse(xhr.response);
+//         console.log(xhr.response);
+//         sessionStorage.setItem('uploadID', jsonResp.items[0].contentDetails.relatedPlaylists.uploads);
+//       }
+//       else if (xhr.readyState === 4 && xhr.status === 403) {
+//         // Token invalid, so prompt for user permission.
+//         alert("Access denied. Must authorize access to a Youtube account.");
+//       }
+//   };
+//   xhr.send(null);
+// }
+
 export default function UploadButton() {
   const classes = useStyles();
   return (
@@ -21,6 +39,12 @@ export default function UploadButton() {
             Upload
         </Fab>
       </Button>
+      {/* <Button onClick={uploadVideo}>
+        <Fab variant="extended">
+          <UploadIcon sx={{ mr: 1 }} />
+            Upload
+        </Fab>
+      </Button> */}
     </main>
   );
 }
