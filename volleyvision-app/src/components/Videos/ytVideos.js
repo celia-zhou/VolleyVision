@@ -6,15 +6,16 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 function getAccessToken() {
   var currToken = new URLSearchParams(window.location.hash).get('access_token');
+  
 
-  if (currToken != null && currToken != sessionStorage.getItem('access_token')) {
-    sessionStorage.setItem('access_token', currToken);
+  if (currToken != null && currToken != sessionStorage.getItem('accessToken')) {
+    sessionStorage.setItem('accessToken', currToken);
+    
   }
-
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET',
-        'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true&access_token=' + sessionStorage.getItem('access_token'));
+        'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true&access_token=' + sessionStorage.getItem('accessToken'));
   xhr.onreadystatechange = function (e) {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var jsonResp = JSON.parse(xhr.response);
@@ -32,7 +33,7 @@ function getAccessToken() {
 
 function getUploads() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&access_token=' + sessionStorage.getItem('access_token')+'&playlistId='+sessionStorage.getItem('playlistID'));
+  xhr.open('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&access_token=' + sessionStorage.getItem('accessToken')+'&playlistId='+sessionStorage.getItem('playlistID'));
   xhr.onreadystatechange = function (e) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var jsonResp = JSON.parse(xhr.response);
@@ -68,27 +69,33 @@ function createVideoElems() {
   return videoElems;
 }
 
-export default function ytVideos() {
+export default function YTVideos() {
   getAccessToken();
-  getUploads();
-  
-  const videoElems = createVideoElems();
 
-  return (
-    <div>
-        <ImageList sx={{ position: 'absolute', top: 220, left: 300, width: 1100, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
-        {videoElems.map((item) => (
-            <ImageListItem sx={{pb: 1}} key={item.urlLink}>
-                <ReactPlayer
-                    url={item.urlLink}
-                    pip = "true"
-                    width = "350px"
-                    height = "300px"
-                />
-              <ImageListItemBar sx={{pb: 3}} position="below" title={item.title} />
-            </ImageListItem>
-        ))}
-        </ImageList>
-    </div>
-);
+  if (sessionStorage.getItem('accessToken') != null) {
+    getUploads();
+  
+    if (sessionStorage.getItem('uploadedVideos') != null) {
+      const videoElems = createVideoElems();
+      return (
+        <div>
+            <ImageList sx={{ position: 'absolute', top: 220, left: 300, width: 1100, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+            {videoElems.map((item) => (
+                <ImageListItem sx={{pb: 1}} key={item.urlLink}>
+                    <ReactPlayer
+                        url={item.urlLink}
+                        pip = "true"
+                        width = "350px"
+                        height = "300px"
+                    />
+                  <ImageListItemBar sx={{pb: 3}} position="below" title={item.title} />
+                </ImageListItem>
+            ))}
+            </ImageList>
+        </div>
+      );
+    }
+  }
+  
+  return null;
 }

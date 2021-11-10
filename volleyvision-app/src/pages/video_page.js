@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import db from '../firebase/firebase'
-import { collection } from 'firebase/firestore'
 
 import UploadButton from '../components/Videos/upload_button'
 import SearchBar from '../components/Topbar/Searchbar'
 import Sidebar from '../components/Sidebar/Sidebar'
-import VideoGallery from '../components/Videos/ytVideos'
+import YTVideos from '../components/Videos/ytVideos'
 import AuthButton from '../components/Youtube/AuthorizeButton'
 
+
 const Container = styled.div`
+    position: absolute;
     left: 300px;
     top: 65px;
     font: Times New Roman;
@@ -17,6 +17,7 @@ const Container = styled.div`
     width: 200px;
     height: 150px;
 `
+
 const UploadContainer = styled.div`
     position: absolute;
     left: 560px;
@@ -34,27 +35,15 @@ const AuthContainer = styled.div`
     font: Times New Roman;
     font-size: 30px;
 `
-// function writeDB() {
-//     const ref = db.createCollection('players');
-// }
-// function readDB() {
-//     const citiesRef = collection(db, 'users');
-//     const snapshot = citiesRef.get();
-//     snapshot.forEach(doc => {
-//     console.log(doc.id, '=>', doc.data());
-//     });
-// }
 
 const Videos = () => {
-    // writeDB();
-    // readDB();
-    // return null;
     return (
         <div>
-            <Sidebar/>
+            <Sidebar/> 
+
             <Container>
                 Videos
-            </Container> 
+            </Container>
 
             <UploadContainer>
                 <UploadButton/>
@@ -64,7 +53,7 @@ const Videos = () => {
                 <AuthButton/>
             </AuthContainer>
             
-            <VideoGallery/>
+            <YTVideos/>
 
             <SearchBar/>
         </div>
