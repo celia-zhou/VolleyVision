@@ -16,12 +16,13 @@ import ForgotPassword from './pages/forgotpassword';
 import Profile from "./pages/profile_page";
 import EditProfile from "./pages/edit_profile_page";
 import RecruiterTeam from './pages/recruiter_team';
-
+import Dashboard from './pages/Dashboard';
+import CreateMatches from './components/Matches/CreateMatches';
 //import components
 //import { fb } from './components/firebaseConfig';
 import { AuthProvider } from './components/AccountAuth/authcontext';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
+import MatchDetails from './components/Matches/MatchDetails';
 //import styles
 import './styles/App.css';
 
@@ -31,6 +32,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
+            <Route path='/project/:id' component={MatchDetails} />
             <Route path= "/home" component={Home} />
             <Route path= "/404" component={fourohfour} />
             <Route path = "/signup" component={Signup} />
@@ -39,10 +41,11 @@ function App() {
             <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
             <PrivateRoute path= "/profile" component={Profile} />
             <PrivateRoute path= "/edit_profile" component={EditProfile} />
-            <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
-            <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
+            <PrivateRoute path="/player_dashboard" component={Dashboard} />
+            <PrivateRoute path="/coach_dashboard" component={Dashboard} />
             <PrivateRoute path="/statistics" component={Statistics} />
             <Route path='/videos' component={Videos}/>
+            <Route path='/create' component={CreateMatches}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
