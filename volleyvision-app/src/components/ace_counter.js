@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   background-color: white;
   color: black;
-  font-size: 20px;
+  font-size: 15px;
   padding: 10px 10px;
   border-radius: 5px;
   margin: 10px 0px;
@@ -31,7 +31,7 @@ function AceCounter() {
       <div>
         <Button onClick={handleDecrement}>-</Button>
         <Button onClick={handleIncrement}>+</Button>
-        <h5>Ace Count: {count}</h5>
+        <h6>Ace Count: {count}</h6>
       </div>
       <Button onClick={() => setCount(0)}>Reset</Button>
     </div>

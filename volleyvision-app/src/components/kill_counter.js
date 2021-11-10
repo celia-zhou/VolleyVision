@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   background-color: white;
   color: black;
-  font-size: 20px;
+  font-size: 15px;
   padding: 10px 10px;
   border-radius: 5px;
   margin: 10px 0px;
@@ -14,7 +14,7 @@ const Button = styled.button`
 
 function KillCounter() {
   // Set the initial count state to zero, 0
-  const [count, setCount] = useState(0);
+  const [killCount, setCount] = useState(0);
 
   // Create handleIncrement event handler
   const handleIncrement = () => {
@@ -25,13 +25,14 @@ function KillCounter() {
   const handleDecrement = () => {
     setCount(prevCount => prevCount - 1);
   };
-  
+
   return (
     <div>
       <div>
         <Button onClick={handleDecrement}>-</Button>
         <Button onClick={handleIncrement}>+</Button>
-        <h5>Kill Count: {count}</h5>
+        <h6>Kill Count: {killCount}</h6>
+        <h6>Kill Percent: {killCount/100 + '%'}</h6>
       </div>
       <Button onClick={() => setCount(0)}>Reset</Button>
     </div>
