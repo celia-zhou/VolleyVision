@@ -1,4 +1,16 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+  margin-right: 10px;
+`;
 
 function ErrorCounter() {
   // Set the initial count state to zero, 0
@@ -16,11 +28,11 @@ function ErrorCounter() {
   return (
     <div>
       <div>
-        <button onClick={handleDecrement}>-</button>
-        <button onClick={handleIncrement}>+</button>
+        <Button onClick={handleDecrement}>-</Button>
+        <Button onClick={handleIncrement}>+</Button>
         <h5>Error Count: {count}</h5>
       </div>
-      <button onClick={() => setCount(0)}>Reset</button>
+      <Button onClick={() => setCount(0)}>Reset</Button>
     </div>
   );
 }

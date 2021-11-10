@@ -1,4 +1,16 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+  margin-right: 10px;
+`;
 
 function KillCounter() {
   // Set the initial count state to zero, 0
@@ -13,14 +25,15 @@ function KillCounter() {
   const handleDecrement = () => {
     setCount(prevCount => prevCount - 1);
   };
+  
   return (
     <div>
       <div>
-        <button onClick={handleDecrement}>-</button>
-        <button onClick={handleIncrement}>+</button>
+        <Button onClick={handleDecrement}>-</Button>
+        <Button onClick={handleIncrement}>+</Button>
         <h5>Kill Count: {count}</h5>
       </div>
-      <button onClick={() => setCount(0)}>Reset</button>
+      <Button onClick={() => setCount(0)}>Reset</Button>
     </div>
   );
 }
