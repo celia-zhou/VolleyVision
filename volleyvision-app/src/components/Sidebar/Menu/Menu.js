@@ -18,6 +18,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import LogoutIcon from '@material-ui/icons/ExitToApp'
+import AssessmentIcon from '@mui/icons-material/Assessment';
 
 import logo from '../../../images/logo-clear.png';
 
@@ -96,14 +97,21 @@ export default function PermanentDrawerLeft() {
                 <ListItemText>Dashboard</ListItemText>
             </ListItem>
 
+            {/*}
             <ListItem button component={Link} to="/schedule">
                 <ListItemIcon><CalendarTodayIcon/></ListItemIcon>
                 <ListItemText>Schedule</ListItemText>
             </ListItem>
+            */}
 
             <ListItem button component={Link} to="/statistics">
                 <ListItemIcon><FolderIcon/></ListItemIcon>
                 <ListItemText>Statistics</ListItemText>
+            </ListItem>
+
+            <ListItem button component={Link} to="/generate_statistics">
+                <ListItemIcon><AssessmentIcon/></ListItemIcon>
+                <ListItemText>Generate</ListItemText>
             </ListItem>
 
             <ListItem button component={Link} to="/videos">
