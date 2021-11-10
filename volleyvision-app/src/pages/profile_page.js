@@ -69,15 +69,15 @@ const EditContainer = styled.div`
     width: 300px;
     height: 150px;
 `
-const AuthContainer = styled.div`
-    position: absolute;
-    left: 650px;
-    top: 650px;
-    font: Times New Roman;
-    font-size: 30px;
-    width: 300px;
-    height: 150px;
-`
+// const AuthContainer = styled.div`
+//     position: absolute;
+//     left: 650px;
+//     top: 650px;
+//     font: Times New Roman;
+//     font-size: 30px;
+//     width: 300px;
+//     height: 150px;
+// `
 
 const ImageContainer = styled.div`
     position: absolute;
@@ -129,9 +129,9 @@ const Profile = () => {
                 <EditButton/>
             </EditContainer>
 
-            <AuthContainer>
+            {/* <AuthContainer>
                 <AuthButton/>
-            </AuthContainer>
+            </AuthContainer> */}
            
             <SearchBar/>
     

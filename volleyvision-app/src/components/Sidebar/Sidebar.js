@@ -13,6 +13,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media all and (min-width: 375px) {
+        min-width:20px
+    }
 `
 
 const Sidebar = () => {
