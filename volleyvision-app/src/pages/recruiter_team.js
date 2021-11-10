@@ -24,7 +24,7 @@ const Container = styled.div`
 const SubtitleContainer = styled.div`
     position: absolute;
     left: 400px;
-    top: 530px;
+    top: 450px;
     font: Times New Roman;
     font-size: 30px;
     font-style: italic;
@@ -35,7 +35,7 @@ const SubtitleContainer = styled.div`
 const DescriptionContainer = styled.div`
     position: absolute;
     left: 400px;
-    top: 580px;
+    top: 500px;
     font: Times New Roman;
     font-size: 30px;
     width: 300px;
@@ -45,7 +45,7 @@ const DescriptionContainer = styled.div`
 const InfoContainer = styled.div`
     position: absolute;
     left: 850px;
-    top: 525px;
+    top: 450px;
     font: Times New Roman;
     font-size: 30px;
     width: 300px;
@@ -53,18 +53,18 @@ const InfoContainer = styled.div`
     font-weight: bold;
 `
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.img`
     position: absolute;
-    left: 400px;
-    top: 150px;
-    width: 400px;
-    height: 150px;
+    left: 450px;
+    top: 125px;
+    width: 700px;
+    height: auto;
 `
 
 const VideoTitleContainer = styled.div`
     position: absolute;
     left: 825px;
-    top: 630px;
+    top: 525px;
     font: Times New Roman;
     font-size: 30px;
     font-style: italic;
@@ -75,7 +75,7 @@ const VideoTitleContainer = styled.div`
 const VideoThumbnailContainer = styled.img`
     position: absolute;
     left: 750px;
-    top: 700px;
+    top: 580px;
     width: 200px;
     height: auto;
 `
@@ -83,7 +83,7 @@ const VideoThumbnailContainer = styled.img`
 const VideoThumbnailContainer2 = styled.img`
     position: absolute;
     left: 1000px;
-    top: 700px;
+    top: 580px;
     width: 200px;
     height: auto;
 `
@@ -96,9 +96,7 @@ const RecruiterTeam = () => {
                 Vanderbilt University
             </Container>
 
-            <ImageContainer>
-                <img src={photo} />;
-            </ImageContainer>
+            <ImageContainer src={photo} />;
 
             <SubtitleContainer>
                 Our Team Philosophy
