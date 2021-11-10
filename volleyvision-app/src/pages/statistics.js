@@ -2,8 +2,6 @@ import React from 'react'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
-import SetTable from '../components/Statistics/SetTable'
-import StatisticsTable from '../components/Statistics/StatisticsTable'
 import MatchList from '../components/Matches/MatchList'
 
 const Dash_Container = styled.div`
