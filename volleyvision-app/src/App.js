@@ -10,10 +10,13 @@ import fourohfour from './pages/404';
 import Player_Dashboard from './pages/player_dashboard';
 import Coach_Dashboard from './pages/coach_dashboard';
 import Videos from './pages/video_page';
+import Statistics from './pages/statistics'
 import Signup from './pages/signup';
 import ForgotPassword from './pages/forgotpassword';
 import Profile from "./pages/profile_page";
+import EditProfile from "./pages/edit_profile_page";
 import RecruiterTeam from './pages/recruiter_team';
+import Generate_Statistics from './pages/generate_statistics';
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -36,8 +39,11 @@ function App() {
             <Route path= "/forgotpassword" component={ForgotPassword} />
             <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
             <PrivateRoute path= "/profile" component={Profile} />
+            <PrivateRoute path= "/edit_profile" component={EditProfile} />
             <PrivateRoute path="/player_dashboard" component={Player_Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
+            <PrivateRoute path="/statistics" component={Statistics} />
+            <PrivateRoute path="/generate_statistics" component={Generate_Statistics} />
             <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>

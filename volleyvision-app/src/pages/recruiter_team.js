@@ -3,9 +3,9 @@ import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
 import { ListItemText } from '@material-ui/core'
-import photo from './vandy.jpeg'
-import videoScreenshot1 from './videoscreenshot1.png'
-import videoScreenshot2 from './videoscreenshot2.png'
+import photo from '../images/vandy.jpeg'
+import videoScreenshot1 from '../images/videoscreenshot1.png'
+import videoScreenshot2 from '../images/videoscreenshot2.png'
 
 console.log(photo)
 
@@ -24,7 +24,7 @@ const Container = styled.div`
 const SubtitleContainer = styled.div`
     position: absolute;
     left: 400px;
-    top: 450px;
+    top: 530px;
     font: Times New Roman;
     font-size: 30px;
     font-style: italic;
@@ -35,7 +35,7 @@ const SubtitleContainer = styled.div`
 const DescriptionContainer = styled.div`
     position: absolute;
     left: 400px;
-    top: 500px;
+    top: 580px;
     font: Times New Roman;
     font-size: 30px;
     width: 300px;
@@ -45,7 +45,7 @@ const DescriptionContainer = styled.div`
 const InfoContainer = styled.div`
     position: absolute;
     left: 850px;
-    top: 450px;
+    top: 525px;
     font: Times New Roman;
     font-size: 30px;
     width: 300px;
@@ -53,18 +53,18 @@ const InfoContainer = styled.div`
     font-weight: bold;
 `
 
-const ImageContainer = styled.img`
+const ImageContainer = styled.div`
     position: absolute;
-    left: 450px;
-    top: 125px;
-    width: 700px;
-    height: auto;
+    left: 400px;
+    top: 150px;
+    width: 400px;
+    height: 150px;
 `
 
 const VideoTitleContainer = styled.div`
     position: absolute;
     left: 825px;
-    top: 525px;
+    top: 630px;
     font: Times New Roman;
     font-size: 30px;
     font-style: italic;
@@ -75,7 +75,7 @@ const VideoTitleContainer = styled.div`
 const VideoThumbnailContainer = styled.img`
     position: absolute;
     left: 750px;
-    top: 580px;
+    top: 700px;
     width: 200px;
     height: auto;
 `
@@ -83,7 +83,7 @@ const VideoThumbnailContainer = styled.img`
 const VideoThumbnailContainer2 = styled.img`
     position: absolute;
     left: 1000px;
-    top: 580px;
+    top: 700px;
     width: 200px;
     height: auto;
 `
@@ -96,7 +96,9 @@ const RecruiterTeam = () => {
                 Vanderbilt University
             </Container>
 
-            <ImageContainer src={photo} />;
+            <ImageContainer>
+                <img src={photo} alt="vanderbilt"/>;
+            </ImageContainer>
 
             <SubtitleContainer>
                 Our Team Philosophy

@@ -13,8 +13,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
 `
 
 const Sidebar = () => {
@@ -23,6 +21,7 @@ const Sidebar = () => {
         <Container>
             <Profile />
             <Menu />
+           
         </Container>
     )
 }

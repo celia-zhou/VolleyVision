@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { makeStyles } from '@material-ui/core/styles'
 import Fab from '@mui/material/Fab'
 import UploadIcon from '@mui/icons-material/Upload'
@@ -24,4 +23,4 @@ export default function UploadButton() {
       </Button>
     </main>
   );
-} 
+}
