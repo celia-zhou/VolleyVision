@@ -4,7 +4,6 @@ import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
 import SetTable from '../components/Statistics/SetTable'
 import StatisticsTable from '../components/Statistics/StatisticsTable'
-import MatchList from '../components/Matches/MatchList'
 
 const Dash_Container = styled.div`
     position: absolute;
@@ -26,17 +25,32 @@ const List_Container1 = styled.div`
     width: 70%;
 `
 
-const Statistics_Summary = () => {
+const List_Container2 = styled.div`
+    position: absolute;
+    left: 300px;
+    top: 400px;
+    font: Times New Roman;
+    background-color: white;
+    font-size: 20px;
+    width: 70%;
+`
+
+const Match_Summary = () => {
     return (
         <div>
             <SideBar/>
             <Dash_Container>
-                Statistics
+                Match Statistics
             </Dash_Container>
 
             <List_Container1>
-                <MatchList/>
+                <SetTable/>
             </List_Container1>
+
+            <List_Container2>
+                <StatisticsTable/>
+            </List_Container2>
+            
             
             <SearchBar/>
         
@@ -46,4 +60,4 @@ const Statistics_Summary = () => {
     )
 }
 
-export default Statistics_Summary
+export default Match_Summary
