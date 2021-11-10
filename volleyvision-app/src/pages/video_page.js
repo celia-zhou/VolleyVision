@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import UploadButton from '../components/upload_button'
+import UploadButton from '../components/Videos/upload_button'
 import SearchBar from '../components/Topbar/Searchbar'
 import Sidebar from '../components/Sidebar/Sidebar'
-import VideoGallery from '../components/video_gallery'
+import VideoGallery from '../components/Videos/video_gallery'
 
 const Container = styled.div`
     left: 300px;
