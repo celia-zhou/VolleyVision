@@ -10,7 +10,6 @@ import VideoGallery from '../components/Videos/ytVideos'
 import AuthButton from '../components/Youtube/AuthorizeButton'
 
 const Container = styled.div`
-    position: absolute;
     left: 300px;
     top: 65px;
     font: Times New Roman;
