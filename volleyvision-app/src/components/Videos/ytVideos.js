@@ -31,7 +31,7 @@ function getAccessToken() {
   return true;
 }
 
-function getUploads() {
+async function getUploads() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&access_token=' + sessionStorage.getItem('accessToken')+'&playlistId='+sessionStorage.getItem('playlistID'));
   xhr.onreadystatechange = function (e) {
