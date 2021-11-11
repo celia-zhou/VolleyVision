@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 // function uploadVideo() {
 //   var xhr = new XMLHttpRequest();
 //   xhr.open('POST',
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 //   };
 //   xhr.send(null);
 // }
+
 
 export default function UploadButton() {
   const classes = useStyles();
@@ -47,4 +49,4 @@ export default function UploadButton() {
       </Button> */}
     </main>
   );
-}
+  }

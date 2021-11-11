@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@mui/material/Fab';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Button from '@mui/material/Button';
+import styled from 'styled-components';
 
 import {CLIENT_ID,  REDIRECT_URI} from './config';
 
@@ -12,28 +13,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(5),
   },
 }));
-
-// If there's an access token, try an API request.
-// Otherwise, start OAuth 2.0 flow.
-// function tryYTRequest() {
-//   var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
-//   if (params && params['access_token']) {
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('GET',
-//         'https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&mine=true&key=' +YOUTUBE_API_KEY);
-//     xhr.onreadystatechange = function (e) {
-//       if (xhr.readyState === 4 && xhr.status === 200) {
-//         console.log(xhr.response);
-//       } else if (xhr.readyState === 4 && xhr.status === 401) {
-//         // Token invalid, so prompt for user permission.
-//         oauth2SignIn();
-//       }
-//     };
-//     xhr.send(null);
-//   } else {
-//     oauth2SignIn();
-//   }
-// }
 
 /*
  * Create form to request access token from Google's OAuth 2.0 server.
@@ -74,12 +53,12 @@ export default function AuthorizeButton() {
 
   return (
     <main className={classes.content}>
-      <Button onClick={oauth2SignIn}>
-        <Fab variant="extended">
-          <VerifiedUserIcon sx={{ mr: 1 }} />
+        <Button onClick={oauth2SignIn}>
+          <Fab variant="extended">
+            <VerifiedUserIcon sx={{ mr: 1 }} />
             Authorize Youtube Access
-        </Fab>
-      </Button>
+          </Fab>
+        </Button>
     </main>
   );
 }
