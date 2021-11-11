@@ -136,7 +136,7 @@ export default function LoginForm() {
                     </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
                 
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} style={{marginLeft: '0%'}}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
@@ -149,11 +149,9 @@ export default function LoginForm() {
                         <Button disabled={loading} className="w-100" type="submit" onClick={handleClickPlayer}>
                             Log In As Player
                         </Button>
-                        <br /><br />
                         <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
                             Log In As Coach
                         </Button>
-                        <br /><br />
                         <Button disabled={loading} className="w-100" type="submit" onClick={handleClickRecruiter}>
                             Log In As Recruiter
                         </Button>

@@ -24,7 +24,7 @@ class Dashboard extends Component {
                 <SideBar/>
                 <br /><br /><br />
                 <br /><br /><br />
-                <div><Link to="/create"><button className="btn pink lighten-1 z-depth-0" style={{float:'right', marginRight: '1%'}}>Create Match</button></Link></div>
+                <div><Link to="/create"><button className="btn pink lighten-1 z-depth-0" style={{marginLeft:'20%', marginRight: '2%', float:'right'}}>Create Match</button></Link></div>
                 <div className="row">
                     <div className= "col s12 m6" style={{marginLeft:'20%', marginRight:'1%'}}>
                         <MatchList matches={matches}/>

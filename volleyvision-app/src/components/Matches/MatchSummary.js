@@ -12,10 +12,12 @@ const MatchSummary = ({match}) => {
             </div> */}
             <div className="card-content grey-text text-darken-3">
                 <div className="row">
-                    <div className="col s1">
-                    <span className="card-title">{match.number}</span></div>
-                    <div className="col s2"><p>{match.opponent}  </p></div>
-                    <div className="col s3"><p>{match.winorloss} </p></div>
+                    <div className="col s1">{match.number}</div>
+                    <div className="col s2">{match.date}</div>
+                    <div className="col s3">{match.opponent}</div>
+                    <div className="col s4">{match.tournament}</div>
+                    <div className="col s5">{match.location}</div>
+                    <div className="col s6">{match.winorloss}</div>
                 </div>    
             </div>         
             </AuthProvider>

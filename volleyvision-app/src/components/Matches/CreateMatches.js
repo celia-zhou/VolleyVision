@@ -12,8 +12,11 @@ import { AuthProvider } from "../AccountAuth/authcontext"
 class CreateMatch extends Component {    
 
     state = {
-        opponent: '',
         number: '',
+        date: '',
+        opponent: '',
+        tournament: '',
+        location: '',
         winorloss: ''
     }
 
@@ -38,12 +41,24 @@ class CreateMatch extends Component {
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3"> Create Match </h5>
                     <div className="input-field">
+                        <label htmlFor="number">Match Number</label>
+                        <input type="number" id="number" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="date">Match Date</label><br/>
+                        <input type="date" id="date" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
                         <label htmlFor="opponent">Opponent</label>
                         <input type="text" id="opponent" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <label htmlFor="number">Match Number</label>
-                        <input type="number" id="number" onChange={this.handleChange}/>
+                        <label htmlFor="tournament">Tournament Name</label>
+                        <input type="text" id="tournament" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="location">Location</label>
+                        <input type="text" id="location" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
                         <label htmlFor="winorloss"> Win Or Loss?</label>

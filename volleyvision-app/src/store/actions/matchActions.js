@@ -3,8 +3,11 @@ export const createMatch = (match) => {
         const firestore = getFirestore();
         firestore.collection('matches').add({
             ...match,
-            opponent: match.opponent,
             number: match.number,
+            date: match.date,
+            opponent: match.opponent,
+            tournament: match.tournament,
+            location: match.location,
             winorloss: match.winorloss,
             authorID: 123456,
             createdAt: new Date()

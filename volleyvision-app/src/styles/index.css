@@ -25,7 +25,7 @@ form {
 }
 
 form button, form h5 {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),

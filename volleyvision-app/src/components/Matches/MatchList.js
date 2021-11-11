@@ -9,10 +9,12 @@ const MatchList = ({matches}) => {
             <div className="card z-depth-1 match-categories">
                 <div className="card-content grey-text text-darken-3">
                     <div className="row">
-                        <div className="col s1">
-                        <span className="card-title"><h4>match id</h4></span></div>
-                        <div className="col s2"><h4>opponent name</h4></div>
-                        <div className="col s3"><h4>win or loss</h4></div>
+                        <div className="col s1"><h4>Match Number</h4></div>
+                        <div className="col s2"><h4>Date</h4></div>
+                        <div className="col s3"><h4>Opponent</h4></div>
+                        <div className="col s4"><h4>Tournament</h4></div>
+                        <div className="col s5"><h4>Location</h4></div>
+                        <div className="col s6"><h4>Result</h4></div>
                     </div>    
                 </div>    
             </div>
