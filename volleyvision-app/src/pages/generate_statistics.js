@@ -16,7 +16,7 @@ import BlockCounter from '../components/block_counter'
 const Dash_Container = styled.div`
     position: absolute;
     left: 100px;
-    top: 115px;
+    top: 110px;
     font: Times New Roman;
     font-size: 30px;
     width: 400px;
@@ -25,7 +25,7 @@ const Dash_Container = styled.div`
 
 const UploadContainer1 = styled.div`
     position: absolute;
-    left: 100px;
+    left: 200px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -35,7 +35,7 @@ const UploadContainer1 = styled.div`
 
 const UploadContainer2 = styled.div`
     position: absolute;
-    left: 300px;
+    left: 400px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -45,7 +45,7 @@ const UploadContainer2 = styled.div`
 
 const UploadContainer3 = styled.div`
     position: absolute;
-    left: 500px;
+    left: 600px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -55,7 +55,7 @@ const UploadContainer3 = styled.div`
 
 const UploadContainer4 = styled.div`
     position: absolute;
-    left: 700px;
+    left: 800px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -65,7 +65,7 @@ const UploadContainer4 = styled.div`
 
 const UploadContainer5 = styled.div`
     position: absolute;
-    left: 900px;
+    left: 1000px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -75,7 +75,7 @@ const UploadContainer5 = styled.div`
 
 const UploadContainer6 = styled.div`
     position: absolute;
-    left: 1100px;
+    left: 1200px;
     top: 700px;
     font: Times New Roman;
     font-size: 30px;
@@ -83,22 +83,33 @@ const UploadContainer6 = styled.div`
     height: 150px;
 `
 
+const VidContainer = styled.div`
+    position: absolute;
+    left: 100px;
+    top: 1px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 100%;
+    height: 150px;
+`
+
 const Generate_Statistics = () => {
-    
     return (
         <div>
-            <ImageList sx={{ position: 'absolute', top: 200, left: 100, width: 2000, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
-            {itemData.map((item) => (
-                <ImageListItem sx={{pb: 1}} key={item.urlLink}>
-                    <ReactPlayer
-                        url={item.urlLink}
-                        width = "1050px"
-                        height = "440px"
-                    />
-                <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
-                </ImageListItem>
-            ))}
-            </ImageList>
+            <VidContainer>
+                <ImageList sx={{ position: 'absolute', top: 200, left: 100, width: 2000, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+                {itemData.map((item) => (
+                    <ImageListItem sx={{pb: 1}} key={item.urlLink}>
+                        <ReactPlayer
+                            url={item.urlLink}
+                            width = "1050px"
+                            height = "440px"
+                        />
+                    <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
+                    </ImageListItem>
+                ))}
+                </ImageList>
+            </VidContainer>
 
             <SideBar/>
 
