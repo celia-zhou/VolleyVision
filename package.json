@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-meta-tags": "^1.0.1"
+    "react-meta-tags": "^1.0.1",
+    "react-scroll": "^1.8.4"
   }
 }
