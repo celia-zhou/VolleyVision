@@ -25,7 +25,7 @@ class Dashboard extends Component {
                 <br /><br /><br />
                 <br /><br /><br />
                 <div className="row" style={{marginBottom:'1%'}}>
-                    <div className="col 1"><h2 style={{float:'left', marginLeft:'20%'}}>RECENT MATCHES</h2></div>
+                    <div className="col 1"><h4 style={{float:'left', marginLeft:'20%'}}>RECENT MATCHES</h4></div>
                     <div className="col 2">
                         <Link to="/create">
                             <button className="btn pink lighten-1 z-depth-0" style={{marginRight: '19%', float:'right'}}>Create Match

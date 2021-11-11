@@ -105,7 +105,7 @@ const Profile = () => {
             </Container>
 
             <NameContainer>
-                <h1>Katelyn Itano</h1>
+                <h4>Katelyn Itano</h4>
             </NameContainer>
 
             <ProfileContainer1>

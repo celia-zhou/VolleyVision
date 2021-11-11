@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
-import MatchList from '../components/Matches/MatchList'
+import ColumnGroupingTable from '../components/Statistics/SetTable'
 
 const Dash_Container = styled.div`
     position: absolute;
@@ -41,7 +41,7 @@ const Statistics_Summary = () => {
             </Dash_Container>
 
             <List_Container1>
-                <MatchList/>
+                <ColumnGroupingTable />
             </List_Container1>
             
             <SearchBar/>
