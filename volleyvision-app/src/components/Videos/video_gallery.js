@@ -12,6 +12,7 @@ export default function StandardImageList() {
                 <ImageListItem sx={{pb: 1}} key={item.urlLink}>
                     <ReactPlayer
                         url={item.urlLink}
+                        pip = "true"
                         width = "350px"
                         height = "300px"
                     />

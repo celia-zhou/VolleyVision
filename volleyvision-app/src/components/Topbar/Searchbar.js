@@ -14,6 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { useHistory } from 'react-router';
+import TempMenu from '../Sidebar/Menu/TempMenu';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -168,9 +170,9 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar elevation = {0} style={{ background: '#DBEBFB', color: 'black'}}>
+      <AppBar elevation = {0} style={{ background: 'white', color: 'black'}}>
         <Toolbar>
-            
+          <TempMenu />
           <div className={classes.grow} />
           
           <div style = {{float: 'left'}} className={classes.search}>

@@ -12,12 +12,11 @@ import AttemptCounter from '../components/attempt_counter'
 import AceCounter from '../components/ace_counter'
 import DigCounter from '../components/dig_counter'
 import BlockCounter from '../components/block_counter'
-import MetaTags from 'react-meta-tags';
 
 const Dash_Container = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 100px;
+    top: 110px;
     font: Times New Roman;
     font-size: 30px;
     width: 400px;
@@ -26,8 +25,8 @@ const Dash_Container = styled.div`
 
 const UploadContainer1 = styled.div`
     position: absolute;
-    left: 250px;
-    top: 600px;
+    left: 200px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -36,8 +35,8 @@ const UploadContainer1 = styled.div`
 
 const UploadContainer2 = styled.div`
     position: absolute;
-    left: 420px;
-    top: 600px;
+    left: 400px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -46,8 +45,8 @@ const UploadContainer2 = styled.div`
 
 const UploadContainer3 = styled.div`
     position: absolute;
-    left: 620px;
-    top: 600px;
+    left: 600px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -56,8 +55,8 @@ const UploadContainer3 = styled.div`
 
 const UploadContainer4 = styled.div`
     position: absolute;
-    left: 820px;
-    top: 600px;
+    left: 800px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -66,8 +65,8 @@ const UploadContainer4 = styled.div`
 
 const UploadContainer5 = styled.div`
     position: absolute;
-    left: 1020px;
-    top: 600px;
+    left: 1000px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -76,30 +75,41 @@ const UploadContainer5 = styled.div`
 
 const UploadContainer6 = styled.div`
     position: absolute;
-    left: 1220px;
-    top: 600px;
+    left: 1200px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
     height: 150px;
 `
 
+const VidContainer = styled.div`
+    position: absolute;
+    left: 100px;
+    top: 1px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 100%;
+    height: 150px;
+`
+
 const Generate_Statistics = () => {
-    
     return (
         <div>
-            <ImageList sx={{ position: 'absolute', top: 120, left: 300, width: 1300, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
-            {itemData.map((item) => (
-                <ImageListItem sx={{pb: 1}} key={item.urlLink}>
-                    <ReactPlayer
-                        url={item.urlLink}
-                        width = "1050px"
-                        height = "440px"
-                    />
-                <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
-                </ImageListItem>
-            ))}
-            </ImageList>
+            <VidContainer>
+                <ImageList sx={{ position: 'absolute', top: 200, left: 100, width: 2000, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+                {itemData.map((item) => (
+                    <ImageListItem sx={{pb: 1}} key={item.urlLink}>
+                        <ReactPlayer
+                            url={item.urlLink}
+                            width = "1050px"
+                            height = "440px"
+                        />
+                    <ImageListItemBar sx={{pb: 2}} position="below" title={item.name} />
+                    </ImageListItem>
+                ))}
+                </ImageList>
+            </VidContainer>
 
             <SideBar/>
 

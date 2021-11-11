@@ -23,7 +23,9 @@ import CardMedia from '@mui/material/CardMedia';
 
 import logo from '../../../images/logo-clear.png';
 
-const drawerWidth = 240;
+import styled from 'styled-components';
+
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -121,7 +123,7 @@ export default function PermanentDrawerLeft() {
 
             <ListItem button component={Link} to="/generate_statistics">
                 <ListItemIcon><AssessmentIcon/></ListItemIcon>
-                <ListItemText>Generate</ListItemText>
+                <ListItemText>Generate Stats</ListItemText>
             </ListItem>
 
             <ListItem button component={Link} to="/videos">

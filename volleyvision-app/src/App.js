@@ -17,9 +17,10 @@ import Profile from "./pages/profile_page";
 import EditProfile from "./pages/edit_profile_page";
 import RecruiterTeam from './pages/recruiter_team';
 import Generate_Statistics from './pages/generate_statistics';
+
 import ContactUs from './pages/contactForm';
 import Recruiter_Dashboard from './pages/recruiter_dashboard';
-
+import Match_Summary from './pages/match_summary';
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -49,6 +50,7 @@ function App() {
             <PrivateRoute path="/generate_statistics" component={Generate_Statistics} />
             <PrivateRoute path="/contact" component={ContactUs} />
             <PrivateRoute path="/recruiter_dashboard" component={Recruiter_Dashboard} />
+            <PrivateRoute path="/match_summary" component={Match_Summary} />
             <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
