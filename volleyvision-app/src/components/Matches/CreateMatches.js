@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createMatch } from '../../store/actions/matchActions'
-
 import SearchBar from '../Topbar/Searchbar'
 import SideBar from '../Sidebar/Sidebar'
 import styled from 'styled-components'
 import PlayerList from '../PlayerList/PlayerList'
+import { Link } from 'react-router-dom'
 
 import { AuthProvider } from "../AccountAuth/authcontext"
 
-class CreateMatch extends Component {
+class CreateMatch extends Component {    
+
     state = {
         id: '',
         opponent: '',
@@ -51,7 +52,9 @@ class CreateMatch extends Component {
                         </textarea>
                     </div>
                     <div className="input-field">
+                        <Link to="/player_dashboard">
                         <button className="btn pink lighten-1 z-depth-0">Create Match</button>
+                        </Link>
                     </div>
                 </form>
                 <SearchBar/>
