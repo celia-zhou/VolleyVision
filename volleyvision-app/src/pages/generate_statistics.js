@@ -21,6 +21,10 @@ const Dash_Container = styled.div`
     font-size: 30px;
     width: 400px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer1 = styled.div`
@@ -31,6 +35,10 @@ const UploadContainer1 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer2 = styled.div`
@@ -41,6 +49,10 @@ const UploadContainer2 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer3 = styled.div`
@@ -51,6 +63,10 @@ const UploadContainer3 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer4 = styled.div`
@@ -61,6 +77,10 @@ const UploadContainer4 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer5 = styled.div`
@@ -71,6 +91,10 @@ const UploadContainer5 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const UploadContainer6 = styled.div`
@@ -81,6 +105,10 @@ const UploadContainer6 = styled.div`
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 100vw
+    }
 `
 
 const VidContainer = styled.div`
@@ -91,6 +119,10 @@ const VidContainer = styled.div`
     font-size: 30px;
     width: 100%;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: bottom;
+        max-width: 20vw
+    }
 `
 
 const Generate_Statistics = () => {

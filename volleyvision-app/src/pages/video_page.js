@@ -10,36 +10,58 @@ import AuthButton from '../components/Youtube/AuthorizeButton'
 
 const Container = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 100px;
+    top: 115px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: right;
+        max-width: 50vw
+    }
 `
 
 const UploadContainer = styled.div`
     position: absolute;
-    left: 560px;
-    top: 90px;
+    left: 50px;
+    top: 130px;
     font: Times New Roman;
     font-size: 30px;
-    width: 200px;
+    width: 80%;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: right;
+        max-width: 50vw
+    }
 `
 
 const AuthContainer = styled.div`
     position: absolute;
-    left: 250px;
-    top: 90px;
+    left: 200px;
+    top: 130px;
     font: Times New Roman;
     font-size: 30px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: right;
+        max-width: 50vw
+    }
+`
+
+const VideoContainer = styled.div`
+    position: absolute;
+    right: 1640px;
+    top: 50px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: left;
+        max-width: 50vw
+    }
 `
 
 const Videos = () => {
     return (
         <div>
-            <Sidebar/> 
+            {/*<Sidebar/> */}
 
             <Container>
                 Videos
@@ -53,7 +75,10 @@ const Videos = () => {
                 <AuthButton/>
             </AuthContainer>
             
-            <YTVideos/>
+            <VideoContainer>
+                <YTVideos/>
+            </VideoContainer>
+            
 
             <SearchBar/>
         </div>

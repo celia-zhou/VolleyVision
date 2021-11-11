@@ -13,8 +13,9 @@ const Container = styled.div`
     font-size: 30px;
     width: 330px;
     height: 150px;
-    @media all and (min-width: 480px) {
-        max-width:800px
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: top;
+        max-width: 50vw
     }
 `
 const List_Container = styled.div`
@@ -25,8 +26,9 @@ const List_Container = styled.div`
     background-color: white;
     font-size: 30px;
     width: 87%;
-    @media all and (min-width: 480px) {
-        min-width:200px
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: left;
+        max-width: 50vw
     }
 `
 
