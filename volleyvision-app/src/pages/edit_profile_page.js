@@ -6,8 +6,9 @@ import EditableProf from '../components/Profile/EditableProfile'
 
 const DashContainer = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    float:center;
+    left: 15%;
+    top: 120px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -15,9 +16,10 @@ const DashContainer = styled.div`
 `
 
 const ListContainer = styled.div`
-    position: absolute;
-    left: 300px;
-    top: 150px;
+    position: relative;
+    float:center;
+    left: 15%;
+    top: 130px;
     font: Times New Roman;
     background-color: white;
     font-size: 20px;
@@ -30,7 +32,7 @@ const Editable_Profile = () => {
         <div>
             <SideBar/>
             <DashContainer>
-                Edit Profile
+                <h4> Edit Profile </h4>
             </DashContainer>
 
             <ListContainer>
