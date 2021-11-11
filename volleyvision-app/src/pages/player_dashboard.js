@@ -7,11 +7,11 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 100px;
+    top: 115px;
     font: Times New Roman;
     font-size: 30px;
-    width: 200px;
+    width: 330px;
     height: 150px;
     @media all and (min-width: 480px) {
         max-width:800px
@@ -19,12 +19,12 @@ const Container = styled.div`
 `
 const List_Container = styled.div`
     position: absolute;
-    left: 300px;
+    left: 100px;
     top: 200px;
     font: Times New Roman;
     background-color: white;
     font-size: 30px;
-    width: 75%;
+    width: 87%;
     @media all and (min-width: 480px) {
         min-width:200px
     }
