@@ -23,7 +23,7 @@ import Match_Summary from './pages/match_summary';
 //import { fb } from './components/firebaseConfig';
 import { AuthProvider } from './components/AccountAuth/authcontext';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
+import MatchDetails from './components/Matches/MatchDetails';
 //import styles
 import './styles/App.css';
 

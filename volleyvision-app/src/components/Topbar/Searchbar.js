@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(5em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -174,17 +174,16 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           
           <div style = {{float: 'left'}} className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
+            <SearchIcon />
             <InputBase
-              placeholder="Search…"
+              placeholder="  Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+            
           </div>
 
           <div className={classes.sectionDesktop}>
