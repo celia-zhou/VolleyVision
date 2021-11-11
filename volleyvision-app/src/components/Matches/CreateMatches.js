@@ -5,15 +5,15 @@ import SearchBar from '../Topbar/Searchbar'
 import SideBar from '../Sidebar/Sidebar'
 import styled from 'styled-components'
 import PlayerList from '../PlayerList/PlayerList'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import { AuthProvider } from "../AccountAuth/authcontext"
 
 class CreateMatch extends Component {    
 
     state = {
-        id: '',
         opponent: '',
+        number: '',
         winorloss: ''
     }
 
@@ -24,7 +24,8 @@ class CreateMatch extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createMatch(this.state)
+        this.props.createMatch(this.state);
+        this.props.history.push('/player_dashboard')
     }
 
     render() {
@@ -41,6 +42,10 @@ class CreateMatch extends Component {
                         <input type="text" id="opponent" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
+                        <label htmlFor="number">Match Number</label>
+                        <input type="number" id="number" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
                         <label htmlFor="winorloss"> Win Or Loss?</label>
                         <textarea name="" 
                             id="winorloss" 
@@ -52,9 +57,7 @@ class CreateMatch extends Component {
                         </textarea>
                     </div>
                     <div className="input-field">
-                        <Link to="/player_dashboard">
                         <button className="btn pink lighten-1 z-depth-0">Create Match</button>
-                        </Link>
                     </div>
                 </form>
                 <SearchBar/>

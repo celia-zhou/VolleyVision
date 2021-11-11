@@ -3,11 +3,9 @@ export const createMatch = (match) => {
         const firestore = getFirestore();
         firestore.collection('matches').add({
             ...match,
-            opponent: 'ABC HS',
-            number: '001',
-            winorloss: 'win',
-            authorFirstName: 'temp1',
-            authorLastName: 'temp2',
+            opponent: match.opponent,
+            number: match.number,
+            winorloss: match.winorloss,
             authorID: 123456,
             createdAt: new Date()
         })

@@ -32,20 +32,20 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-            <Route path='/project/:id' component={MatchDetails} />
-            <Route path= "/home" component={Home} />
-            <Route path= "/404" component={fourohfour} />
-            <Route path = "/signup" component={Signup} />
-            <Route path= "/login" component={Login} />
-            <Route path= "/forgotpassword" component={ForgotPassword} />
-            <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
-            <PrivateRoute path= "/profile" component={Profile} />
-            <PrivateRoute path= "/edit_profile" component={EditProfile} />
-            <PrivateRoute path="/player_dashboard" component={Dashboard} />
-            <PrivateRoute path="/coach_dashboard" component={Dashboard} />
-            <PrivateRoute path="/statistics" component={Statistics} />
-            <Route path='/videos' component={Videos}/>
-            <Route path='/create' component={CreateMatches}/>
+            <Route path='/project/:id/' component={MatchDetails} />
+            <Route path= "/home/" component={Home} />
+            <Route path= "/404/" component={fourohfour} />
+            <Route path = "/signup/" component={Signup} />
+            <Route path= "/login/" component={Login} />
+            <Route path= "/forgotpassword/" component={ForgotPassword} />
+            <PrivateRoute path= "/recruiterteam/" component={RecruiterTeam} />
+            <PrivateRoute path= "/profile/" component={Profile} />
+            <PrivateRoute path= "/edit_profile/" component={EditProfile} />
+            <PrivateRoute path="/player_dashboard/" component={Dashboard} />
+            <PrivateRoute path="/coach_dashboard/" component={Dashboard} />
+            <PrivateRoute path="/statistics/" component={Statistics} />
+            <Route path='/videos/' component={Videos}/>
+            <Route path='/create/' component={CreateMatches}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
