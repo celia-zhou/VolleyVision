@@ -6,8 +6,8 @@ import PlayerList from '../components/PlayerList/PlayerList'
 
 const DashContainer = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 10%;
+    top: 100px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -15,9 +15,9 @@ const DashContainer = styled.div`
 `
 
 const ListContainer = styled.div`
-    position: absolute;
-    left: 300px;
-    top: 190px;
+    position: relative;
+    left: 10%;
+    top: 250px;
     font: Times New Roman;
     background-color: white;
     font-size: 20px;
@@ -30,13 +30,13 @@ const Coach_Dashboard = () => {
         <div>
             <SideBar/>
             <DashContainer>
-                Coach Dashboard
+                <h2>Coach Dashboard</h2><br />
+                <h4>Team Roster</h4>
             </DashContainer>
 
-        
+            
             <ListContainer>
-                Team Roster
-                <PlayerList/>
+                <PlayerList />
             </ListContainer>
             
             <SearchBar/>

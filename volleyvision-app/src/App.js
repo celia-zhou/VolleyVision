@@ -45,6 +45,7 @@ function App() {
             <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
             <PrivateRoute path= "/profile" component={Profile} />
             <PrivateRoute path= "/edit_profile" component={EditProfile} />
+            <PrivateRoute path= "/settings" component={EditProfile} />
             <PrivateRoute path="/player_dashboard" component={Dashboard} />
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
             <PrivateRoute path="/statistics" component={Statistics} />
@@ -52,7 +53,7 @@ function App() {
             <Route path="/contact" component={ContactUs} />
             <PrivateRoute path="/recruiter_dashboard" component={Recruiter_Dashboard} />
             <PrivateRoute path="/match_summary" component={Match_Summary} />
-            <Route path='/create/' component={CreateMatches}/>
+            <PrivateRoute path='/create/' component={CreateMatches}/>
             <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
