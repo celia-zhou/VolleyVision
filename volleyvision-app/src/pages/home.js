@@ -38,17 +38,17 @@ const Home = () => {
                     <br /><br /><br /><br />
                 </div>
                 <div class="row">
-                    <div class="column3">
+                    <div class="col 1">
                         <img className="phbody" 
                         alt="placeholder img" 
                         src = "https://pbs.twimg.com/media/Ck23f_LVEAAICoE.jpg"/>
                     </div>
-                    <div class="column3">
+                    <div class="col 2">
                         <img className="phbody" 
                         alt="placeholder img" 
                         src = "https://pbs.twimg.com/media/DGG75lXVwAAgGvW?format=jpg&name=900x900"/>
                     </div>
-                    <div class="column3">
+                    <div class="col 3">
                         <img className="phbody" 
                         alt="placeholder img" 
                         src = "https://pbs.twimg.com/media/CwDSdODUEAASJP3.jpg:large"/>
