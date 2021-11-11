@@ -12,6 +12,10 @@ const Dash_Container = styled.div`
     font-size: 30px;
     width: 330px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: top;
+        max-width: 50vw
+    }
 `
 
 const List_Container1 = styled.div`
@@ -22,6 +26,10 @@ const List_Container1 = styled.div`
     background-color: white;
     font-size: 20px;
     width: 86%;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: top;
+        max-width: 50vw
+    }
 `
 
 const Statistics_Summary = () => {
