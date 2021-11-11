@@ -15,8 +15,8 @@ import BlockCounter from '../components/block_counter'
 
 const Dash_Container = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 100px;
+    top: 115px;
     font: Times New Roman;
     font-size: 30px;
     width: 400px;
@@ -25,8 +25,8 @@ const Dash_Container = styled.div`
 
 const UploadContainer1 = styled.div`
     position: absolute;
-    left: 250px;
-    top: 600px;
+    left: 100px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -35,8 +35,8 @@ const UploadContainer1 = styled.div`
 
 const UploadContainer2 = styled.div`
     position: absolute;
-    left: 420px;
-    top: 600px;
+    left: 300px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -45,8 +45,8 @@ const UploadContainer2 = styled.div`
 
 const UploadContainer3 = styled.div`
     position: absolute;
-    left: 620px;
-    top: 600px;
+    left: 500px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -55,8 +55,8 @@ const UploadContainer3 = styled.div`
 
 const UploadContainer4 = styled.div`
     position: absolute;
-    left: 820px;
-    top: 600px;
+    left: 700px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -65,8 +65,8 @@ const UploadContainer4 = styled.div`
 
 const UploadContainer5 = styled.div`
     position: absolute;
-    left: 1020px;
-    top: 600px;
+    left: 900px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -75,8 +75,8 @@ const UploadContainer5 = styled.div`
 
 const UploadContainer6 = styled.div`
     position: absolute;
-    left: 1220px;
-    top: 600px;
+    left: 1100px;
+    top: 700px;
     font: Times New Roman;
     font-size: 30px;
     width: 200px;
@@ -87,7 +87,7 @@ const Generate_Statistics = () => {
     
     return (
         <div>
-            <ImageList sx={{ position: 'absolute', top: 120, left: 300, width: 1300, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
+            <ImageList sx={{ position: 'absolute', top: 200, left: 100, width: 2000, height: 1100, bgcolor:"#DBEBFB"}} cols={3}>
             {itemData.map((item) => (
                 <ImageListItem sx={{pb: 1}} key={item.urlLink}>
                     <ReactPlayer
