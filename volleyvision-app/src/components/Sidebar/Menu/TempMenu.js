@@ -18,6 +18,8 @@ import { Image, Alert } from 'react-bootstrap';
 import { useAuth } from '../../AccountAuth/authcontext';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import CardMedia from '@mui/material/CardMedia';
+import logo from '../../../images/logo-clear.png';
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -99,11 +101,16 @@ export default function TemporaryDrawer() {
             {currentUser && currentUser.email}</p>
             </ListItemText>
           </ListItem>
+          <CardMedia
+         
+          image={logo}
+        />
         </List>
     </Box>
   );
 
   return (
+  
     <div>
     <MenuIcon></MenuIcon>
       {['menu'].map((anchor) => (

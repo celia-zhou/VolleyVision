@@ -48,7 +48,7 @@ function App() {
             <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
             <PrivateRoute path="/statistics" component={Statistics} />
             <PrivateRoute path="/generate_statistics" component={Generate_Statistics} />
-            <PrivateRoute path="/contact" component={ContactUs} />
+            <Route path="/contact" component={ContactUs} />
             <PrivateRoute path="/recruiter_dashboard" component={Recruiter_Dashboard} />
             <PrivateRoute path="/match_summary" component={Match_Summary} />
             <Route path='/videos' component={Videos}/>

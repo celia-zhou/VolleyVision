@@ -39,7 +39,7 @@ const AuthContainer = styled.div`
 const Videos = () => {
     return (
         <div>
-            <Sidebar/> 
+            {/*<Sidebar/> */}
 
             <Container>
                 Videos
