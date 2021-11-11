@@ -18,6 +18,11 @@ import EditProfile from "./pages/edit_profile_page";
 import RecruiterTeam from './pages/recruiter_team';
 import Dashboard from './pages/Dashboard';
 import CreateMatches from './components/Matches/CreateMatches';
+import Generate_Statistics from './pages/generate_statistics';
+import ContactUs from './pages/contactForm';
+import Recruiter_Dashboard from './pages/recruiter_dashboard';
+import Match_Summary from './pages/match_summary';
+
 //import components
 //import { fb } from './components/firebaseConfig';
 import { AuthProvider } from './components/AccountAuth/authcontext';
@@ -32,20 +37,23 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-            <Route path='/project/:id/' component={MatchDetails} />
-            <Route path= "/home/" component={Home} />
-            <Route path= "/404/" component={fourohfour} />
-            <Route path = "/signup/" component={Signup} />
-            <Route path= "/login/" component={Login} />
-            <Route path= "/forgotpassword/" component={ForgotPassword} />
-            <PrivateRoute path= "/recruiterteam/" component={RecruiterTeam} />
-            <PrivateRoute path= "/profile/" component={Profile} />
-            <PrivateRoute path= "/edit_profile/" component={EditProfile} />
-            <PrivateRoute path="/player_dashboard/" component={Dashboard} />
-            <PrivateRoute path="/coach_dashboard/" component={Dashboard} />
-            <PrivateRoute path="/statistics/" component={Statistics} />
-            <Route path='/videos/' component={Videos}/>
+            <Route path= "/home" component={Home} />
+            <Route path= "/404" component={fourohfour} />
+            <Route path = "/signup" component={Signup} />
+            <Route path= "/login" component={Login} />
+            <Route path= "/forgotpassword" component={ForgotPassword} />
+            <PrivateRoute path= "/recruiterteam" component={RecruiterTeam} />
+            <PrivateRoute path= "/profile" component={Profile} />
+            <PrivateRoute path= "/edit_profile" component={EditProfile} />
+            <PrivateRoute path="/player_dashboard" component={Dashboard} />
+            <PrivateRoute path="/coach_dashboard" component={Coach_Dashboard} />
+            <PrivateRoute path="/statistics" component={Statistics} />
+            <PrivateRoute path="/generate_statistics" component={Generate_Statistics} />
+            <Route path="/contact" component={ContactUs} />
+            <PrivateRoute path="/recruiter_dashboard" component={Recruiter_Dashboard} />
+            <PrivateRoute path="/match_summary" component={Match_Summary} />
             <Route path='/create/' component={CreateMatches}/>
+            <Route path='/videos' component={Videos}/>
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
