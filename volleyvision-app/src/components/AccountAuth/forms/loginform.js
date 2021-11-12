@@ -107,7 +107,7 @@ export default function LoginForm() {
                     alert("The email you entered is: " + email + ". This email matches our records. Login successful!" )
                     setLoading(true)
                     await login(emailRef.current.value, passwordRef.current.value)
-                    history.push("/recruiterteam")
+                    history.push("/recruiter_dashboard")
                 } else {
                     alert("You did not enter an email. Remaining on the login page.")
                     history.push('/login')
