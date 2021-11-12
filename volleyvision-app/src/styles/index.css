@@ -21,7 +21,7 @@ code {
 form {
   padding: 20px;
   margin-top: 60px;
-  margin-left: 20%;
+  /* margin-left: 20%; */
 }
 
 form button, form h5 {

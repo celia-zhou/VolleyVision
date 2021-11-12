@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "volleyvision",
     "public": "build",
     "ignore": [
       "firebase.json",
