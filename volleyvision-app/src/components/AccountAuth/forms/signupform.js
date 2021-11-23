@@ -18,6 +18,9 @@ export default function SignupForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
+        if (emailRef.current.value.search(/[!@#$%^&*]/) < 0) {
+            return setError('Email must be valid.')
+        }
 
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
@@ -60,6 +63,10 @@ export default function SignupForm() {
         e.preventDefault()
         var userPreference
         var email
+
+        if (emailRef.current.value.search(/[!@#$%^&*]/) < 0) {
+            return setError('Email must be valid.')
+        }
 
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
@@ -113,6 +120,9 @@ export default function SignupForm() {
         e.preventDefault()
         var userPreference
         var email
+        if (emailRef.current.value.search(/[!@#$%^&*]/) < 0) {
+            return setError('Email must be valid.')
+        }
 
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
@@ -170,6 +180,9 @@ export default function SignupForm() {
         e.preventDefault()
         var userPreference
         var email
+        if (emailRef.current.value.search(/[!@#$%^&*]/) < 0) {
+            return setError('Email must be valid.')
+        }
 
         if (passwordRef.current.value !== 
             passwordConfirmRef.current.value) {
