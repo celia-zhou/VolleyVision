@@ -22,6 +22,7 @@ import ContactUs from './pages/contactForm';
 import Recruiter_Dashboard from './pages/recruiter_dashboard';
 import Match_Summary from './pages/match_summary';
 import AddMatch from './pages/add_match';
+import Stats from './components/Stats'
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -54,6 +55,7 @@ function App() {
             <PrivateRoute path="/match_summary" component={Match_Summary} />
             <Route path='/add_match' component={AddMatch} />
             <Route path='/videos' component={Videos}/>
+            <Route path="/statsdb" component={Stats} />
             <Route path="/">
               <Redirect exact from="/" to = "/home"/>
             </Route>
