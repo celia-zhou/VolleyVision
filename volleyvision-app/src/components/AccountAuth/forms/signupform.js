@@ -1,5 +1,5 @@
 import React, {useRef, useState } from "react";
-import { Form, Button, Card, Alert } from 'react-bootstrap'
+import { Row, Col, Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
 
@@ -7,6 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function SignupForm() {
 
+    const firstNameRef = useRef()
+    const lastNameRef = useRef()
+    const gradYearRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -44,10 +47,14 @@ export default function SignupForm() {
             return setError('Password must contain a special character.')
         }
 
+        if (gradYearRef.current.value.length != 4){
+            return setError('Enter a valid graduation year.')
+        }
+
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.current.value, lastNameRef.current.value, gradYearRef.current.value)
             history.push("/login")
         } catch {
             setError('Failed to create an account.')
@@ -58,36 +65,57 @@ export default function SignupForm() {
 
     return (
         <>
-            <Card>
+        <div class="col d-flex justify-content-center">
+            <Card> 
                 <Card.Body>
                     <h2 className="text-center mb-4">
                         Sign Up
                     </h2>
-                    {/* <p>This is here for debugging purposes: <br />
-                        Current User: <br />
-                        {currentUser && currentUser.email}
-                    </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id="email">
+                    <Form onSubmit={handleSubmit}> 
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control placeholder="First Name" ref={firstNameRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridLastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control placeholder="Last Name" ref={lastNameRef} required/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridYear">
+                            <Form.Label>Graduation Year</Form.Label>
+                            <Form.Control type="number" placeholder="Graduation Year" ref={gradYearRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" ref={emailRef} required />
-                        </Form.Group>
-                        <Form.Group id="password">
+                            <Form.Control type="email" placeholder="Email" ref={emailRef} required/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required />
-                        </Form.Group>
-                        <Form.Group id="password-confirm">
-                            <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control type="password" ref={passwordConfirmRef} required />
-                        </Form.Group>
+                            <Form.Control type="password" placeholder="Password" ref={passwordRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridConfirmPassword">
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control type="password" placeholder="Confirm Password" ref={passwordConfirmRef} required/>
+                            </Form.Group>
+                        </Row>
                         <br />
                         <Button disabled={loading} className="w-100" type="submit">
                             Sign Up
                         </Button>
-                    </Form>
+                        </Form>
                 </Card.Body>
             </Card>
+            </div>
             <div className = "w-100 text-center mt-2">
                 Already have an account? <Link to="/login"> Log In</Link>
             </div>
