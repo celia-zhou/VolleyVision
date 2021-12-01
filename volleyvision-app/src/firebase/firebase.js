@@ -83,6 +83,5 @@ const fb = firebase.initializeApp({
 })
 
 //const fba = getAnalytics(fb);
-
 export const auth = fb.auth()
 export default fb
