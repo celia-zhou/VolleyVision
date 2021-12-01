@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import MatchTable from '../components/Matches/RecentMatches'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
-import AddMatch from '../components/Matches/AddMatchButton'
+import NewMatchForm from '../components/Matches/NewMatchForm'
+
 
 const Container = styled.div`
     position: absolute;
@@ -18,7 +18,7 @@ const Container = styled.div`
         max-width: 50vw
     }
 `
-const List_Container = styled.div`
+const ListContainer = styled.div`
     position: absolute;
     left: 100px;
     top: 200px;
@@ -33,23 +33,24 @@ const List_Container = styled.div`
 `
 
 
-const Player_Dashboard = () => {
+const Add_Match = () => {
     return (
         <div>
             <SideBar/>
             
             <Container>
-                Player Dashboard
+                New Match
             </Container>
-            
-            {/* <List_Container>
-                <MatchTable/>
-            </List_Container> */}
-            <AddMatch/>
+
+<ListContainer>
+<NewMatchForm/>
+</ListContainer>
+
+
 
             <SearchBar/>
         </div>
     )
 }
 
-export default Player_Dashboard
+export default Add_Match
