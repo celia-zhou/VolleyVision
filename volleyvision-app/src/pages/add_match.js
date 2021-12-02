@@ -33,6 +33,7 @@ const ListContainer = styled.div`
 `
 
 
+
 const Add_Match = () => {
     return (
         <div>
@@ -42,10 +43,9 @@ const Add_Match = () => {
                 New Match
             </Container>
 
-<ListContainer>
-<NewMatchForm/>
-</ListContainer>
-
+            <ListContainer>
+                <NewMatchForm/>
+            </ListContainer>
 
 
             <SearchBar/>
