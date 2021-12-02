@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../../firebase/firebase'
+import { getFirestore, setDoc, doc } from 'firebase/firestore'
 // import Signup from '../../pages/signup'
 // import SignupForm from './forms/signupform'
 // import Login from '../../pages/login'
@@ -15,8 +16,15 @@ export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password){
-        return auth.createUserWithEmailAndPassword(email, password)
+    function signup(email, password, userFirstName, userLastName, userGradYear){
+        return auth.createUserWithEmailAndPassword(email, password).then(cred => {
+            const db = getFirestore();
+            const userRef = setDoc(doc(db, 'users', cred.user.uid), {
+                firstName: userFirstName,
+                lastName: userLastName,
+                gradYear: userGradYear
+            });
+          });
     }
 
     function login(email, password){

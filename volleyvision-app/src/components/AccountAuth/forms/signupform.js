@@ -1,5 +1,5 @@
 import React, {useRef, useState } from "react";
-import { Form, Button, Card, Alert } from 'react-bootstrap'
+import { Row, Col, Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
 
@@ -7,6 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function SignupForm() {
 
+    const firstNameRef = useRef()
+    const lastNameRef = useRef()
+    const gradYearRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -44,10 +47,14 @@ export default function SignupForm() {
             return setError('Password must contain a special character.')
         }
 
+        if (gradYearRef.current.value.length != 4){
+            return setError('Enter a valid graduation year.')
+        }
+
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.current.value, lastNameRef.current.value, gradYearRef.current.value)
             history.push("/login")
         } catch {
             setError('Failed to create an account.')
@@ -56,213 +63,59 @@ export default function SignupForm() {
         setLoading(false)
     }
 
-    async function handleSignUpPlayer(e) {
-        e.preventDefault()
-        var userPreference
-        var email
-
-        if (passwordRef.current.value !== 
-            passwordConfirmRef.current.value) {
-            return setError('Passwords do not match.')
-        }
-
-        if (passwordRef.current.value.length < 6){
-            return setError('Password is too short.')
-        }
-
-        if (passwordRef.current.value.search(/[a-z]/) < 0) {
-            return setError('Password must contain a letter.')
-        }
-
-        if (passwordRef.current.value.search(/[A-Z]/) < 0) {
-            return setError('Password must contain a capital letter.')
-        }
-
-        if (passwordRef.current.value.search(/[!@#$%^&*]/) < 0) {
-            return setError('Password must contain a special character.')
-        }
-
-        try {
-            setError('')
-            alert('Attempted sign-up as a player. Additional verification required.')
-            if (window.confirm("Do you want to continue signing up as a player?") == true) {
-                userPreference = "Proceeding to verification stage."
-                email = prompt("Please enter your student email.", "student@vanderbilt.edu")
-                if (email) {
-                    alert("The email you entered is: " + email + ". Sign-up successful!" )
-                    setLoading(true)
-                    history.push("/player_dashboard")
-                } else {
-                    alert("Sign-up unsuccessful. Redirecting to the login page.")
-                    history.push('/login')
-                }
-            } else {
-                userPreference = "Sign-up cancelled!"
-                alert("Sign-up unsuccessful. Redirecting to the login page.")
-                history.push('/login')
-            }
-
-        } catch {
-            setError('Failed to login.')
-        }
-
-        setLoading(false)
-    }
-
-    async function handleSignUpCoach(e) {
-        e.preventDefault()
-        var userPreference
-        var email
-
-        if (passwordRef.current.value !== 
-            passwordConfirmRef.current.value) {
-            return setError('Passwords do not match.')
-        }
-
-        if (passwordRef.current.value.length < 6){
-            return setError('Password is too short.')
-        }
-
-        if (passwordRef.current.value.search(/[0-9]/) < 0) {
-            return setError('Password must contain a number.')
-        }
-
-        if (passwordRef.current.value.search(/[a-z]/) < 0) {
-            return setError('Password must contain a letter.')
-        }
-
-        if (passwordRef.current.value.search(/[A-Z]/) < 0) {
-            return setError('Password must contain a capital letter.')
-        }
-
-        if (passwordRef.current.value.search(/[!@#$%^&*]/) < 0) {
-            return setError('Password must contain a special character.')
-        }
-
-        try {
-            setError('')
-            alert('Attempted sign-up as a coach. Additional verification required.')
-            if (window.confirm("Do you want to continue signing up as a coach?") == true) {
-                userPreference = "Proceeding to verification stage."
-                email = prompt("Please enter your coach email.", "coach@rpmsand.com")
-                if (email) {
-                    alert("The email you entered is: " + email + ". Sign-up successful!" )
-                    setLoading(true)
-                    history.push("/coach_dashboard")
-                } else {
-                    alert("Sign-up unsuccessful. Redirecting to the login page.")
-                    history.push('/login')
-                }
-            } else {
-                userPreference = "Sign-up cancelled!"
-                alert("Sign-up unsuccessful. Redirecting to the login page.")
-                history.push('/login')
-            }
-
-        } catch {
-            setError('Failed to login.')
-        }
-
-        setLoading(false)
-    }
-
-    async function handleSignUpRecruiter(e) {
-        e.preventDefault()
-        var userPreference
-        var email
-
-        if (passwordRef.current.value !== 
-            passwordConfirmRef.current.value) {
-            return setError('Passwords do not match.')
-        }
-
-        if (passwordRef.current.value.length < 6){
-            return setError('Password is too short.')
-        }
-
-        if (passwordRef.current.value.search(/[0-9]/) < 0) {
-            return setError('Password must contain a number.')
-        }
-
-        if (passwordRef.current.value.search(/[a-z]/) < 0) {
-            return setError('Password must contain a letter.')
-        }
-
-        if (passwordRef.current.value.search(/[A-Z]/) < 0) {
-            return setError('Password must contain a capital letter.')
-        }
-
-        if (passwordRef.current.value.search(/[!@#$%^&*]/) < 0) {
-            return setError('Password must contain a special character.')
-        }
-
-        try {
-            setError('')
-            alert('Attempted sign-up as a recruiter. Additional verification required.')
-            if (window.confirm("Do you want to continue signing up as a recruiter?") == true) {
-                userPreference = "Proceeding to verification stage."
-                email = prompt("Please enter your recruiter email.", "recruiter@vanderbilt.edu")
-                if (email) {
-                    alert("The email you entered is: " + email + ". Sign-up successful!" )
-                    setLoading(true)
-                    history.push("/recruiterteam")
-                } else {
-                    alert("Sign-up unsuccessful. Redirecting to the login page.")
-                    history.push('/login')
-                }
-            } else {
-                userPreference = "Sign-up cancelled!"
-                alert("Sign-up unsuccessful. Redirecting to the login page.")
-                history.push('/login')
-            }
-
-        } catch {
-            setError('Failed to login.')
-        }
-
-        setLoading(false)
-    }
-
     return (
         <>
-            <Card>
+        <div class="col d-flex justify-content-center">
+            <Card> 
                 <Card.Body>
                     <h2 className="text-center mb-4">
                         Sign Up
                     </h2>
-                    {/* <p>This is here for debugging purposes: <br />
-                        Current User: <br />
-                        {currentUser && currentUser.email}
-                    </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id="email">
+                    <Form onSubmit={handleSubmit}> 
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridFirstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control placeholder="First Name" ref={firstNameRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridLastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control placeholder="Last Name" ref={lastNameRef} required/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridYear">
+                            <Form.Label>Graduation Year</Form.Label>
+                            <Form.Control type="number" placeholder="Graduation Year" ref={gradYearRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" ref={emailRef} required />
-                        </Form.Group>
-                        <Form.Group id="password">
+                            <Form.Control type="email" placeholder="Email" ref={emailRef} required/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required />
-                        </Form.Group>
-                        <Form.Group id="password-confirm">
-                            <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control type="password" ref={passwordConfirmRef} required />
-                        </Form.Group>
+                            <Form.Control type="password" placeholder="Password" ref={passwordRef} required/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridConfirmPassword">
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control type="password" placeholder="Confirm Password" ref={passwordConfirmRef} required/>
+                            </Form.Group>
+                        </Row>
                         <br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpPlayer}>
-                            Sign Up As Player
+                        <Button disabled={loading} className="w-100" type="submit">
+                            Sign Up
                         </Button>
-                        <br /><br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpCoach}>
-                            Sign Up As Coach
-                        </Button>
-                        <br /><br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleSignUpRecruiter}>
-                            Sign Up As Recruiter
-                        </Button>
-                    </Form>
+                        </Form>
                 </Card.Body>
             </Card>
+            </div>
             <div className = "w-100 text-center mt-2">
                 Already have an account? <Link to="/login"> Log In</Link>
             </div>

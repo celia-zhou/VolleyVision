@@ -1,9 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 import MatchTable from '../components/Matches/RecentMatches'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
-import styled from 'styled-components'
-
+import AddMatch from '../components/Matches/AddMatchButton'
 
 const Container = styled.div`
     position: absolute;
@@ -42,9 +42,10 @@ const Player_Dashboard = () => {
                 Player Dashboard
             </Container>
             
-            <List_Container>
+            {/* <List_Container>
                 <MatchTable/>
-            </List_Container>
+            </List_Container> */}
+            <AddMatch/>
 
             <SearchBar/>
         </div>
