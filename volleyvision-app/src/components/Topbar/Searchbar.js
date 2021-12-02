@@ -190,15 +190,11 @@ export default function PrimarySearchAppBar() {
           </div>
 
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+            <IconButton aria-label="mail" color="inherit">
                 <MailIcon />
-              </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+            <IconButton aria-label="notifications" color="inherit">
                 <NotificationsIcon />
-              </Badge>
             </IconButton>
             <IconButton
               edge="end"
