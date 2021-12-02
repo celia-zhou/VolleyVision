@@ -1,7 +1,6 @@
 import React from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, addDoc, collection } from 'firebase/firestore/lite';
-import { TextField } from '@mui/material';
 
 class NewMatchForm extends React.Component {
     constructor() {
