@@ -16,13 +16,14 @@ export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password, userFirstName, userLastName, userGradYear){
-        return auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    function signup(userEmail, userPassword, userFirstName, userLastName, userGradYear){
+        return auth.createUserWithEmailAndPassword(userEmail, userPassword).then(cred => {
             const db = getFirestore();
             const userRef = setDoc(doc(db, 'users', cred.user.uid), {
                 firstName: userFirstName,
                 lastName: userLastName,
-                gradYear: userGradYear
+                gradYear: userGradYear,
+                email: userEmail
             });
           });
     }
