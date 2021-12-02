@@ -39,7 +39,7 @@ const Add_Match = () => {
             <SideBar/>
             
             <Container>
-                New Match
+                Create Match
             </Container>
 
 <ListContainer>

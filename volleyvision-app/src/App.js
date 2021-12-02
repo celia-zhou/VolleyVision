@@ -53,7 +53,7 @@ function App() {
             <Route path="/contact" component={ContactUs} />
             <PrivateRoute path="/recruiter_dashboard" component={Recruiter_Dashboard} />
             <PrivateRoute path="/match_summary" component={Match_Summary} />
-            <Route path='/add_match' component={AddMatch} />
+            <Route path='/create_match' component={AddMatch} />
             <Route path='/videos' component={Videos}/>
             <Route path="/statsdb" component={Stats} />
             <Route path="/">

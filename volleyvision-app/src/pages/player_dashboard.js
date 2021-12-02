@@ -42,9 +42,10 @@ const Player_Dashboard = () => {
                 Player Dashboard
             </Container>
             
-            {/* <List_Container>
+            <List_Container>
                 <MatchTable/>
-            </List_Container> */}
+            </List_Container>
+
             <AddMatch/>
 
             <SearchBar/>

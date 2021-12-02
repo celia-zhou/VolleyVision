@@ -7,22 +7,25 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getAuth } from "firebase/auth";
 
 const columns = [
   { id: 'opponent', label: 'Opponent', minWidth: 170 },
   { id: 'date', label: 'Date', minWidth: 100 },
-  { id: 'location', label: 'Location', minWidth: 100 },
+  { id: 'partner', label: 'Partner', minWidth: 170 },
+  { id: 'location', label: 'Location', minWidth: 80 },
   {
     id: 'score',
     label: 'Score',
-    minWidth: 170,
+    minWidth: 100,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'result',
     label: 'Result',
-    minWidth: 170,
+    minWidth: 100,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
@@ -32,11 +35,31 @@ function createData(opponent, date, location, score, result) {
   return { opponent, date, location, score, result };
 }
 
+// const rows = [
+//   createData('UCLA', 'Oct 8, 2021', 'Nashville, TN', '2-1', 'WIN'),
+//   createData('Duke', 'Oct 1, 2021', 'Durham, NC', '2-0', 'WIN'),
+//   createData('USC', 'Sept 23, 2021', 'Los Angeles, CA', '1-2', 'LOSS'),
+//   createData('LSU', 'Sept 16, 2021', 'Nashville, TN', '2-1', 'WIN'),
+// ];
+
+function retrieveData() {
+  const db = getFirestore();
+  const auth = getAuth();
+  const currUser = auth.currentUser;
+
+  const matchesRef = collection(db, 'users/'+currUser.uid+'/matches');
+
+    getDocs(matchesRef).then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log("All data in 'matches' collection", data);
+});
+}
+
 const rows = [
-  createData('UCLA', 'Oct 8, 2021', 'Nashville, TN', '2-1', 'WIN'),
-  createData('Duke', 'Oct 1, 2021', 'Durham, NC', '2-0', 'WIN'),
-  createData('USC', 'Sept 23, 2021', 'Los Angeles, CA', '1-2', 'LOSS'),
-  createData('LSU', 'Sept 16, 2021', 'Nashville, TN', '2-1', 'WIN'),
+  // retrieveData()
 ];
 
 export default function ColumnGroupingTable() {
