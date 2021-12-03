@@ -1,30 +1,30 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
 
 const columns = [
-  { id: 'opponent', label: 'Opponent', minWidth: 170 },
-  { id: 'date', label: 'Date', minWidth: 100 },
-  { id: 'location', label: 'Location', minWidth: 100 },
+  { id: "opponent", label: "Opponent", minWidth: 170 },
+  { id: "date", label: "Date", minWidth: 100 },
+  { id: "location", label: "Location", minWidth: 100 },
   {
-    id: 'score',
-    label: 'Score',
+    id: "score",
+    label: "Score",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'result',
-    label: 'Result',
+    id: "result",
+    label: "Result",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
@@ -33,10 +33,10 @@ function createData(opponent, date, location, score, result) {
 }
 
 const rows = [
-  createData('UCLA', 'Oct 8, 2021', 'Nashville, TN', '2-1', 'WIN'),
-  createData('Duke', 'Oct 1, 2021', 'Durham, NC', '2-0', 'WIN'),
-  createData('USC', 'Sept 23, 2021', 'Los Angeles, CA', '1-2', 'LOSS'),
-  createData('LSU', 'Sept 16, 2021', 'Nashville, TN', '2-1', 'WIN'),
+  createData("UCLA", "Oct 8, 2021", "Nashville, TN", "2-1", "WIN"),
+  createData("Duke", "Oct 1, 2021", "Durham, NC", "2-0", "WIN"),
+  createData("USC", "Sept 23, 2021", "Los Angeles, CA", "1-2", "LOSS"),
+  createData("LSU", "Sept 16, 2021", "Nashville, TN", "2-1", "WIN"),
 ];
 
 export default function ColumnGroupingTable() {
@@ -53,19 +53,23 @@ export default function ColumnGroupingTable() {
   };
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper sx={{ width: "100%" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{fontWeight: 'bold', fontSize: 20}}align="center" colSpan={2}>
+              <TableCell
+                sx={{ fontWeight: "bold", fontSize: 20 }}
+                align="center"
+                colSpan={2}
+              >
                 Recent Matches
               </TableCell>
             </TableRow>
             <TableRow>
               {columns.map((column) => (
                 <TableCell
-                  sx = {{fontWeight: 'bold'}}
+                  sx={{ fontWeight: "bold" }}
                   key={column.id}
                   align={column.align}
                   style={{ top: 57, minWidth: column.minWidth }}
@@ -85,7 +89,7 @@ export default function ColumnGroupingTable() {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
+                          {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
                         </TableCell>
