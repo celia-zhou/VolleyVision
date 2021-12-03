@@ -28,7 +28,7 @@ class NewMatchForm extends React.Component {
     const db = getFirestore();
     const auth = getAuth();
     const currUser = auth.currentUser;
-
+    
     const matchRef = addDoc(
       collection(db, "users/" + currUser.uid + "/matches"),
       {
@@ -112,4 +112,5 @@ class NewMatchForm extends React.Component {
     );
   }
 }
+
 export default NewMatchForm;
