@@ -4,6 +4,7 @@ import MatchTable from '../components/Matches/RecentMatches'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import AddMatch from '../components/Matches/AddMatchButton'
+import { Button } from 'react-bootstrap'
 
 const Container = styled.div`
     position: absolute;
@@ -18,12 +19,12 @@ const Container = styled.div`
         max-width: 50vw
     }
 `
-const List_Container = styled.div`
+const ButtonContainer = styled.div`
     position: absolute;
-    left: 100px;
-    top: 200px;
+    left: 85px;
+    top: 150px;
     font: Times New Roman;
-    background-color: white;
+    background-color: #DBEBFB;
     font-size: 30px;
     width: 87%;
     @media screen and (min-width: 100px) and (max-width:1100px) {
@@ -44,9 +45,11 @@ const Player_Dashboard = () => {
             
             <List_Container>
                 <MatchTable/>
-            </List_Container>
+            </List_Container> 
 
-            <AddMatch/>
+            <ButtonContainer>
+                <AddMatch/>
+            </ButtonContainer>
 
             <SearchBar/>
         </div>
