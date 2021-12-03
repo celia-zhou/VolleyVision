@@ -5,6 +5,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
+import { useParams, useLocation } from "react-router-dom";
 
 const columns = [
   { id: "set", label: "SET SCORES", minWidth: 170 },
@@ -41,9 +42,10 @@ const rows = [
   createData("UCLA", 22, 18, 16, "LOSS"),
 ];
 
-export default function ColumnGroupingTable() {
+export default function ColumnGroupingTable({ match }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -53,6 +55,9 @@ export default function ColumnGroupingTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  console.log("test");
+  console.log(id);
 
   return (
     <Paper sx={{ width: "100%" }}>

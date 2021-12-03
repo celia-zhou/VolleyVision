@@ -73,6 +73,7 @@ export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [dataRows, setDataRows] = React.useState([]);
+  const [docId, setDocId] = React.useState("");
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -81,6 +82,11 @@ export default function ColumnGroupingTable() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleDocId = (id) => {
+    sessionStorage.setItem("matchId", id);
+    setDocId(id);
   };
 
   React.useEffect(() => {
@@ -99,7 +105,12 @@ export default function ColumnGroupingTable() {
       fireData.map((currMatch) => {
         fireRows.push(
           createData(
-            <Link to="/match_summary">{currMatch.opponent}</Link>,
+            // <Link to="/match_summary">
+            //   {currMatch.opponent}
+            // </Link>,
+            <Link to={`/match_summary/${currMatch.id}`}>
+              {currMatch.opponent}
+            </Link>,
             // currMatch.opponent,
             currMatch.date,
             currMatch.partner,
