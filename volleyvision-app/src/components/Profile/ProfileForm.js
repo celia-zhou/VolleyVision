@@ -21,6 +21,27 @@ class ProfileForm extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const db = getFirestore();
+        const auth = getAuth();
+        const currUser = auth.currentUser;
+
+        getDoc(doc(db, 'users', currUser.uid)).then((snapshot) => {
+            const data = snapshot.data()
+
+            this.setState({
+                firstName: data.firstName,
+                lastName: data.lastName,
+                team: data.team,
+                school: data.school,
+                gpa: data.gpa,
+                age: data.age,
+                gradYear: data.gradYear,
+                jerseyNum: data.jerseyNum
+            })
+        });
+    }
+
     updateInput = e => {
         this.setState({
           [e.target.name]: e.target.value
