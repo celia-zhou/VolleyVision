@@ -19,17 +19,11 @@ const Container = styled.div`
     }
 `
 const ListContainer = styled.div`
-    position: absolute;
-    left: 100px;
-    top: 200px;
-    font: Times New Roman;
-    background-color: white;
-    font-size: 30px;
-    width: 87%;
-    @media screen and (min-width: 100px) and (max-width:1100px) {
-        float: left;
-        max-width: 50vw
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-top: 200px;
 `
 
 
@@ -42,9 +36,10 @@ const Add_Match = () => {
                 Create Match
             </Container>
 
-<ListContainer>
-<NewMatchForm/>
-</ListContainer>
+            <ListContainer>
+                <br/>
+                <NewMatchForm/>
+            </ListContainer>
 
 
 
