@@ -4,6 +4,8 @@ import { getFirestore, addDoc, collection } from 'firebase/firestore/lite';
 import { TextField } from '@mui/material';
 import { Row, Col} from 'react-bootstrap'
 import SubmitMatchButton from './SubmitButton';
+import Box from '@mui/material/Box';
+import SubmitButton from '../Matches/SubmitButton';
 
 
 class NewMatchForm extends React.Component {
@@ -55,66 +57,68 @@ class NewMatchForm extends React.Component {
 };
     render() {
     return (
-             <form onSubmit={this.addMatch}>
-                 <br/>
-                 <Row className="mb-3">
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="opponent"
-                    placeholder="Opponent"
-                    onChange={this.updateInput}
-                    value={this.state.opponent}
-                    />
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="date"
-                    placeholder="Date"
-                    onChange={this.updateInput}
-                    value={this.state.date}
-                    type='date'
-                    />    
-                </Row>    
-                <Row className="mb-3">
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="tournament"
-                    placeholder="Tournament"
-                    onChange={this.updateInput}
-                    value={this.state.tournament}
-                    />
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="partner"
-                    placeholder="Partner"
-                    onChange={this.updateInput}
-                    value={this.state.partner}
-                    />
-                </Row>
-                <Row className="mb-3">
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="score"
-                    placeholder="Score"
-                    onChange={this.updateInput}
-                    value={this.state.score}
-                    />
-                    <TextField as={Col}
-                    required
-                    variant="standard"
-                    name="result"
-                    placeholder="Result"
-                    onChange={this.updateInput}
-                    value={this.state.result}
-                    />
-                </Row>
-            <br/>    
-            <SubmitMatchButton/>
-            </form> 
+        <Box
+        component="form"
+        sx={{
+            '& .MuiTextField-root': { m: 4, width: '30ch' },
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={this.addMatch}
+        >
+        <div>    
+            <TextField
+            required
+            variant="standard"
+            name="opponent"
+            placeholder="Opponent"
+            onChange={this.updateInput}
+            value={this.state.opponent}
+            />
+            <TextField
+            required
+            variant="standard"
+            name="date"
+            placeholder="Date"
+            onChange={this.updateInput}
+            value={this.state.date}
+            type='date'
+            />    
+            <TextField
+            required
+            variant="standard"
+            name="tournament"
+            placeholder="Tournament"
+            onChange={this.updateInput}
+            value={this.state.tournament}
+            />
+            <TextField 
+            required
+            variant="standard"
+            name="partner"
+            placeholder="Partner"
+            onChange={this.updateInput}
+            value={this.state.partner}
+            />
+            <TextField 
+            required
+            variant="standard"
+            name="score"
+            placeholder="Score"
+            onChange={this.updateInput}
+            value={this.state.score}
+            />
+            <TextField
+            required
+            variant="standard"
+            name="result"
+            placeholder="Result"
+            onChange={this.updateInput}
+            value={this.state.result}
+            />
+        </div>  
+        <SubmitButton align='center'/> 
+        </Box>
         );
       }
    }

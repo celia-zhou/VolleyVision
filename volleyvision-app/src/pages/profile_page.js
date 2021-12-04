@@ -132,7 +132,7 @@ export default function Profile() {
             </NameContainer>
 
             <ProfileContainer1>
-                <ListItemText>Team: {userData.team} </ListItemText>
+                <ListItemText> Team: {userData.team} </ListItemText>
                 <ListItemText>School: {userData.school}</ListItemText>
                 
             </ProfileContainer1>

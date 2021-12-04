@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import MatchTable from '../components/Matches/RecentMatches'
+import MatchTable from '../components/Matches/MatchList'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import AddMatch from '../components/Matches/AddMatchButton'
 import { Button } from 'react-bootstrap'
+import User from '../components/User'
+import ShotChart from '../components/ShotChart/ShotChart'
 
 const Container = styled.div`
     position: absolute;
@@ -32,6 +34,19 @@ const ButtonContainer = styled.div`
         max-width: 50vw
     }
 `
+const List_Container = styled.div`
+    position: absolute;
+    left: 85px;
+    top: 280px;
+    font: Times New Roman;
+    background-color: #DBEBFB;
+    font-size: 30px;
+    width: 87%;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: left;
+        max-width: 50vw
+    }
+`
 
 
 const Player_Dashboard = () => {
@@ -43,8 +58,9 @@ const Player_Dashboard = () => {
                 Player Dashboard
             </Container>
             
+            
             <List_Container>
-                <MatchTable/>
+            <MatchTable/>
             </List_Container> 
 
             <ButtonContainer>
@@ -52,6 +68,7 @@ const Player_Dashboard = () => {
             </ButtonContainer>
 
             <SearchBar/>
+            {/* <ShotChart/> */}
         </div>
     )
 }
