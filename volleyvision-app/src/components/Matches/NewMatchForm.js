@@ -1,6 +1,10 @@
 import React from "react";
 import { getAuth } from "firebase/auth";
 import { getFirestore, addDoc, collection } from "firebase/firestore/lite";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import SubmitButton from "./SubmitButton";
+
 
 class NewMatchForm extends React.Component {
   constructor() {
@@ -109,6 +113,16 @@ class NewMatchForm extends React.Component {
                     />
                 </div>
                 <div className="input-field">
+                    <label htmlFor="score"> Score</label>
+                    <input
+                        type="text"
+                        id="score"
+                        name="score"
+                        onChange={this.updateInput}
+                        value={this.state.score}
+                    />
+                </div>
+                <div className="input-field">
                     <label htmlFor="result"> Result</label>
                     <input
                         type="text"
@@ -118,13 +132,10 @@ class NewMatchForm extends React.Component {
                         value={this.state.result}
                     />
                 </div>
-                <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-0" type="submit">Submit</button>
-                </div>
+                <SubmitButton/>
         </form>
       </div>
-    );
-  }
-}
-
+        );
+      }
+   }
 export default NewMatchForm;

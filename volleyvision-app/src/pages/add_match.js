@@ -18,12 +18,20 @@ const Container = styled.div`
         max-width: 50vw
     }
 `
+// const ListContainer = styled.div`
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-right: auto;
+//     margin-top: 200px;
+// `
 const ListContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: auto;
+    position: absolute;
     margin-top: 200px;
+    left:280px;
+    background-color: white;
+    font-size: 20px;
+    width:60%
 `
 
 
@@ -40,7 +48,6 @@ const Add_Match = () => {
             <ListContainer>
                 <NewMatchForm/>
             </ListContainer>
-
 
             <SearchBar/>
         </div>

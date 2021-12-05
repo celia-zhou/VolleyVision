@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFirestore, collection, addDoc, getDocs, setDoc, doc} from 'firebase/firestore/lite'
+import { getFirestore, collection, addDoc, getDocs, setDoc, doc, query, where } from 'firebase/firestore/lite'
 
 
 // testing 
@@ -54,7 +54,21 @@ class User extends React.Component {
               ...doc.data(),
             }));
             console.log("All data in 'books' collection", data);
-    });
+    })};
+
+    filterUser = e => {
+      e.preventDefault();
+      const db = getFirestore();
+
+      const q = query(collection(db, "users"), where("email", "==", 'luser@gmail.com'));
+
+     getDocs(q).then((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log("All data in 'books' collection", data);
+     })
 };
 
     render() {
@@ -78,6 +92,7 @@ class User extends React.Component {
             <button type="submit">Submit</button>
             </form>
             <button onClick={this.displayUser}>Load Data</button>
+            <button onClick={this.filterUser}>Filter Data</button>
         </div>
         );
       }
