@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import EditButton from '../components/Profile/EditButton'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
@@ -7,8 +7,9 @@ import styled from 'styled-components'
 import { ListItemText } from '@material-ui/core'
 import ReactRoundedImage from "react-rounded-image"
 import photo from './volleyball.jpeg'
+import { getFirestore, doc, getDoc } from 'firebase/firestore/lite'
+import { getAuth } from 'firebase/auth'
 
-console.log(photo)
 
 const Container = styled.div`
     position: absolute;
@@ -87,7 +88,29 @@ const ImageContainer = styled.div`
     height: 150px;
 `
 
-const Profile = () => {
+export default function Profile() {
+    const [userData, setUserData] = useState({
+        firstName: '',
+        lastName: '',
+        team: '',
+        school: '',
+        gpa: '',
+        age: '',
+        gradYear: '',
+        jerseyNum: ''
+    })    
+
+    useEffect(() => {
+        const db = getFirestore();
+        const auth = getAuth();
+        const currUser = auth.currentUser;
+
+        getDoc(doc(db, 'users', currUser.uid)).then((snapshot) => {
+            const fireData = snapshot.data();
+            setUserData(fireData);
+        })
+    });
+
     return (
         <div>
             <SideBar/>
@@ -105,23 +128,23 @@ const Profile = () => {
             </Container>
 
             <NameContainer>
-                <h1>Katelyn Itano</h1>
+                <h1>{userData.firstName} {userData.lastName}</h1>
             </NameContainer>
 
             <ProfileContainer1>
-                <ListItemText>Team: RPM Sand </ListItemText>
-                <ListItemText>School: Chapparal High School</ListItemText>
+                <ListItemText>Team: {userData.team} </ListItemText>
+                <ListItemText>School: {userData.school}</ListItemText>
                 
             </ProfileContainer1>
             
             <ProfileContainer2>
-                <ListItemText>Age: 17</ListItemText>
-                <ListItemText>GPA: 4.0</ListItemText>
+                <ListItemText>Age: {userData.age}</ListItemText>
+                <ListItemText>GPA: {userData.gpa}</ListItemText>
             </ProfileContainer2>
             
             <ProfileContainer3>
-                <ListItemText>Year: Junior </ListItemText>
-                <ListItemText>Jersey Number: 13 </ListItemText>
+                <ListItemText>Graduation Year: {userData.gradYear} </ListItemText>
+                <ListItemText>Jersey Number: {userData.jerseyNum} </ListItemText>
             </ProfileContainer3>
 
             <EditContainer>
@@ -140,5 +163,3 @@ const Profile = () => {
         
     )
 }
-
-export default Profile

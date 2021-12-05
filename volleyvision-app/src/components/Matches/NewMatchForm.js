@@ -28,7 +28,7 @@ class NewMatchForm extends React.Component {
     const db = getFirestore();
     const auth = getAuth();
     const currUser = auth.currentUser;
-
+    
     const matchRef = addDoc(
       collection(db, "users/" + currUser.uid + "/matches"),
       {
@@ -55,61 +55,76 @@ class NewMatchForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.addMatch}>
-          <input
-            type="text"
-            name="opponent"
-            placeholder="Opponent"
-            onChange={this.updateInput}
-            value={this.state.opponent}
-          />
-          <input
-            type="text"
-            name="tournament"
-            placeholder="Tournament Name"
-            onChange={this.updateInput}
-            value={this.state.tournament}
-          />
-          <input
-            type="date"
-            name="date"
-            placeholder="Date"
-            onChange={this.updateInput}
-            value={this.state.date}
-          />
-          <input
-            type="text"
-            name="partner"
-            placeholder="Partner"
-            onChange={this.updateInput}
-            value={this.state.partner}
-          />
-          <input
-            type="text"
-            name="location"
-            placeholder="Location"
-            onChange={this.updateInput}
-            value={this.state.location}
-          />
-          <input
-            type="text"
-            name="score"
-            placeholder="Score"
-            onChange={this.updateInput}
-            value={this.state.score}
-          />
-          <input
-            type="text"
-            name="result"
-            placeholder="Result"
-            onChange={this.updateInput}
-            value={this.state.result}
-          />
-          <button type="submit">Submit</button>
+      <div style = {{width: "80%"}}> 
+          <form onSubmit={this.addMatch} className="white" style={{padding:"30px"}}>
+                <h5 className="grey-text text-darken-3"> Create Match </h5>
+                <div className="input-field">
+                    <label htmlFor="opponent"> Opponent</label>
+                    <input
+                        type="text"
+                        name="opponent"
+                        id="opponent"
+                        onChange={this.updateInput} 
+                        value={this.state.opponent}
+                    />
+                </div>
+                <div className="input-field">
+                    <label htmlFor="tournament"> Tournament</label>
+                    <input
+                        type="text"
+                        id="tournament"
+                        name="tournament"
+                        onChange={this.updateInput}
+                        value={this.state.tournament}
+                    />
+                </div>
+                <div className="input-field">
+                <label htmlFor="date"> Date</label><br/>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        onChange={this.updateInput}
+                        value={this.state.date}
+                    />
+                </div>
+                <div className="input-field">
+                <label htmlFor="partner"> Partner</label>
+                    <input
+                        type="text"
+                        id="partner"
+                        name="partner"
+                        onChange={this.updateInput}
+                        value={this.state.partner}
+                    />
+                </div>
+                <div className="input-field">
+                    <label htmlFor="location"> Location </label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        onChange={this.updateInput}
+                        value={this.state.location}
+                    />
+                </div>
+                <div className="input-field">
+                    <label htmlFor="result"> Result</label>
+                    <input
+                        type="text"
+                        id="result"
+                        name="result"
+                        onChange={this.updateInput}
+                        value={this.state.result}
+                    />
+                </div>
+                <div className="input-field">
+                    <button className="btn pink lighten-1 z-depth-0" type="submit">Submit</button>
+                </div>
         </form>
       </div>
     );
   }
 }
+
 export default NewMatchForm;
