@@ -10,7 +10,7 @@ import ShotChart from '../components/ShotChart/ShotChart'
 
 const Container = styled.div`
     position: absolute;
-    left: 100px;
+    left: 85px;
     top: 115px;
     font: Times New Roman;
     font-size: 30px;
@@ -21,19 +21,6 @@ const Container = styled.div`
         max-width: 50vw
     }
 `
-// const ButtonContainer = styled.div`
-//     position: absolute;
-//     left: 85px;
-//     top: 150px;
-//     font: Times New Roman;
-//     background-color: #DBEBFB;
-//     font-size: 30px;
-//     width: 87%;
-//     @media screen and (min-width: 100px) and (max-width:1100px) {
-//         float: left;
-//         max-width: 50vw
-//     }
-// `
 const List_Container = styled.div`
     position: absolute;
     left: 85px;
@@ -54,7 +41,7 @@ const ButtonContainer = styled.div`
   top: 150px;
   font: Times New Roman;
   background-color: #dbebfb;
-  font-size: 30px;
+  font-size: 25px;
   width: 87%;
   @media screen and (min-width: 100px) and (max-width: 1100px) {
     float: left;
@@ -68,12 +55,13 @@ const Player_Dashboard = () => {
             <SideBar/>
             
             <Container>
-                Player Dashboard
+                <b> Player Dashboard </b>
             </Container>
             
             
             <List_Container>
-            <MatchTable/>
+                Matches
+                <MatchTable/>
             </List_Container> 
 
             <ButtonContainer>
