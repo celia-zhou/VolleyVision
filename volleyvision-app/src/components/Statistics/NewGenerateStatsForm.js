@@ -149,7 +149,7 @@ class NewGenerateStatsForm extends React.Component {
     const statsRef = addDoc(
       collection(
         db,
-        "users/" + currUser.uid + "/matches/HL782UkPnHhBcuSlhppIeMKlnLj2/stats"
+        "users/" + currUser.uid + "/matches/ZxL9M0vchGEswvadOs2g/stats"
       ),
       {
         kills: this.state.kills,
@@ -204,7 +204,7 @@ class NewGenerateStatsForm extends React.Component {
           <form onSubmit={this.addStats}>
             <LabelContainer1>Kill Count:</LabelContainer1>
             <input
-              type="number"
+              type="string"
               name="kills"
               placeholder="Kills"
               onChange={this.updateInput}
@@ -215,7 +215,7 @@ class NewGenerateStatsForm extends React.Component {
             <span> </span>
             <LabelContainer2>Error Count:</LabelContainer2>
             <input
-              type="number"
+              type="string"
               name="errors"
               placeholder="Errors"
               onChange={this.updateInput}
