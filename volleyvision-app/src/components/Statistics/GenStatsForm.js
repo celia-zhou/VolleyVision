@@ -127,7 +127,7 @@ export const GenStatsForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/stats`;
 
-    const matchRef = setDoc(doc(db, string, "P1"), {
+    const matchRef = setDoc(doc(db, string, "Player"), {
       kills: state.kills,
       errors: state.errors,
       attempts: state.attempts,
