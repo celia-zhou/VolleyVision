@@ -40,8 +40,8 @@ const VidContainer = styled.div`
 
 const ListContainer = styled.div`
   position: absolute;
-  left: 70px;
-  top: 80px;
+  left: 80px;
+  top: 180px;
   font: Times New Roman;
   background-color: white;
   font-size: 30px;
@@ -106,13 +106,10 @@ const Generate_Statistics = () => {
   return (
     <div>
       <SideBar />
-
       <Dash_Container>Generate Statistics</Dash_Container>
-
       <ListContainer>
         <MatchGenStats />
       </ListContainer>
-
       <SearchBar />
     </div>
   );
