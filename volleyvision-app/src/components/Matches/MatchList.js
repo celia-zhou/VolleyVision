@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { useHistory } from 'react-router-dom';
 
 const columns = [
   { field: 'date', headerName: 'Date', type: 'date', flex: 0.5 },
@@ -71,6 +72,7 @@ export default function ColumnGroupingTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [dataRows, setDataRows] = React.useState([]);
   const [docId, setDocId] = React.useState("");
+  const history = useHistory();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -82,7 +84,7 @@ export default function ColumnGroupingTable() {
   };
 
   const handleDocId = (id) => {
-    sessionStorage.setItem("matchId", id);
+    // sessionStorage.setItem("matchId", id);
     setDocId(id);
   };
 
@@ -136,6 +138,10 @@ export default function ColumnGroupingTable() {
       rowsPerPageOptions={[5]}
       components={{
         Toolbar: GridToolbar,
+      }}
+      onCellClick={(params, event) => {
+        console.log(params.id)
+        history.push('/match_summary/' + params.id)
       }}
     />
      </div>

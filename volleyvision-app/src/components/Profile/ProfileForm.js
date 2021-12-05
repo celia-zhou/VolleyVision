@@ -88,7 +88,6 @@ class ProfileForm extends React.Component {
             <TextField
             name="lastName"
             label="Last Name"
-            defaultValue="sdklfa;"
             variant="standard"
             placeholder="Last Name"
             onChange={this.updateInput}
