@@ -64,17 +64,6 @@ class ProfileForm extends React.Component {
             gradYear: this.state.gradYear,
             jerseyNum: this.state.jerseyNum
         });  
-        
-        // this.setState({
-        //     firstName: this.setState.,
-        //     lastName: '',
-        //     team: '',
-        //     school: '',
-        //     gpa: '',
-        //     age: '',
-        //     gradYear: '',
-        //     jerseyNum: '',
-        // }); 
     };
 
     render() {

@@ -1,34 +1,35 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+import { useParams, useLocation } from "react-router-dom";
 
 const columns = [
-  { id: 'set', label: 'SET SCORES', minWidth: 170 },
-  { id: 'one', label: '1', minWidth: 100 },
+  { id: "set", label: "SET SCORES", minWidth: 170 },
+  { id: "one", label: "1", minWidth: 100 },
   {
-    id: 'two',
-    label: '2',
+    id: "two",
+    label: "2",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'three',
-    label: '3',
+    id: "three",
+    label: "3",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'score',
-    label: 'SCORE',
+    id: "score",
+    label: "SCORE",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
@@ -37,13 +38,14 @@ function createData(set, one, two, three, score) {
 }
 
 const rows = [
-  createData('Vanderbilt', 20, 21, 21, 'WIN'),
-  createData('UCLA', 22, 18, 16, 'LOSS'),
+  createData("Vanderbilt", 20, 21, 21, "WIN"),
+  createData("UCLA", 22, 18, 16, "LOSS"),
 ];
 
-export default function ColumnGroupingTable() {
+export default function ColumnGroupingTable({ match }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -54,21 +56,24 @@ export default function ColumnGroupingTable() {
     setPage(0);
   };
 
+  console.log("test");
+  console.log(id);
+
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper sx={{ width: "100%" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
-        <TableRow>
+          <TableRow>
             {columns.map((column) => (
-            <TableCell
+              <TableCell
                 key={column.id}
                 align={column.align}
                 style={{ top: 57, minWidth: column.minWidth }}
-            >
+              >
                 {column.label}
-            </TableCell>
+              </TableCell>
             ))}
-        </TableRow>
+          </TableRow>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -79,7 +84,7 @@ export default function ColumnGroupingTable() {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
+                          {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
                         </TableCell>
