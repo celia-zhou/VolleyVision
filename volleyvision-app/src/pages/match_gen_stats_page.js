@@ -66,7 +66,7 @@ const Sets_Container = styled.div`
 const match_gen_stats_page = () => {
   return (
     <div>
-      {/* <SideBar />
+      <SideBar />
       <VidContainer>
           <MatchVideoPlayer/>
       </VidContainer>
@@ -78,17 +78,17 @@ const match_gen_stats_page = () => {
 
       <Comment_Container>
         <CommentForm />
-      </Comment_Container> */}
+      </Comment_Container>
 
       <Chart_Container>
         <ShotChart />
       </Chart_Container>
 
-      {/* <Sets_Container>
+      <Sets_Container>
         <SetsForm />
       </Sets_Container>
 
-      <SearchBar /> */}
+      <SearchBar />
     </div>
   );
 };

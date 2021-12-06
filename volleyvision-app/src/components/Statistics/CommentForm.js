@@ -1,13 +1,30 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { getFirestore, addDoc, collection } from "firebase/firestore/lite";
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore/lite";
 import { useParams } from "react-router-dom";
 
 export const CommentForm = () => {
   //const form = useRef();
-  let [state, setState] = useState({});
+  let [state, setState] = useState({comments: ''});
   const { id } = useParams();
+
+  useEffect(() => {
+    const db = getFirestore();
+    const auth = getAuth();
+    const currUser = auth.currentUser;
+    let path = `users/${currUser.uid}/matches/${id}/comments`
+    let fireRows = [];
+
+    
+    getDoc(doc(db, path, 'PlayerComments')).then((snapshot) => {
+      const data = snapshot.data()
+
+      setState({
+          comments: data.comments
+      })
+  });
+  }, []);
 
   const updateInput = (e) => {
     setState({
@@ -24,12 +41,8 @@ export const CommentForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/comments`;
 
-    const commentRef = addDoc(collection(db, string), {
+    setDoc(doc(db, string, 'PlayerComments'), {
       comments: state.comments,
-    });
-
-    setState({
-      comments: "",
     });
   };
 
