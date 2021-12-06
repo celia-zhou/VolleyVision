@@ -85,7 +85,7 @@ export default function TemporaryDrawer() {
         </List>
         <Divider />
         <List>
-          <ListItem button component={Link} to="/settings">
+          <ListItem button component={Link} to="/edit_profile">
             <ListItemIcon><SettingsIcon/></ListItemIcon>
             <ListItemText>Settings</ListItemText>
           </ListItem>
