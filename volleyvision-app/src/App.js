@@ -74,7 +74,7 @@ function App() {
             />
             <PrivateRoute path="/match_summary/:id" component={Match_Summary} />
             <PrivateRoute
-              path="/recruiter_player/:id"
+              path="/selected_player/:id"
               component={recruiter_player}
             />
             <Route path="/add_match" component={AddMatch} />

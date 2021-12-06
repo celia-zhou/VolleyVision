@@ -143,7 +143,7 @@ export default function ColumnGroupingTable() {
               onCellClick={(params, event) => {
                 console.log('selected player')
                 console.log(params.id);
-                history.push("/recruiter_player/" + params.id);
+                history.push("/selected_player/" + params.id);
               }}
             />
           </div>
