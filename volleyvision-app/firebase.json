@@ -1,6 +1,6 @@
 {
-    "hosting": {
-      "site": "volleyvision",
-      "public": "build"
-    }
+  "hosting": {
+    "site": "volleyvision-e6c88",
+    "public": "build"
   }
+}
