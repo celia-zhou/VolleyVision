@@ -40,8 +40,8 @@ const VidContainer = styled.div`
 
 const ListContainer = styled.div`
   position: absolute;
-  left: 70px;
-  top: 80px;
+  left: 80px;
+  top: 180px;
   font: Times New Roman;
   background-color: white;
   font-size: 30px;
@@ -51,56 +51,6 @@ const ListContainer = styled.div`
     max-width: 50vw;
   }
 `;
-
-// const Generate_Statistics = () => {
-//   return (
-//     <div>
-//       <SideBar />
-
-//       <VidContainer>
-//         <ImageList
-//           sx={{
-//             position: "absolute",
-//             top: 150,
-//             left: 100,
-//             width: 2000,
-//             height: 1100,
-//             bgcolor: "#DBEBFB",
-//           }}
-//           cols={3}
-//         >
-//           {itemData.map((item) => (
-//             <ImageListItem sx={{ pb: 1 }} key={item.urlLink}>
-//               <ReactPlayer url={item.urlLink} width="1050px" height="440px" />
-//               <ImageListItemBar
-//                 sx={{ pb: 2 }}
-//                 position="below"
-//                 title={item.name}
-//               />
-//             </ImageListItem>
-//           ))}
-//         </ImageList>
-//       </VidContainer>
-
-//       <Dash_Container>Generate Statistics</Dash_Container>
-
-//       <ListContainer>
-//         <GenStatsForm />
-//       </ListContainer>
-
-//       <SearchBar />
-//     </div>
-//   );
-// };
-
-// const itemData = [
-//   {
-//     urlLink: "https://www.youtube.com/watch?v=459Oda8XPy0&t=3s",
-//     name: "USA vs. Australia - Tokyo 2021",
-//   },
-// ];
-
-// export default Generate_Statistics;
 
 const Generate_Statistics = () => {
   return (
@@ -114,7 +64,6 @@ const Generate_Statistics = () => {
       <ListContainer>
         <MatchGenStats />
       </ListContainer>
-
       <SearchBar />
     </div>
   );

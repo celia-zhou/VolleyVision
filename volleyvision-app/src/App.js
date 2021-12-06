@@ -28,6 +28,7 @@ import Recruiter_Dashboard from "./pages/recruiter_dashboard";
 import Match_Summary from "./pages/match_summary";
 import AddMatch from "./pages/add_match";
 import { GenStatsForm } from "./components/Statistics/GenStatsForm";
+import match_gen_stats_page from "./pages/match_gen_stats_page";
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -72,7 +73,7 @@ function App() {
             />
             <PrivateRoute
               path="/match_gen_stats/:id"
-              component={GenStatsForm}
+              component={match_gen_stats_page}
             />
             <PrivateRoute path="/match_summary/:id" component={Match_Summary} />
             <Route path="/add_match" component={AddMatch} />
