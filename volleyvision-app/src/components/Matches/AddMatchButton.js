@@ -17,12 +17,12 @@ export default function AddMatchButton() {
 
   return (
     <main className={classes.content}>
-      <button class="btn pink lighten-1 z-depth-0" component={Link} to="/add_match">
+      <Button component={Link} to="/add_match">
         <Fab variant="extended">
           <AddIcon sx={{ mr: 1 }} />
           New Match
         </Fab>
-      </button>
+      </Button>
     </main>
   );
 }
