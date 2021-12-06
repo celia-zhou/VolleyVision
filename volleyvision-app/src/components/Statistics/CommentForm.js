@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { getFirestore, addDoc, collection } from "firebase/firestore/lite";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const CommentForm = () => {
   //const form = useRef();
@@ -42,7 +42,8 @@ export const CommentForm = () => {
           placeholder="Comment"
           onChange={updateInput}
           value={state.comments}
-          cols="92"
+          rows="3"
+          cols="93"
         />
         <br></br>
         <button type="submit">Submit</button>
