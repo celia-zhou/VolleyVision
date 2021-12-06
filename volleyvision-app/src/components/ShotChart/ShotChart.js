@@ -1,21 +1,25 @@
-import React from 'react';
-import CourtImg from '../../images/vballCourt.jpeg';
-import ImageMapper from 'react-image-mapper';
+import React from "react";
+import CourtImg from "../../images/vballCourt.jpeg";
+import ImageMapper from "react-image-mapper";
 
 export default function ShotChart() {
-    const [mapAreas, setMapAreas] = React.useState({
-        name: "courtMap",
-        areas: [
-          { id: 1, shape: "rect", coords: [60,215, 109,267]},
-          { id: 2, shape: "rect", coords: [109,215, 158,267]},
-          { id: 3, shape: "rect", coords: [158,215, 209,267]},
-        ]
-      });
-    
-    return (
-        <div>
-            <ImageMapper src={CourtImg} map={mapAreas} fillColor='rgba(24, 194, 41, 0.5)'/>
-            {/* <img src={CourtImg} alt="Volleyball Court" useMap="#shotchart"/>
+  const [mapAreas, setMapAreas] = React.useState({
+    name: "courtMap",
+    areas: [
+      { id: 1, shape: "rect", coords: [60, 215, 109, 267] },
+      { id: 2, shape: "rect", coords: [109, 215, 158, 267] },
+      { id: 3, shape: "rect", coords: [158, 215, 209, 267] },
+    ],
+  });
+
+  return (
+    <div>
+      <ImageMapper
+        src={CourtImg}
+        map={mapAreas}
+        fillColor="rgba(24, 194, 41, 0.5)"
+      />
+      {/* <img src={CourtImg} alt="Volleyball Court" useMap="#shotchart"/>
             <map name="shotchart" sx={{
             '& .MuiTextField-root': { m: 4, width: '30ch' },
             '& .selector:hover': {color: 'blue' }
@@ -33,8 +37,6 @@ export default function ShotChart() {
                 <area shape="rect" coords="158,318, 209,369" alt="Box11" href="#" onClick={() => handleClick(10)}/>
                 <area shape="rect" coords="209,318, 264,369" alt="Box12" href="#" onClick={() => handleClick(11)}/>
             </map> */}
-        </div>
-        
-    )
+    </div>
+  );
 }
-
