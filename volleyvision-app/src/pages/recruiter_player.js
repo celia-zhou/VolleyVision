@@ -9,6 +9,8 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import NewGenerateStatsForm from "../components/Statistics/NewGenerateStatsForm";
 import { GenStatsForm } from "../components/Statistics/GenStatsForm";
 import MatchGenStats from "../components/Statistics/MatchGenStats";
+import PlayerProfile from "../components/PlayerList/PlayerProfile";
+import MatchList from "../components/Matches/MatchList";
 
 const Dash_Container = styled.div`
   position: absolute;
@@ -58,11 +60,11 @@ const Generate_Statistics = () => {
       <SideBar />
 
       <Dash_Container>
-        <b>Generate Statistics</b>
+        <b>Profile</b>
       </Dash_Container>
 
       <ListContainer>
-        <MatchGenStats />
+        <MatchList />
       </ListContainer>
       <SearchBar />
     </div>

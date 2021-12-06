@@ -69,7 +69,6 @@ const Player_Dashboard = () => {
             </ButtonContainer>
 
             <SearchBar/>
-            {/* <ShotChart/> */}
         </div>
     )
 }

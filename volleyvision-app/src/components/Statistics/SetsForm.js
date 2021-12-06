@@ -102,15 +102,9 @@ const LabelContainer6 = styled.div`
   }
 `;
 
-export const GenStatsForm = () => {
+export const SetsForm = () => {
   let [state, setState] = useState({});
   const { id } = useParams();
-
-  //   updateInput = (e) => {
-  //     this.setState({
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   };
 
   const updateInput = (e) => {
     setState({
@@ -119,7 +113,7 @@ export const GenStatsForm = () => {
     });
   };
 
-  const addStat = (e) => {
+  const addSet = (e) => {
     e.preventDefault();
 
     const db = getFirestore();
@@ -127,78 +121,81 @@ export const GenStatsForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/stats`;
 
-    const matchRef = setDoc(doc(db, string, "Player"), {
-      kills: state.kills,
-      errors: state.errors,
-      attempts: state.attempts,
-      digs: state.digs,
-      aces: state.aces,
-      blocks: state.blocks,
+    const setsRef = setDoc(doc(db, string, "Sets"), {
+      setOneHome: state.setOneHome,
+      setTwoHome: state.setTwoHome,
+      setThreeHome: state.setThreeHome,
+      setOneOpp: state.setOneOpp,
+      setTwoOpp: state.setTwoOpp,
+      setThreeOpp: state.setThreeOpp,
     });
 
     setState({
-      kills: 0,
-      errors: 0,
-      attempts: 0,
-      digs: 0,
-      aces: 0,
-      blocks: 0,
+      setOneHome: 0,
+      setTwoHome: 0,
+      setThreeHome: 0,
+      setOneOpp: 0,
+      setTwoOpp: 0,
+      setThreeOpp: 0,
     });
   };
 
   return (
     <div>
-      <form onSubmit={addStat}>
+      <form onSubmit={addSet}>
         <input
           type="number"
-          name="kills"
-          placeholder="Kills"
+          name="setOneHome"
+          placeholder="Set One Home"
           onChange={updateInput}
-          value={state.kills}
+          value={state.setOneHome}
         />
         <span> </span>
         <input
           type="number"
-          name="errors"
-          placeholder="Errors"
+          name="setOneOpp"
+          placeholder="Set One Opponent"
           onChange={updateInput}
-          value={state.errors}
+          value={state.setOneOpp}
         />
         <span> </span>
         <input
           type="number"
-          name="attempts"
-          placeholder="Attempts"
+          name="setTwoHome"
+          placeholder="Set Two Home"
           onChange={updateInput}
-          value={state.attempts}
+          value={state.setTwoHome}
         />
         <span> </span>
         <input
           type="number"
-          name="digs"
-          placeholder="Digs"
+          name="setTwoOpp"
+          placeholder="Set Two Opponent"
           onChange={updateInput}
-          value={state.digs}
+          value={state.setTwoOpp}
         />
         <span> </span>
         <input
           type="number"
-          name="aces"
-          placeholder="Aces"
+          name="setThreeHome"
+          placeholder="Set Three Home"
           onChange={updateInput}
-          value={state.aces}
+          value={state.setThreeHome}
         />
         <span> </span>
         <input
           type="number"
-          name="blocks"
-          placeholder="Blocks"
+          name="setThreeOpp"
+          placeholder="Set Three Opponent"
           onChange={updateInput}
-          value={state.blocks}
+          value={state.setThreeOpp}
         />
         <span> </span>
+        <br></br>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
+
+export default SetsForm;

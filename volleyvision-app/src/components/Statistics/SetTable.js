@@ -5,46 +5,38 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getDoc, getFirestore, doc } from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
 
 const columns = [
-  { id: "set", label: "SET SCORES", minWidth: 170 },
-  { id: "one", label: "1", minWidth: 100 },
+  { id: "team", label: "Team", minWidth: 170 },
+  { id: "setOne", label: "1", minWidth: 100 },
   {
-    id: "two",
+    id: "setTwo",
     label: "2",
     minWidth: 170,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "three",
+    id: "setThree",
     label: "3",
     minWidth: 170,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "score",
-    label: "SCORE",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
 ];
 
-function createData(set, one, two, three, score) {
-  return { set, one, two, three, score };
+function createData(team, setOne, setTwo, setThree) {
+  return { team, setOne, setTwo, setThree };
 }
-
-const rows = [
-  createData("Vanderbilt", 20, 21, 21, "WIN"),
-  createData("UCLA", 22, 18, 16, "LOSS"),
-];
 
 export default function ColumnGroupingTable({ match }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [dataRows, setDataRows] = React.useState([]);
+  const [oppData, setOppData] = React.useState("");
   const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
@@ -56,8 +48,46 @@ export default function ColumnGroupingTable({ match }) {
     setPage(0);
   };
 
-  console.log("test");
-  console.log(id);
+  React.useEffect(() => {
+    const db = getFirestore();
+    const auth = getAuth();
+    const currUser = auth.currentUser;
+
+    let oppString = `users/${currUser.uid}/matches`;
+    const oppRef = doc(db, oppString, id);
+
+    getDoc(oppRef).then((snapshot) => {
+      const fireOppData = snapshot.data();
+      setOppData(fireOppData.opponent);
+    });
+
+    let setString = `users/${currUser.uid}/matches/${id}/stats`;
+    const setsRef = doc(db, setString, "Sets");
+    let fireRows = [];
+
+    getDoc(setsRef).then((snapshot) => {
+      const fireData = snapshot.data();
+
+      fireRows.push(
+        createData(
+          "Home",
+          fireData.setOneHome,
+          fireData.setTwoHome,
+          fireData.setThreeHome
+        )
+      );
+      fireRows.push(
+        createData(
+          oppData,
+          fireData.setOneOpp,
+          fireData.setTwoOpp,
+          fireData.setThreeOpp
+        )
+      );
+
+      setDataRows(fireRows);
+    });
+  });
 
   return (
     <Paper sx={{ width: "100%" }}>
@@ -75,7 +105,7 @@ export default function ColumnGroupingTable({ match }) {
             ))}
           </TableRow>
           <TableBody>
-            {rows
+            {dataRows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
