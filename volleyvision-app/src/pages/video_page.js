@@ -61,10 +61,10 @@ const VideoContainer = styled.div`
 const Videos = () => {
     return (
         <div>
-            {/*<Sidebar/> */}
+            <Sidebar/>
 
             <Container>
-                Videos
+                <b>Videos</b>
             </Container>
 
             <UploadContainer>

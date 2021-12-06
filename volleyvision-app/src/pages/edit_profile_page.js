@@ -32,7 +32,7 @@ const Editable_Profile = () => {
         <div>
             <SideBar/>
             <Container>
-                Edit Profile
+                <b>Edit Profile</b>
             </Container>
 
             <ListContainer>

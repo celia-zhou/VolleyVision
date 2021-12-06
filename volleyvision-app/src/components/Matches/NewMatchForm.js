@@ -17,6 +17,7 @@ class NewMatchForm extends React.Component {
       location: "",
       score: "",
       result: "",
+      videoURL: ""
     };
   }
 
@@ -43,6 +44,7 @@ class NewMatchForm extends React.Component {
         location: this.state.location,
         score: this.state.score,
         result: this.state.result,
+        videoURL: this.state.videoURL
       }
     );
 
@@ -54,6 +56,7 @@ class NewMatchForm extends React.Component {
       location: "",
       score: "",
       result: "",
+      videoURL: ""
     });
   };
 
@@ -73,7 +76,7 @@ class NewMatchForm extends React.Component {
             name="opponent"
             label="Opponent"
             variant="standard"
-            placeholder="opponent"
+            placeholder="Name"
             onChange={this.updateInput}
             value={this.state.opponent}
             />
@@ -88,7 +91,7 @@ class NewMatchForm extends React.Component {
             name="partner"
             label="Partner"
             variant="standard"
-            placeholder="Partner"
+            placeholder="Full Name"
             onChange={this.updateInput}
             value={this.state.partner}
             />
@@ -96,7 +99,7 @@ class NewMatchForm extends React.Component {
             name="tournament"
             label="Tournament"
             variant="standard"
-            placeholder="Tournament"
+            placeholder="Tournament Name"
             onChange={this.updateInput}
             value={this.state.tournament}
             />
@@ -104,7 +107,7 @@ class NewMatchForm extends React.Component {
             name="location"
             label="Location"
             variant="standard"
-            placeholder="Location"
+            placeholder="City, State"
             onChange={this.updateInput}
             value={this.state.location}
             />
@@ -112,18 +115,25 @@ class NewMatchForm extends React.Component {
             name="score"
             label="Score"
             variant="standard"
-            placeholder="Score"
+            placeholder="2-0"
             onChange={this.updateInput}
             value={this.state.score}
             />
             <TextField
             name="result"
             label="Result"
-            defaultValue="13"
             variant="standard"
-            placeholder="Result"
+            placeholder="W or L"
             onChange={this.updateInput}
             value={this.state.result}
+            />
+            <TextField
+            name="videoURL"
+            label="Video Youtube URL"
+            variant="standard"
+            placeholder="https://youtube.com"
+            onChange={this.updateInput}
+            value={this.state.videoURL}
             />
 
         <SubmitButton/> 

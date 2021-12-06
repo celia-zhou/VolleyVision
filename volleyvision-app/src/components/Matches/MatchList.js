@@ -134,7 +134,7 @@ export default function ColumnGroupingTable() {
     <DataGrid
       rows={dataRows}
       columns={columns}
-      pageSize={10}
+      pageSize={5}
       rowsPerPageOptions={[5]}
       components={{
         Toolbar: GridToolbar,

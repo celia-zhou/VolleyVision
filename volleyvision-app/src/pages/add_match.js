@@ -42,7 +42,7 @@ const Add_Match = () => {
             <SideBar/>
             
             <Container>
-                <h1 style={{textAlign:"center"}}>Create Match </h1>
+                <b>Create Match</b>
             </Container>
 
             <ListContainer>
