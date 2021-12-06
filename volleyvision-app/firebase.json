@@ -1,6 +1,25 @@
 {
+<<<<<<< HEAD
   "hosting": {
     "site": "volleyvision-e6c88",
     "public": "build"
   }
 }
+=======
+    "hosting": {
+      "site": "volleyvision-e6c88",
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  }
+>>>>>>> a61ebab99f0d4042372fd3422ea1b374c51d044f

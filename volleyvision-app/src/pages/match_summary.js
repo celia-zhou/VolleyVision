@@ -4,6 +4,8 @@ import SideBar from "../components/Sidebar/Sidebar";
 import styled from "styled-components";
 import SetTable from "../components/Statistics/SetTable";
 import StatisticsTable from "../components/Statistics/StatisticsTable";
+import DispShotChart from "../components/ShotChart/DisplayChart";
+import DispComments from "../components/Statistics/DisplayComment";
 
 const Dash_Container = styled.div`
   position: absolute;
@@ -55,6 +57,26 @@ const Stats_Container = styled.div`
   height: 150px;
 `;
 
+const Chart_Container = styled.div`
+  position: absolute;
+  left: 100px;
+  top: 680px;
+  font: Times New Roman;
+  font-size: 20px;
+  width: 300px;
+  height: 150px;
+`;
+
+const Comment_Container = styled.div`
+  position: absolute;
+  left: 500px;
+  top: 680px;
+  font: Times New Roman;
+  font-size: 20px;
+  width: 300px;
+  height: 150px;
+`;
+
 const Match_Summary = () => {
   return (
     <div>
@@ -73,6 +95,16 @@ const Match_Summary = () => {
       <List_Container2>
         <StatisticsTable />
       </List_Container2>
+
+      <Chart_Container>
+        Shot Chart
+        <DispShotChart />
+      </Chart_Container>
+
+      <Comment_Container>
+        <DispComments/>
+      </Comment_Container>
+
       <SearchBar />
     </div>
   );

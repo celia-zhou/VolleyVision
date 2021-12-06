@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore/lite";
 import styled from "styled-components";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const StatsContainer = styled.div`
   position: absolute;
@@ -103,12 +103,49 @@ const LabelContainer6 = styled.div`
 `;
 
 export const SetsForm = () => {
-  let [state, setState] = useState({});
+  const [setData, setSetData] = useState({setOneHome: 0,
+    setTwoHome: 0,
+    setThreeHome: 0,
+    setOneOpp: 0,
+    setTwoOpp: 0,
+    setThreeOpp: 0,});
+  const [opp, setOpp] = useState('');
   const { id } = useParams();
 
+  useEffect(() => {
+    const db = getFirestore();
+    const auth = getAuth();
+    const currUser = auth.currentUser;
+    let setsPath = `users/${currUser.uid}/matches/${id}/stats`
+    let oppPath = `users/${currUser.uid}/matches`
+    
+    getDoc(doc(db, setsPath, 'Sets')).then((snapshot) => {
+      const data = snapshot.data()
+      
+      if(data != null) {
+        setSetData({
+          setOneHome: data.setOneHome,
+          setTwoHome: data.setTwoHome,
+          setThreeHome: data.setThreeHome,
+          setOneOpp: data.setOneOpp,
+          setTwoOpp: data.setTwoOpp,
+          setThreeOpp: data.setThreeOpp,
+        })  ;
+      }
+  });
+
+  getDoc(doc(db, oppPath, id)).then((snapshot) => {
+    const data = snapshot.data()
+    
+    if(data != null) {
+      setOpp(data.opponent)  ;
+    }
+});
+  }, []);
+
   const updateInput = (e) => {
-    setState({
-      ...state,
+    setSetData({
+      ...setData,
       [e.target.name]: e.target.value,
     });
   };
@@ -121,34 +158,40 @@ export const SetsForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/stats`;
 
-    const setsRef = setDoc(doc(db, string, "Sets"), {
-      setOneHome: state.setOneHome,
-      setTwoHome: state.setTwoHome,
-      setThreeHome: state.setThreeHome,
-      setOneOpp: state.setOneOpp,
-      setTwoOpp: state.setTwoOpp,
-      setThreeOpp: state.setThreeOpp,
+    setDoc(doc(db, string, "setScores"), {
+      setOneHome: setData.setOneHome,
+      setTwoHome: setData.setTwoHome,
+      setThreeHome: setData.setThreeHome,
+      setOneOpp: setData.setOneOpp,
+      setTwoOpp: setData.setTwoOpp,
+      setThreeOpp: setData.setThreeOpp,
     });
 
-    setState({
-      setOneHome: 0,
-      setTwoHome: 0,
-      setThreeHome: 0,
-      setOneOpp: 0,
-      setTwoOpp: 0,
-      setThreeOpp: 0,
-    });
+    // setState({
+    //   setOneHome: 0,
+    //   setTwoHome: 0,
+    //   setThreeHome: 0,
+    //   setOneOpp: 0,
+    //   setTwoOpp: 0,
+    //   setThreeOpp: 0,
+    // });
   };
 
   return (
     <div>
+      <div style={{textAlign: 'left'}}>
+      <span style={{marginLeft:"3.5em"}}><b>Home</b></span>
+        <span style={{marginLeft:"9em"}}><b>{opp}</b></span>
+      </div>
       <form onSubmit={addSet}>
+        <label><b>Set 1</b></label>
+        <span style={{marginLeft:"1em"}}>
         <input
           type="number"
           name="setOneHome"
           placeholder="Set One Home"
           onChange={updateInput}
-          value={state.setOneHome}
+          value={setData.setOneHome}
         />
         <span> </span>
         <input
@@ -156,15 +199,18 @@ export const SetsForm = () => {
           name="setOneOpp"
           placeholder="Set One Opponent"
           onChange={updateInput}
-          value={state.setOneOpp}
+          value={setData.setOneOpp}
         />
-        <span> </span>
+        </span>
+        <span></span><br/>
+        <label><b>Set 2</b></label>
+        <span style={{marginLeft:"0.9em"}}>
         <input
           type="number"
           name="setTwoHome"
           placeholder="Set Two Home"
           onChange={updateInput}
-          value={state.setTwoHome}
+          value={setData.setTwoHome}
         />
         <span> </span>
         <input
@@ -172,15 +218,18 @@ export const SetsForm = () => {
           name="setTwoOpp"
           placeholder="Set Two Opponent"
           onChange={updateInput}
-          value={state.setTwoOpp}
+          value={setData.setTwoOpp}
         />
-        <span> </span>
+        </span>
+        <span> </span><br/>
+        <label><b>Set 3</b></label>
+        <span style={{marginLeft:"0.9em"}}>
         <input
           type="number"
           name="setThreeHome"
           placeholder="Set Three Home"
           onChange={updateInput}
-          value={state.setThreeHome}
+          value={setData.setThreeHome}
         />
         <span> </span>
         <input
@@ -188,11 +237,12 @@ export const SetsForm = () => {
           name="setThreeOpp"
           placeholder="Set Three Opponent"
           onChange={updateInput}
-          value={state.setThreeOpp}
+          value={setData.setThreeOpp}
         />
+        </span>
         <span> </span>
         <br></br>
-        <button type="submit">Submit</button>
+        <span style={{position:'absolute', right:'17px', bottom:'2px'}}><button type="submit">Save</button></span>
       </form>
     </div>
   );
