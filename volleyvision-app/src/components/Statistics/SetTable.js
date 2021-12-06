@@ -10,7 +10,7 @@ import { getDoc, getFirestore, doc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 
 const columns = [
-  { id: "set", label: "SET SCORES", minWidth: 170 },
+  { id: "team", label: "Team", minWidth: 170 },
   { id: "setOne", label: "1", minWidth: 100 },
   {
     id: "setTwo",
@@ -26,23 +26,17 @@ const columns = [
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "score",
-    label: "SCORE",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
 ];
 
-function createData(setOne, setTwo, setThree) {
-  return { setOne, setTwo, setThree };
+function createData(team, setOne, setTwo, setThree) {
+  return { team, setOne, setTwo, setThree };
 }
 
 export default function ColumnGroupingTable({ match }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [dataRows, setDataRows] = React.useState([]);
+  const [oppData, setOppData] = React.useState("");
   const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
@@ -59,8 +53,16 @@ export default function ColumnGroupingTable({ match }) {
     const auth = getAuth();
     const currUser = auth.currentUser;
 
-    let string = `users/${currUser.uid}/matches/${id}/stats`;
-    const setsRef = doc(db, string, "Sets");
+    let oppString = `users/${currUser.uid}/matches`;
+    const oppRef = doc(db, oppString, id);
+
+    getDoc(oppRef).then((snapshot) => {
+      const fireOppData = snapshot.data();
+      setOppData(fireOppData.opponent);
+    });
+
+    let setString = `users/${currUser.uid}/matches/${id}/stats`;
+    const setsRef = doc(db, setString, "Sets");
     let fireRows = [];
 
     getDoc(setsRef).then((snapshot) => {
@@ -68,13 +70,19 @@ export default function ColumnGroupingTable({ match }) {
 
       fireRows.push(
         createData(
+          "Home",
           fireData.setOneHome,
           fireData.setTwoHome,
           fireData.setThreeHome
         )
       );
       fireRows.push(
-        createData(fireData.setOneOpp, fireData.setTwoOpp, fireData.setThreeOpp)
+        createData(
+          oppData,
+          fireData.setOneOpp,
+          fireData.setTwoOpp,
+          fireData.setThreeOpp
+        )
       );
 
       setDataRows(fireRows);

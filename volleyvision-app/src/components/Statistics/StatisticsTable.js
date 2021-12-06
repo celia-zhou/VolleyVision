@@ -36,14 +36,14 @@ const columns = [
   },
   {
     id: "digs",
-    label: "Dig",
+    label: "Digs",
     minWidth: 170,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "blocks",
-    label: "Block",
+    label: "Blocks",
     minWidth: 170,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
@@ -91,8 +91,8 @@ export default function ColumnGroupingTable() {
             currMatch.errors,
             currMatch.attempts,
             currMatch.aces,
-            currMatch.dig,
-            currMatch.block
+            currMatch.digs,
+            currMatch.blocks
           )
         );
         // this.setState({
