@@ -40,7 +40,7 @@ const Match_Summary = () => {
         <div>
             <SideBar/>
             <Dash_Container>
-                Match Statistics
+                <b>Match Statistics</b>
             </Dash_Container>
 
             <List_Container1>

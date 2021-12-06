@@ -56,7 +56,11 @@ const Generate_Statistics = () => {
   return (
     <div>
       <SideBar />
-      <Dash_Container>Generate Statistics</Dash_Container>
+
+      <Dash_Container>
+        <b>Generate Statistics</b>
+      </Dash_Container>
+
       <ListContainer>
         <MatchGenStats />
       </ListContainer>

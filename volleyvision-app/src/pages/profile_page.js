@@ -9,17 +9,21 @@ import ReactRoundedImage from "react-rounded-image"
 import photo from './volleyball.jpeg'
 import { getFirestore, doc, getDoc } from 'firebase/firestore/lite'
 import { getAuth } from 'firebase/auth'
+import Box from '@mui/material/Box'
 
 
 const Container = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 85px;
+    top: 115px;
     font: Times New Roman;
     font-size: 30px;
-    width: 200px;
+    width: 330px;
     height: 150px;
-`
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: top;
+        max-width: 50vw
+ `  
 
 const NameContainer = styled.div`
     position: absolute;
@@ -82,7 +86,7 @@ const EditContainer = styled.div`
 
 const ImageContainer = styled.div`
     position: absolute;
-    left: 650px;
+    left: 620px;
     top: 150px;
     width: 400px;
     height: 150px;
@@ -114,6 +118,14 @@ export default function Profile() {
     return (
         <div>
             <SideBar/>
+            <Box
+        component="form"
+        sx={{
+            '& .MuiTextField-root': { m: 4, width: '30ch' },
+        }}
+        noValidate
+        autoComplete="off"
+        >
             <ImageContainer>
                 <ReactRoundedImage
                 image={photo}
@@ -124,7 +136,7 @@ export default function Profile() {
                 />
             </ImageContainer>
             <Container>
-                Profile
+                <b>Profile</b>
             </Container>
 
             <NameContainer>
@@ -151,7 +163,7 @@ export default function Profile() {
                 {/* <ListItemText>Edit Profile</ListItemText> */}
                 <EditButton/>
             </EditContainer>
-
+        </Box>
             {/* <AuthContainer>
                 <AuthButton/>
             </AuthContainer> */}

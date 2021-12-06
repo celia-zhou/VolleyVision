@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactPlayer from "react-player";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -70,7 +70,11 @@ function createVideoElems() {
 }
 
 export default function YTVideos() {
-  getAccessToken();
+
+  useEffect(() => {
+    getAccessToken();
+  }, [])
+  
 
   if (sessionStorage.getItem('accessToken') != null) {
     getUploads();

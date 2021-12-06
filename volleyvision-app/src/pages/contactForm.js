@@ -42,7 +42,7 @@ const ContactUs = () => {
     <SideBar/>
     <SearchBar/>
     <Container>
-        Contact Us
+        <b>Contact Us</b>
     </Container>
     <Contact_Container>
     <form ref={form} onSubmit={sendEmail}>

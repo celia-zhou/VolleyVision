@@ -2,27 +2,33 @@ import React from 'react'
 import SearchBar from '../components/Topbar/Searchbar'
 import SideBar from '../components/Sidebar/Sidebar'
 import styled from 'styled-components'
-import PlayerList2 from '../components/PlayerList/PlayerList2'
+import PlayerTable from '../components/PlayerList/PlayerTable'
 
 const DashContainer = styled.div`
     position: absolute;
-    left: 300px;
-    top: 65px;
+    left: 85px;
+    top: 115px;
     font: Times New Roman;
     font-size: 30px;
-    width: 300px;
+    width: 330px;
     height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: top;
+        max-width: 50vw
+    }
 `
-
 const ListContainer = styled.div`
     position: absolute;
-    left: 300px;
-    top: 190px;
+    left: 85px;
+    top: 180px;
     font: Times New Roman;
-    background-color: white;
-    font-size: 20px;
-    width: 80%;
-    height: 78%;
+    background-color: #DBEBFB;
+    font-size: 25px;
+    width: 87%;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: left;
+        max-width: 50vw
+    }
 `
 
 const Recruiter_Dashboard = () => {
@@ -30,13 +36,13 @@ const Recruiter_Dashboard = () => {
         <div>
             <SideBar/>
             <DashContainer>
-                Recruiter Dashboard
+                <b>Recruiter Dashboard</b>
             </DashContainer>
 
         
             <ListContainer>
-                Eligible Recruits
-                <PlayerList2/>
+                Player List
+                <PlayerTable/>
             </ListContainer>
             
             <SearchBar/>

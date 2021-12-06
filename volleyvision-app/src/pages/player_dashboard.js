@@ -10,7 +10,7 @@ import ShotChart from '../components/ShotChart/ShotChart'
 
 const Container = styled.div`
     position: absolute;
-    left: 100px;
+    left: 85px;
     top: 115px;
     font: Times New Roman;
     font-size: 30px;
@@ -21,23 +21,10 @@ const Container = styled.div`
         max-width: 50vw
     }
 `
-// const ButtonContainer = styled.div`
-//     position: absolute;
-//     left: 85px;
-//     top: 150px;
-//     font: Times New Roman;
-//     background-color: #DBEBFB;
-//     font-size: 30px;
-//     width: 87%;
-//     @media screen and (min-width: 100px) and (max-width:1100px) {
-//         float: left;
-//         max-width: 50vw
-//     }
-// `
 const List_Container = styled.div`
     position: absolute;
     left: 85px;
-    top: 280px;
+    top: 260px;
     font: Times New Roman;
     background-color: #DBEBFB;
     font-size: 30px;
@@ -49,39 +36,40 @@ const List_Container = styled.div`
 `
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  left: 85px;
-  top: 150px;
-  font: Times New Roman;
-  background-color: #dbebfb;
-  font-size: 30px;
-  width: 87%;
-  @media screen and (min-width: 100px) and (max-width: 1100px) {
-    float: left;
-    max-width: 50vw;
-  }
+    position: absolute;
+    left: 50px;
+    top: 140px;
+    font: Times New Roman;
+    font-size: 30px;
+    width: 80%;
+    height: 150px;
+    @media screen and (min-width: 100px) and (max-width:1100px) {
+        float: right;
+        max-width: 50vw
+    }
 `;
 
 const Player_Dashboard = () => {
     return (
         <div>
-            <SideBar/>
+            {/* <SideBar/>
             
             <Container>
-                Player Dashboard
+                <b>Player Dashboard</b>
             </Container>
             
             
             <List_Container>
-            <MatchTable/>
+                Matches
+                <MatchTable/>
             </List_Container> 
 
             <ButtonContainer>
                 <AddMatch/>
             </ButtonContainer>
 
-            <SearchBar/>
-            {/* <ShotChart/> */}
+            <SearchBar/> */}
+            <ShotChart/>
         </div>
     )
 }

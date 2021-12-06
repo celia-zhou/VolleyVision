@@ -37,7 +37,7 @@ const Statistics_Summary = () => {
         <div>
             <SideBar/>
             <Dash_Container>
-                Statistics
+                <b>Statistics</b>
             </Dash_Container>
 
             <List_Container1>

@@ -17,6 +17,7 @@ class NewMatchForm extends React.Component {
       location: "",
       score: "",
       result: "",
+      videoURL: ""
     };
   }
 
@@ -43,6 +44,7 @@ class NewMatchForm extends React.Component {
         location: this.state.location,
         score: this.state.score,
         result: this.state.result,
+        videoURL: this.state.videoURL
       }
     );
 
@@ -54,87 +56,89 @@ class NewMatchForm extends React.Component {
       location: "",
       score: "",
       result: "",
+      videoURL: ""
     });
   };
 
   render() {
     return (
-      <div style = {{width: "80%"}}> 
-          <form onSubmit={this.addMatch} className="white" style={{padding:"30px"}}>
-                <h5 className="grey-text text-darken-3"> Create Match </h5>
-                <div className="input-field">
-                    <label htmlFor="opponent"> Opponent</label>
-                    <input
-                        type="text"
-                        name="opponent"
-                        id="opponent"
-                        onChange={this.updateInput} 
-                        value={this.state.opponent}
-                    />
-                </div>
-                <div className="input-field">
-                    <label htmlFor="tournament"> Tournament</label>
-                    <input
-                        type="text"
-                        id="tournament"
-                        name="tournament"
-                        onChange={this.updateInput}
-                        value={this.state.tournament}
-                    />
-                </div>
-                <div className="input-field">
-                <label htmlFor="date"> Date</label><br/>
-                    <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        onChange={this.updateInput}
-                        value={this.state.date}
-                    />
-                </div>
-                <div className="input-field">
-                <label htmlFor="partner"> Partner</label>
-                    <input
-                        type="text"
-                        id="partner"
-                        name="partner"
-                        onChange={this.updateInput}
-                        value={this.state.partner}
-                    />
-                </div>
-                <div className="input-field">
-                    <label htmlFor="location"> Location </label>
-                    <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        onChange={this.updateInput}
-                        value={this.state.location}
-                    />
-                </div>
-                <div className="input-field">
-                    <label htmlFor="score"> Score</label>
-                    <input
-                        type="text"
-                        id="score"
-                        name="score"
-                        onChange={this.updateInput}
-                        value={this.state.score}
-                    />
-                </div>
-                <div className="input-field">
-                    <label htmlFor="result"> Result</label>
-                    <input
-                        type="text"
-                        id="result"
-                        name="result"
-                        onChange={this.updateInput}
-                        value={this.state.result}
-                    />
-                </div>
-                <SubmitButton/>
-        </form>
-      </div>
+      <Box
+        component="form"
+        sx={{
+            '& .MuiTextField-root': { m: 4, width: '30ch' },
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={this.addMatch}
+        >
+        <div>    
+            <TextField
+            name="opponent"
+            label="Opponent"
+            variant="standard"
+            placeholder="Name"
+            onChange={this.updateInput}
+            value={this.state.opponent}
+            />
+            <TextField
+            name="date"
+            variant="standard"
+            type="date"
+            onChange={this.updateInput}
+            value={this.state.date}
+            />
+            <TextField
+            name="partner"
+            label="Partner"
+            variant="standard"
+            placeholder="Full Name"
+            onChange={this.updateInput}
+            value={this.state.partner}
+            />
+            <TextField
+            name="tournament"
+            label="Tournament"
+            variant="standard"
+            placeholder="Tournament Name"
+            onChange={this.updateInput}
+            value={this.state.tournament}
+            />
+            <TextField
+            name="location"
+            label="Location"
+            variant="standard"
+            placeholder="City, State"
+            onChange={this.updateInput}
+            value={this.state.location}
+            />
+            <TextField
+            name="score"
+            label="Score"
+            variant="standard"
+            placeholder="2-0"
+            onChange={this.updateInput}
+            value={this.state.score}
+            />
+            <TextField
+            name="result"
+            label="Result"
+            variant="standard"
+            placeholder="W or L"
+            onChange={this.updateInput}
+            value={this.state.result}
+            />
+            <TextField
+            name="videoURL"
+            label="Video Youtube URL"
+            variant="standard"
+            placeholder="https://youtube.com"
+            onChange={this.updateInput}
+            value={this.state.videoURL}
+            />
+
+        <SubmitButton/> 
+        </div>  
+        </Box>
         );
       }
    }
