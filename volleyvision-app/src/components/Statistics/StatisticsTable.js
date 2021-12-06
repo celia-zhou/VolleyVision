@@ -91,8 +91,8 @@ export default function ColumnGroupingTable() {
             currMatch.errors,
             currMatch.attempts,
             currMatch.aces,
-            currMatch.digs,
-            currMatch.blocks
+            currMatch.dig,
+            currMatch.block
           )
         );
         // this.setState({
