@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export const CommentForm = () => {
   //const form = useRef();
-  let [state, setState] = useState({comments: ''});
+  const [state, setState] = useState({comments: ''});
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,15 +14,16 @@ export const CommentForm = () => {
     const auth = getAuth();
     const currUser = auth.currentUser;
     let path = `users/${currUser.uid}/matches/${id}/comments`
-    let fireRows = [];
 
     
-    getDoc(doc(db, path, 'PlayerComments')).then((snapshot) => {
+    getDoc(doc(db, path, 'allComments')).then((snapshot) => {
       const data = snapshot.data()
-
-      setState({
-          comments: data.comments
-      })
+      
+      if(data != null) {
+        setState({
+          comments: data.playerComments
+        })  ;
+      }
   });
   }, []);
 
@@ -41,25 +42,26 @@ export const CommentForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/comments`;
 
-    setDoc(doc(db, string, 'PlayerComments'), {
-      comments: state.comments,
+    setDoc(doc(db, string, 'allComments'), {
+      playerComments: state.comments,
     });
   };
 
   return (
     <div>
       <form onSubmit={addComment}>
+        <b>Comments</b>
         <textarea
           type="string"
           name="comments"
           placeholder="Comment"
           onChange={updateInput}
           value={state.comments}
-          rows="3"
-          cols="93"
+          rows="4"
+          cols="75"
         />
         <br></br>
-        <button type="submit">Submit</button>
+        <div style={{position:'relative', marginLeft:'41em', bottom:'35px'}}><button type="submit">Save</button></div>
       </form>
     </div>
   );

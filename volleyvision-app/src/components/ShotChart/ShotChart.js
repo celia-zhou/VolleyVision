@@ -146,7 +146,7 @@ export default function ShotChart() {
                     </div>
                 </map>
 
-                <button type="submit">Save</button>
+                <div style={{position:"relative", left: '330px', bottom:'30px'}}><button type="submit">Save</button></div>
                 </form>
             </div>
         );

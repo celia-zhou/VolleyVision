@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore/lite";
 import styled from "styled-components";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const StatsContainer = styled.div`
   position: absolute;
@@ -103,14 +103,36 @@ const LabelContainer6 = styled.div`
 `;
 
 export const GenStatsForm = () => {
-  let [state, setState] = useState({});
+  const [state, setState] = useState({kills: 0,
+    errors: 0,
+    attempts: 0,
+    digs: 0,
+    aces: 0,
+    blocks: 0});
   const { id } = useParams();
 
-  //   updateInput = (e) => {
-  //     this.setState({
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   };
+  useEffect(() => {
+    const db = getFirestore();
+    const auth = getAuth();
+    const currUser = auth.currentUser;
+    let path = `users/${currUser.uid}/matches/${id}/stats`
+
+    
+    getDoc(doc(db, path, 'Player')).then((snapshot) => {
+      const data = snapshot.data()
+      
+      if(data != null) {
+        setState({
+          kills: data.kills,
+          errors: data.errors,
+          attempts: data.attempts,
+          digs: data.digs,
+          aces: data.aces,
+          blocks: data.blocks
+        })  ;
+      }
+  });
+  }, []);
 
   const updateInput = (e) => {
     setState({
@@ -127,7 +149,7 @@ export const GenStatsForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/stats`;
 
-    const matchRef = setDoc(doc(db, string, "Player"), {
+    setDoc(doc(db, string, "Player"), {
       kills: state.kills,
       errors: state.errors,
       attempts: state.attempts,
@@ -135,69 +157,75 @@ export const GenStatsForm = () => {
       aces: state.aces,
       blocks: state.blocks,
     });
-
-    setState({
-      kills: 0,
-      errors: 0,
-      attempts: 0,
-      digs: 0,
-      aces: 0,
-      blocks: 0,
-    });
   };
 
   return (
     <div>
       <form onSubmit={addStat}>
-        <input
+      <div style={{display:"block"}}>
+        <label class="label">
+              <span class="field"><b>Kills</b></span><br/>
+              <input
           type="number"
           name="kills"
           placeholder="Kills"
           onChange={updateInput}
           value={state.kills}
         />
-        <span> </span>
-        <input
+        </label>
+        <label class="label">
+              <span class="field"><b>Errors</b></span><br/>
+              <input
           type="number"
           name="errors"
           placeholder="Errors"
           onChange={updateInput}
           value={state.errors}
         />
-        <span> </span>
-        <input
+        </label>
+        <label class="label">
+              <span class="field"><b>Attempts</b></span><br/>
+              <input
           type="number"
           name="attempts"
           placeholder="Attempts"
           onChange={updateInput}
           value={state.attempts}
         />
-        <span> </span>
-        <input
-          type="number"
-          name="digs"
-          placeholder="Digs"
-          onChange={updateInput}
-          value={state.digs}
-        />
-        <span> </span>
-        <input
+        </label>
+        <label class="label">
+              <span class="field"><b>Aces</b></span><br/>
+              <input
           type="number"
           name="aces"
           placeholder="Aces"
           onChange={updateInput}
           value={state.aces}
         />
-        <span> </span>
-        <input
+        </label>
+        <label class="label">
+              <span class="field"><b>Digs</b></span><br/>
+              <input
+          type="number"
+          name="digs"
+          placeholder="Digs"
+          onChange={updateInput}
+          value={state.digs}
+        />
+        </label>
+        <label class="label">
+              <span class="field"><b>Blocks</b></span><br/>
+              <input
           type="number"
           name="blocks"
           placeholder="Blocks"
           onChange={updateInput}
           value={state.blocks}
         />
-        <span> </span>
-        <button type="submit">Submit</button>
+        </label>
+        <span/>
+        <button type="submit">Save</button>
+        </div>
       </form>
     </div>
   );

@@ -58,7 +58,7 @@ const Chart_Container = styled.div`
 
 const Sets_Container = styled.div`
   position: absolute;
-  left: 1000px;
+  left: 900px;
   top: 720px;
   width: 500px;
 `;
@@ -92,12 +92,5 @@ const match_gen_stats_page = () => {
     </div>
   );
 };
-
-const itemData = [
-  {
-    urlLink: "https://www.youtube.com/watch?v=459Oda8XPy0&t=3s",
-    name: "USA vs. Australia - Tokyo 2021",
-  },
-];
 
 export default match_gen_stats_page;
