@@ -52,7 +52,7 @@ const ButtonContainer = styled.div`
 const Player_Dashboard = () => {
     return (
         <div>
-            {/* <SideBar/>
+            <SideBar/>
             
             <Container>
                 <b>Player Dashboard</b>
@@ -68,8 +68,8 @@ const Player_Dashboard = () => {
                 <AddMatch/>
             </ButtonContainer>
 
-            <SearchBar/> */}
-            <ShotChart/>
+            <SearchBar/>
+            {/* <ShotChart/> */}
         </div>
     )
 }
