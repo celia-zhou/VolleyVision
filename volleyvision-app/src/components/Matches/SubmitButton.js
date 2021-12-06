@@ -17,11 +17,11 @@ export default function SubmitButton() {
     
     return (
       <main className={classes.content}>
-      <Button type="submit">
-          <Fab variant="extended">
+      <Button variant="contained" color="secondary" type="submit">
+          {/* <Fab variant="extended"> */}
             <PublishIcon sx={{ mr: 1 }} />
               Submit
-          </Fab>
+          {/* </Fab> */}
         </Button>
       </main>
     );

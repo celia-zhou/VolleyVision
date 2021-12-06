@@ -33,11 +33,11 @@ export default function UploadButton() {
   const classes = useStyles();
   return (
     <main className={classes.content}>
-      <Button target="_blank" href="https://www.youtube.com">
-        <Fab variant="extended">
+      <Button variant="contained" color="secondary" target="_blank" href="https://www.youtube.com">
+        {/* <Fab variant="extended"> */}
           <UploadIcon sx={{ mr: 1 }} />
             Upload
-        </Fab>
+        {/* </Fab> */}
       </Button>
       {/* <Button onClick={uploadVideo}>
         <Fab variant="extended">

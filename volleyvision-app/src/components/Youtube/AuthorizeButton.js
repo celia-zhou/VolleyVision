@@ -74,11 +74,11 @@ export default function AuthorizeButton() {
 
   return (
     <main className={classes.content}>
-      <Button onClick={oauth2SignIn}>
-        <Fab variant="extended">
+      <Button variant="contained" color="secondary" onClick={oauth2SignIn}>
+        {/* <Fab variant="extended"> */}
           <VerifiedUserIcon sx={{ mr: 1 }} />
             Authorize Youtube Access
-        </Fab>
+        {/* </Fab> */}
       </Button>
     </main>
   );
