@@ -3,13 +3,10 @@ import SearchBar from "../components/Topbar/Searchbar";
 import SideBar from "../components/Sidebar/Sidebar";
 import styled from "styled-components";
 import { GenStatsForm } from "../components/Statistics/GenStatsForm";
-import ReactPlayer from "react-player";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
 import CommentForm from "../components/Statistics/CommentForm";
 import ShotChart from "../components/ShotChart/ShotChart";
 import SetsForm from "../components/Statistics/SetsForm";
+import MatchVideoPlayer from "../components/Statistics/MatchVideo";
 
 const Title_Container = styled.div`
   position: absolute;
@@ -34,7 +31,7 @@ const List_Container1 = styled.div`
 const VidContainer = styled.div`
   position: absolute;
   left: 100px;
-  top: 120px;
+  top: 250px;
   font: Times New Roman;
   font-size: 30px;
   width: 100%;
@@ -48,7 +45,7 @@ const VidContainer = styled.div`
 const Comment_Container = styled.div`
   position: absolute;
   left: 100px;
-  top: 750px;
+  top: 720px;
   width: 500px;
 `;
 
@@ -61,7 +58,7 @@ const Chart_Container = styled.div`
 
 const Sets_Container = styled.div`
   position: absolute;
-  left: 1000px;
+  left: 900px;
   top: 720px;
   width: 500px;
 `;
@@ -71,31 +68,10 @@ const match_gen_stats_page = () => {
     <div>
       <SideBar />
       <VidContainer>
-        <ImageList
-          sx={{
-            position: "absolute",
-            top: 130,
-            left: -1,
-            width: 2000,
-            height: 1100,
-            bgcolor: "#DBEBFB",
-          }}
-          cols={3}
-        >
-          {itemData.map((item) => (
-            <ImageListItem sx={{ pb: 1 }} key={item.urlLink}>
-              <ReactPlayer url={item.urlLink} width="800px" height="440px" />
-              <ImageListItemBar
-                sx={{ pb: 2 }}
-                position="below"
-                title={item.name}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
+          <MatchVideoPlayer/>
       </VidContainer>
 
-      <Title_Container>Generate Statistics</Title_Container>
+      <Title_Container><b>Generate Statistics</b></Title_Container>
       <List_Container1>
         <GenStatsForm />
       </List_Container1>
@@ -107,6 +83,7 @@ const match_gen_stats_page = () => {
       <Chart_Container>
         <ShotChart />
       </Chart_Container>
+
       <Sets_Container>
         <SetsForm />
       </Sets_Container>
@@ -115,12 +92,5 @@ const match_gen_stats_page = () => {
     </div>
   );
 };
-
-const itemData = [
-  {
-    urlLink: "https://www.youtube.com/watch?v=459Oda8XPy0&t=3s",
-    name: "USA vs. Australia - Tokyo 2021",
-  },
-];
 
 export default match_gen_stats_page;

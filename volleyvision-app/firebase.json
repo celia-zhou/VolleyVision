@@ -1,6 +1,17 @@
 {
-  "hosting": {
-    "site": "volleyvision-e6c88",
-    "public": "build"
+    "hosting": {
+      "site": "volleyvision-e6c88",
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
   }
-}
