@@ -8,6 +8,8 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import CommentForm from "../components/Statistics/CommentForm";
+import ShotChart from "../components/ShotChart/ShotChart";
+import SetsForm from "../components/Statistics/SetsForm";
 
 const Title_Container = styled.div`
   position: absolute;
@@ -50,6 +52,20 @@ const Comment_Container = styled.div`
   width: 500px;
 `;
 
+const Chart_Container = styled.div`
+  position: absolute;
+  left: 1000px;
+  top: 250px;
+  width: 500px;
+`;
+
+const Sets_Container = styled.div`
+  position: absolute;
+  left: 1000px;
+  top: 720px;
+  width: 500px;
+`;
+
 const match_gen_stats_page = () => {
   return (
     <div>
@@ -68,7 +84,7 @@ const match_gen_stats_page = () => {
         >
           {itemData.map((item) => (
             <ImageListItem sx={{ pb: 1 }} key={item.urlLink}>
-              <ReactPlayer url={item.urlLink} width="500px" height="440px" />
+              <ReactPlayer url={item.urlLink} width="800px" height="440px" />
               <ImageListItemBar
                 sx={{ pb: 2 }}
                 position="below"
@@ -87,6 +103,13 @@ const match_gen_stats_page = () => {
       <Comment_Container>
         <CommentForm />
       </Comment_Container>
+
+      <Chart_Container>
+        <ShotChart />
+      </Chart_Container>
+      <Sets_Container>
+        <SetsForm />
+      </Sets_Container>
 
       <SearchBar />
     </div>
