@@ -7,6 +7,7 @@ import ReactPlayer from "react-player";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import CommentForm from "../components/Statistics/CommentForm";
 
 const Title_Container = styled.div`
   position: absolute;
@@ -42,6 +43,13 @@ const VidContainer = styled.div`
   }
 `;
 
+const Comment_Container = styled.div`
+  position: absolute;
+  left: 100px;
+  top: 750px;
+  width: 500px;
+`;
+
 const match_gen_stats_page = () => {
   return (
     <div>
@@ -50,8 +58,8 @@ const match_gen_stats_page = () => {
         <ImageList
           sx={{
             position: "absolute",
-            top: 150,
-            left: 100,
+            top: 130,
+            left: -1,
             width: 2000,
             height: 1100,
             bgcolor: "#DBEBFB",
@@ -60,7 +68,7 @@ const match_gen_stats_page = () => {
         >
           {itemData.map((item) => (
             <ImageListItem sx={{ pb: 1 }} key={item.urlLink}>
-              <ReactPlayer url={item.urlLink} width="1050px" height="440px" />
+              <ReactPlayer url={item.urlLink} width="500px" height="440px" />
               <ImageListItemBar
                 sx={{ pb: 2 }}
                 position="below"
@@ -75,6 +83,11 @@ const match_gen_stats_page = () => {
       <List_Container1>
         <GenStatsForm />
       </List_Container1>
+
+      <Comment_Container>
+        <CommentForm />
+      </Comment_Container>
+
       <SearchBar />
     </div>
   );

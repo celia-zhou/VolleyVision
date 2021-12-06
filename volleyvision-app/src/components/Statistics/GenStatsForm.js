@@ -156,6 +156,7 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.kills}
         />
+        <span> </span>
         <input
           type="number"
           name="errors"
@@ -163,6 +164,7 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.errors}
         />
+        <span> </span>
         <input
           type="number"
           name="attempts"
@@ -170,6 +172,7 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.attempts}
         />
+        <span> </span>
         <input
           type="number"
           name="digs"
@@ -177,6 +180,7 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.digs}
         />
+        <span> </span>
         <input
           type="number"
           name="aces"
@@ -184,6 +188,7 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.aces}
         />
+        <span> </span>
         <input
           type="number"
           name="blocks"
@@ -191,111 +196,9 @@ export const GenStatsForm = () => {
           onChange={updateInput}
           value={state.blocks}
         />
+        <span> </span>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
-
-// export default function GenStatsForm () {
-//   constructor() {
-//     super();
-//     this.state = {
-//       kills: 0,
-//       errors: 0,
-//       attempts: 0,
-//       digs: 0,
-//       aces: 0,
-//       blocks: 0,
-//     };
-//   }
-
-//   updateInput = (e) => {
-//     this.setState({
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   addStat = (e) => {
-//     e.preventDefault();
-
-//     const db = getFirestore();
-//     const auth = getAuth();
-//     const currUser = auth.currentUser;
-//     const { id } = useParams();
-
-//     const matchRef = addDoc(
-//       collection(db, "users/" + currUser.uid + "/matches/ " + id + "/stats"),
-//       {
-//         kills: this.state.kills,
-//         errors: this.state.errors,
-//         attempts: this.state.attempts,
-//         digs: this.state.digs,
-//         aces: this.state.aces,
-//         blocks: this.state.blocks,
-//       }
-//     );
-
-//     this.setState({
-//       kills: 0,
-//       errors: 0,
-//       attempts: 0,
-//       digs: 0,
-//       aces: 0,
-//       blocks: 0,
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <form onSubmit={this.addStat}>
-//           <input
-//             type="number"
-//             name="kills"
-//             placeholder="Kills"
-//             onChange={this.updateInput}
-//             value={this.state.kills}
-//           />
-//           <input
-//             type="number"
-//             name="errors"
-//             placeholder="Errors"
-//             onChange={this.updateInput}
-//             value={this.state.errors}
-//           />
-//           <input
-//             type="number"
-//             name="attempts"
-//             placeholder="Attempts"
-//             onChange={this.updateInput}
-//             value={this.state.attempts}
-//           />
-//           <input
-//             type="number"
-//             name="digs"
-//             placeholder="Digs"
-//             onChange={this.updateInput}
-//             value={this.state.digs}
-//           />
-//           <input
-//             type="number"
-//             name="aces"
-//             placeholder="Aces"
-//             onChange={this.updateInput}
-//             value={this.state.aces}
-//           />
-//           <input
-//             type="number"
-//             name="blocks"
-//             placeholder="Blocks"
-//             onChange={this.updateInput}
-//             value={this.state.blocks}
-//           />
-//           <button type="submit">Submit</button>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-// export default GenStatsForm;
