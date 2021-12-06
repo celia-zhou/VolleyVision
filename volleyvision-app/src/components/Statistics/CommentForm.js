@@ -42,6 +42,7 @@ export const CommentForm = () => {
           placeholder="Comment"
           onChange={updateInput}
           value={state.comments}
+          cols="92"
         />
         <br></br>
         <button type="submit">Submit</button>
