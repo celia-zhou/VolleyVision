@@ -118,9 +118,6 @@ export default function ColumnGroupingTable() {
             profile.gpa
           )
         );
-        // this.setState({
-        //   rows: [...this.state.rows, createData(<Link to="/match_summary">{currMatch.opp}</Link>, currMatch.date, currMatch.partner, currMatch.tournament, currMatch.location, currMatch.score, currMatch.result)]
-        // });
       });
 
       setDataRows(fireRows);
