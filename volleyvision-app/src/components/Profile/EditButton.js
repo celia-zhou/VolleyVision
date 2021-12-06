@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
-import Button from '@mui/material/Button';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import Fab from "@mui/material/Fab";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -19,7 +19,7 @@ export default function EditButton() {
       <Button component={Link} to="/edit_profile">
         <Fab variant="extended">
           <EditIcon sx={{ mr: 1 }} />
-            Edit Profile
+          Edit Profile
         </Fab>
       </Button>
     </main>
