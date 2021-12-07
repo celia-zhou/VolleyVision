@@ -16,7 +16,7 @@ export const DisplayCommentForm = () => {
     let path = `users/${currUser.uid}/matches/${id}/comments`
 
     
-    getDoc(doc(db, path, 'allComments')).then((snapshot) => {
+    getDoc(doc(db, path, 'PlayerComments')).then((snapshot) => {
       const data = snapshot.data();
     
       if (data != null){
@@ -25,14 +25,20 @@ export const DisplayCommentForm = () => {
                 playerComments: data.playerComments
             })
           }
-    
-          if(data.coachComments != null) {
-            setState({
-                coachComments: data.coachComments
-            })
-          }
-        }
+      }
   });
+
+  getDoc(doc(db, path, 'CoachComments')).then((snapshot) => {
+    const data = snapshot.data();
+  
+    if (data != null){
+      if(data.coachComments != null) {
+        setState({
+            coachComments: data.coachComments
+        })
+      }
+    }
+});
   }, []);
 
   return (

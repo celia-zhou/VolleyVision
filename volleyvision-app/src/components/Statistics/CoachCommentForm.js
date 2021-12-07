@@ -7,29 +7,31 @@ import { useParams } from "react-router-dom";
 export const CoachCommentForm = () => {
   //const form = useRef();
   const [commentData, setCommentData] = useState("");
-  const [isPlayer, setisPlayer] = useState(true);
+  const [isPlayer, setisPlayer] = useState(false);
   const { playerId, matchId } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
     const auth = getAuth();
+    const currUser = auth.currentUser;
     let commentPath = `users/${playerId}/matches/${matchId}/comments`;
 
-    getDoc(doc(db, "users", playerId)).then((snapshot) => {
-      const data = snapshot.data();
+    // getDoc(doc(db, "users", currUser.uid)).then((snapshot) => {
+    //   const data = snapshot.data();
 
-      if (data.coach && !data.recruiter) {
-        setisPlayer(false);
-      }
-    });
+    //   if (data.coach && !data.recruiter) {
+    //     setisPlayer('no');
+    //   }
+    //   else {
+    //     setisPlayer('yes');
+    //   }
+    // });
 
-    getDoc(doc(db, commentPath, "allComments")).then((snapshot) => {
+    getDoc(doc(db, commentPath, "CoachComments")).then((snapshot) => {
       const data = snapshot.data();
 
       if (data != null) {
-        if (isPlayer && data.playerComments != null) {
-          setCommentData(data.playerComments);
-        } else if (data.coachComments != null) {
+        if (!isPlayer  && data.coachComments != null) {
           setCommentData(data.coachComments);
         }
       }
@@ -48,15 +50,15 @@ export const CoachCommentForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${playerId}/matches/${matchId}/comments`;
 
-    if (isPlayer) {
-      setDoc(doc(db, string, "allComments"), {
-        playerComments: commentData,
-      });
-    } else {
-      setDoc(doc(db, string, "allComments"), {
+    // if (isPlayer) {
+    //   setDoc(doc(db, string, "allComments"), {
+    //     playerComments: commentData,
+    //   });
+    // } else {
+      setDoc(doc(db, string, "CoachComments"), {
         coachComments: commentData,
       });
-    }
+    // }
   };
 
   return (

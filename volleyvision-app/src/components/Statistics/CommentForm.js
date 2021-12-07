@@ -16,26 +16,26 @@ export const CommentForm = () => {
     const currUser = auth.currentUser;
     let commentPath = `users/${currUser.uid}/matches/${id}/comments`
 
-    getDoc(doc(db,'users', currUser.uid)).then((snapshot) => {
-      const data = snapshot.data();
+    // getDoc(doc(db,'users', currUser.uid)).then((snapshot) => {
+    //   const data = snapshot.data();
 
-      if(data.coach && !data.recruiter) {
-        setisPlayer(false);
-      }
+    //   if(data.coach && !data.recruiter) {
+    //     setisPlayer(false);
+    //   }
 
-    });
+    // });
 
     
-    getDoc(doc(db, commentPath, 'allComments')).then((snapshot) => {
+    getDoc(doc(db, commentPath, 'PlayerComments')).then((snapshot) => {
       const data = snapshot.data();
 
       if(data != null) {
         if(isPlayer && data.playerComments != null) {
           setCommentData(data.playerComments);
         }
-        else if(data.coachComments != null) {
-          setCommentData(data.coachComments);
-        }
+        // else if(data.coachComments != null) {
+        //   setCommentData(data.coachComments);
+        // }
         
       }
   });
@@ -54,15 +54,15 @@ export const CommentForm = () => {
     let string = `users/${currUser.uid}/matches/${id}/comments`;
 
     if (isPlayer) {
-      setDoc(doc(db, string, 'allComments'), {
+      setDoc(doc(db, string, 'PlayerComments'), {
         playerComments: commentData,
       });
     }
-    else {
-      setDoc(doc(db, string, 'allComments'), {
-        coachComments: commentData,
-      });
-    }
+    // else {
+    //   setDoc(doc(db, string, 'allComments'), {
+    //     coachComments: commentData,
+    //   });
+    // }
 
     
   };
