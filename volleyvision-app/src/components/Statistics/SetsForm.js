@@ -119,7 +119,7 @@ export const SetsForm = () => {
     let setsPath = `users/${currUser.uid}/matches/${id}/stats`
     let oppPath = `users/${currUser.uid}/matches`
     
-    getDoc(doc(db, setsPath, 'Sets')).then((snapshot) => {
+    getDoc(doc(db, setsPath, 'setScores')).then((snapshot) => {
       const data = snapshot.data()
       
       if(data != null) {

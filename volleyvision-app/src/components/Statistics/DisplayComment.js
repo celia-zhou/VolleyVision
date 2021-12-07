@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export const DisplayCommentForm = () => {
   //const form = useRef();
-  let [state, setState] = useState({playerComments: '', coachComments: ''});
+  const [state, setState] = useState({playerComments: '', coachComments: ''});
   const { id } = useParams();
 
   useEffect(() => {

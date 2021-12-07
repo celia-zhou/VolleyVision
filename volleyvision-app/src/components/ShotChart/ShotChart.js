@@ -1,7 +1,7 @@
 import React from 'react';
 import CourtImg from '../../images/vballCourt.jpeg';
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, setDoc, doc, getDoc } from "firebase/firestore/lite";
 import { useParams } from 'react-router-dom';
 
 
@@ -25,6 +25,21 @@ export default function ShotChart() {
 
     //     setPercentArr(currPers);
     // }, [percentArr]);
+
+    React.useEffect(() => {
+        const db = getFirestore();
+        const auth = getAuth();
+        const currUser = auth.currentUser;
+        let string = `users/${currUser.uid}/matches/${id}/shotChart`;
+
+        getDoc(doc(db, string, 'Counts')).then((snapshot) => {
+            const data = snapshot.data();
+
+            if (data!=null) {
+                setCountArr(data.counts)
+            }
+        });
+    })
 
     const saveCounts = (e) => {
         e.preventDefault();

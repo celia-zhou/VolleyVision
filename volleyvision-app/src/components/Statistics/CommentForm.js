@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 
 export const CommentForm = () => {
   //const form = useRef();
-  const [userType, setUserType] = useState('');
   const [commentData, setCommentData] = useState('');
+  const [isPlayer, setisPlayer] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,10 +20,7 @@ export const CommentForm = () => {
       const data = snapshot.data();
 
       if(data.coach && !data.recruiter) {
-        setUserType('coach');
-      }
-      else if (!data.coach && !data.recruiter){
-        setUserType('player');
+        setisPlayer(false);
       }
 
     });
@@ -31,14 +28,15 @@ export const CommentForm = () => {
     
     getDoc(doc(db, commentPath, 'allComments')).then((snapshot) => {
       const data = snapshot.data();
-      
+
       if(data != null) {
-        if (userType === 'coach' && data.coachComments != null) {
-          setCommentData(data.coachComments);
-        }
-        else if(userType === 'player' && data.playerComments != null) {
+        if(isPlayer && data.playerComments != null) {
           setCommentData(data.playerComments);
         }
+        else if(data.coachComments != null) {
+          setCommentData(data.coachComments);
+        }
+        
       }
   });
   }, []);
@@ -55,12 +53,12 @@ export const CommentForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/comments`;
 
-    if (userType === 'player') {
+    if (isPlayer) {
       setDoc(doc(db, string, 'allComments'), {
         playerComments: commentData,
       });
     }
-    else if (userType === 'coach') {
+    else {
       setDoc(doc(db, string, 'allComments'), {
         coachComments: commentData,
       });
