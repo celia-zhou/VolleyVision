@@ -62,13 +62,13 @@ export default function ColumnGroupingTable({ match }) {
     });
 
     let setString = `users/${currUser.uid}/matches/${id}/stats`;
-    const setsRef = doc(db, setString, "Sets");
+    const setsRef = doc(db, setString, "setScores");
     let fireRows = [];
 
     getDoc(setsRef).then((snapshot) => {
       const fireData = snapshot.data();
 
-      if(fireData != null) {
+      if (fireData != null) {
         fireRows.push(
           createData(
             "Home",

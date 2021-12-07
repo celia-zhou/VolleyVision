@@ -84,6 +84,7 @@ export default function ColumnGroupingTable() {
     const currUser = auth.currentUser;
     const matchesRef = collection(db, "users/" + currUser.uid + "/matches");
     let fireRows = [];
+    console.log(currUser);
 
     getDocs(matchesRef).then((snapshot) => {
       const fireData = snapshot.docs.map((doc) => ({
