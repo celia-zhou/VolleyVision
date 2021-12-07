@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "../components/Topbar/Searchbar";
 import SideBar from "../components/Sidebar/Sidebar";
 import styled from "styled-components";
-import PlayerTableCoach from "../components/PlayerList/PlayerTable";
+import PlayerTableCoach from "../components/PlayerList/PlayerTableCoach";
 
 const DashContainer = styled.div`
   position: absolute;
