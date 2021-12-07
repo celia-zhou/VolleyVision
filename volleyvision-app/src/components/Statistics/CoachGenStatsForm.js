@@ -111,16 +111,14 @@ export const CoachGenStatsForm = () => {
     aces: 0,
     blocks: 0,
   });
-  const { player_id, match_id } = useParams();
 
-  console.log(player_id);
-  console.log(match_id);
+  const { playerId, matchId } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
     const auth = getAuth();
-    const currUser = auth.currentUser;
-    let path = `users/${currUser.uid}/matches/${match_id}/stats`;
+
+    let path = `users/${playerId}/matches/${matchId}/stats`;
 
     getDoc(doc(db, path, "Player")).then((snapshot) => {
       const data = snapshot.data();
@@ -150,8 +148,8 @@ export const CoachGenStatsForm = () => {
 
     const db = getFirestore();
     const auth = getAuth();
-    const currUser = auth.currentUser;
-    let string = `users/${currUser.uid}/matches/${id}/stats`;
+
+    let string = `users/${playerId}/matches/${matchId}/stats`;
 
     setDoc(doc(db, string, "Player"), {
       kills: state.kills,

@@ -2,9 +2,9 @@ import React from "react";
 import SearchBar from "../components/Topbar/Searchbar";
 import SideBar from "../components/Sidebar/Sidebar";
 import styled from "styled-components";
-import { GenStatsForm } from "../components/Statistics/GenStatsForm";
-import CommentForm from "../components/Statistics/CommentForm";
-import ShotChart from "../components/ShotChart/ShotChart";
+import { CoachGenStatsForm } from "../components/Statistics/CoachGenStatsForm";
+import CoachCommentForm from "../components/Statistics/CoachCommentForm";
+import CoachShotChart from "../components/ShotChart/CoachShotChart";
 import SetsForm from "../components/Statistics/CoachSetsForm";
 import MatchVideoPlayer from "../components/Statistics/MatchVideo";
 
@@ -74,17 +74,17 @@ const coach_match_gen_stats_page = () => {
       <Title_Container>
         <b>Generate Statistics</b>
       </Title_Container>
-      {/* <List_Container1>
-        <GenStatsForm />
+      <List_Container1>
+        <CoachGenStatsForm />
       </List_Container1>
 
       <Comment_Container>
-        <CommentForm />
+        <CoachCommentForm />
       </Comment_Container>
 
       <Chart_Container>
-        <ShotChart />
-      </Chart_Container> */}
+        <CoachShotChart />
+      </Chart_Container>
 
       <Sets_Container>
         <SetsForm />
