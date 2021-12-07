@@ -2,11 +2,11 @@ import React from "react";
 import SearchBar from "../components/Topbar/Searchbar";
 import SideBar from "../components/Sidebar/Sidebar";
 import styled from "styled-components";
-import { GenStatsForm } from "../components/Statistics/GenStatsForm";
-import CommentForm from "../components/Statistics/CommentForm";
-import ShotChart from "../components/ShotChart/ShotChart";
-import SetsForm from "../components/Statistics/SetsForm";
-import MatchVideoPlayer from "../components/Statistics/MatchVideo";
+import { CoachGenStatsForm } from "../components/Statistics/CoachGenStatsForm";
+import CoachCommentForm from "../components/Statistics/CoachCommentForm";
+import CoachShotChart from "../components/ShotChart/CoachShotChart";
+import SetsForm from "../components/Statistics/CoachSetsForm";
+import CoachMatchVideoPlayer from "../components/Statistics/CoachMatchVideo";
 
 const Title_Container = styled.div`
   position: absolute;
@@ -31,7 +31,7 @@ const List_Container1 = styled.div`
 const VidContainer = styled.div`
   position: absolute;
   left: 100px;
-  top: 270px;
+  top: 250px;
   font: Times New Roman;
   font-size: 30px;
   width: 100%;
@@ -63,27 +63,27 @@ const Sets_Container = styled.div`
   width: 500px;
 `;
 
-const match_gen_stats_page = () => {
+const coach_match_gen_stats_page = () => {
   return (
     <div>
       <SideBar />
       <VidContainer>
-        <MatchVideoPlayer />
+        <CoachMatchVideoPlayer />
       </VidContainer>
 
       <Title_Container>
         <b>Generate Statistics</b>
       </Title_Container>
       <List_Container1>
-        <GenStatsForm />
+        <CoachGenStatsForm />
       </List_Container1>
 
       <Comment_Container>
-        <CommentForm />
+        <CoachCommentForm />
       </Comment_Container>
 
       <Chart_Container>
-        <ShotChart />
+        <CoachShotChart />
       </Chart_Container>
 
       <Sets_Container>
@@ -95,4 +95,4 @@ const match_gen_stats_page = () => {
   );
 };
 
-export default match_gen_stats_page;
+export default coach_match_gen_stats_page;

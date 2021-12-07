@@ -120,7 +120,10 @@ export default function ColumnGroupingTable() {
                 Toolbar: GridToolbar,
               }}
               onCellClick={(params, event) => {
-                history.push("/match_gen_stats/" + params.id);
+                console.log("/coach_match_gen_stats/" + id + "/" + params.id);
+                let string = `/coach_match_gen_stats/${id}/${params.id}`;
+                // let string = "/coach_match_gen_stats/" + ${id} + "/" + params.id
+                history.push(string);
               }}
             />
           </div>
