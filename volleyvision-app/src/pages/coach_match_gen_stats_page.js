@@ -6,7 +6,7 @@ import { CoachGenStatsForm } from "../components/Statistics/CoachGenStatsForm";
 import CoachCommentForm from "../components/Statistics/CoachCommentForm";
 import CoachShotChart from "../components/ShotChart/CoachShotChart";
 import SetsForm from "../components/Statistics/CoachSetsForm";
-import MatchVideoPlayer from "../components/Statistics/MatchVideo";
+import CoachMatchVideoPlayer from "../components/Statistics/CoachMatchVideo";
 
 const Title_Container = styled.div`
   position: absolute;
@@ -67,9 +67,9 @@ const coach_match_gen_stats_page = () => {
   return (
     <div>
       <SideBar />
-      {/* <VidContainer>
-        <MatchVideoPlayer />
-      </VidContainer> */}
+      <VidContainer>
+        <CoachMatchVideoPlayer />
+      </VidContainer>
 
       <Title_Container>
         <b>Generate Statistics</b>
