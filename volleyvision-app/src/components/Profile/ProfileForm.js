@@ -63,7 +63,9 @@ class ProfileForm extends React.Component {
             age: this.state.age,
             gradYear: this.state.gradYear,
             jerseyNum: this.state.jerseyNum
-        });  
+        }); 
+        
+        alert('Successfully updated information!');
     };
 
     render() {
@@ -117,6 +119,15 @@ class ProfileForm extends React.Component {
             placeholder="GPA"
             onChange={this.updateInput}
             value={this.state.gpa}
+            />
+            <TextField
+            name="gradYear"
+            label="Grad Year"
+            type="number"
+            variant="standard"
+            placeholder="2022"
+            onChange={this.updateInput}
+            value={this.state.gradYear}
             />
             <TextField
             name="age"

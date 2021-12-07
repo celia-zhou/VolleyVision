@@ -6,32 +6,45 @@ import { useParams } from "react-router-dom";
 
 export const CommentForm = () => {
   //const form = useRef();
-  const [state, setState] = useState({comments: ''});
+  const [userType, setUserType] = useState('');
+  const [commentData, setCommentData] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
     const auth = getAuth();
     const currUser = auth.currentUser;
-    let path = `users/${currUser.uid}/matches/${id}/comments`
+    let commentPath = `users/${currUser.uid}/matches/${id}/comments`
+
+    getDoc(doc(db,'users', currUser.uid)).then((snapshot) => {
+      const data = snapshot.data();
+
+      if(data.coach && !data.recruiter) {
+        setUserType('coach');
+      }
+      else if (!data.coach && !data.recruiter){
+        setUserType('player');
+      }
+
+    });
 
     
-    getDoc(doc(db, path, 'allComments')).then((snapshot) => {
-      const data = snapshot.data()
+    getDoc(doc(db, commentPath, 'allComments')).then((snapshot) => {
+      const data = snapshot.data();
       
       if(data != null) {
-        setState({
-          comments: data.playerComments
-        })  ;
+        if (userType === 'coach' && data.coachComments != null) {
+          setCommentData(data.coachComments);
+        }
+        else if(userType === 'player' && data.playerComments != null) {
+          setCommentData(data.playerComments);
+        }
       }
   });
   }, []);
 
   const updateInput = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
+    setCommentData(e.target.value);
   };
 
   const addComment = (e) => {
@@ -42,9 +55,18 @@ export const CommentForm = () => {
     const currUser = auth.currentUser;
     let string = `users/${currUser.uid}/matches/${id}/comments`;
 
-    setDoc(doc(db, string, 'allComments'), {
-      playerComments: state.comments,
-    });
+    if (userType === 'player') {
+      setDoc(doc(db, string, 'allComments'), {
+        playerComments: commentData,
+      });
+    }
+    else if (userType === 'coach') {
+      setDoc(doc(db, string, 'allComments'), {
+        coachComments: commentData,
+      });
+    }
+
+    
   };
 
   return (
@@ -56,7 +78,7 @@ export const CommentForm = () => {
           name="comments"
           placeholder="Comment"
           onChange={updateInput}
-          value={state.comments}
+          value={commentData}
           rows="4"
           cols="75"
         />

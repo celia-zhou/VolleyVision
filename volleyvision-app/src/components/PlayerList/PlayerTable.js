@@ -105,19 +105,21 @@ export default function ColumnGroupingTable() {
       }));
 
       fireData.map((profile) => {
-        fireRows.push(
-          createData(
-            profile.id,
-            profile.firstName,
-            profile.lastName,
-            profile.team,
-            profile.jerseyNum,
-            profile.age,
-            profile.school,
-            profile.gradYear,
-            profile.gpa
-          )
-        );
+        if (!profile.coach && !profile.recruiter) {
+          fireRows.push(
+            createData(
+              profile.id,
+              profile.firstName,
+              profile.lastName,
+              profile.team,
+              profile.jerseyNum,
+              profile.age,
+              profile.school,
+              profile.gradYear,
+              profile.gpa
+            )
+          );
+        }
       });
 
       setDataRows(fireRows);

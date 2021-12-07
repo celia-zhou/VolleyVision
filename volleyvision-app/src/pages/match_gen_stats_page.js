@@ -31,7 +31,7 @@ const List_Container1 = styled.div`
 const VidContainer = styled.div`
   position: absolute;
   left: 100px;
-  top: 250px;
+  top: 270px;
   font: Times New Roman;
   font-size: 30px;
   width: 100%;
