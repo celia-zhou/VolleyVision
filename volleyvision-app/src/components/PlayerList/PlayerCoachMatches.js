@@ -3,7 +3,7 @@ import Paper from "@mui/material/Paper";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const columns = [
   { field: "date", headerName: "Date", type: "date", flex: 0.5 },
@@ -61,8 +61,9 @@ export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [dataRows, setDataRows] = React.useState([]);
-  const [docId, setDocId] = React.useState("");
+  const [playerName, setPlayerName] = React.useState([]);
   const history = useHistory();
+  const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -73,18 +74,12 @@ export default function ColumnGroupingTable() {
     setPage(0);
   };
 
-  const handleDocId = (id) => {
-    // sessionStorage.setItem("matchId", id);
-    setDocId(id);
-  };
-
   React.useEffect(() => {
     const db = getFirestore();
     const auth = getAuth();
-    const currUser = auth.currentUser;
-    const matchesRef = collection(db, "users/" + currUser.uid + "/matches");
+    const path = `users/${id}/matches`;
+    const matchesRef = collection(db, path);
     let fireRows = [];
-    console.log(currUser);
 
     getDocs(matchesRef).then((snapshot) => {
       const fireData = snapshot.docs.map((doc) => ({
@@ -97,9 +92,6 @@ export default function ColumnGroupingTable() {
           createData(
             currMatch.id,
             currMatch.date,
-            //   <Link to={`/match_summary/${currMatch.id}`}>
-            //   {currMatch.opponent}
-            // </Link>,
             currMatch.opponent,
             currMatch.partner,
             currMatch.tournament,
@@ -108,9 +100,6 @@ export default function ColumnGroupingTable() {
             currMatch.result
           )
         );
-        // this.setState({
-        //   rows: [...this.state.rows, createData(<Link to="/match_summary">{currMatch.opp}</Link>, currMatch.date, currMatch.partner, currMatch.tournament, currMatch.location, currMatch.score, currMatch.result)]
-        // });
       });
 
       setDataRows(fireRows);
@@ -131,8 +120,7 @@ export default function ColumnGroupingTable() {
                 Toolbar: GridToolbar,
               }}
               onCellClick={(params, event) => {
-                console.log(params.id);
-                history.push("/match_summary/" + params.id);
+                history.push("/match_gen_stats/" + params.id);
               }}
             />
           </div>
