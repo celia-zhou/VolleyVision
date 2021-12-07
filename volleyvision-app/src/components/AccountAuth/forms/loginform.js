@@ -3,15 +3,15 @@ import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
-import { getAuth } from "firebase/auth";
-import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, getDoc, setDoc, doc, getDocs, collection } from "firebase/firestore/lite";
 import { useParams } from "react-router-dom";
+import { getDialogContentUtilityClass } from "@mui/material";
 
-export const LoginForm = () => {
+export default function LoginForm() {
 
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { login} = useAuth()
+    const {login} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -19,6 +19,8 @@ export const LoginForm = () => {
 
     async function handleClickLogin(e) {
         e.preventDefault()
+        var c = -1
+        var r = -1
 
         try {
             setError('')
@@ -26,40 +28,23 @@ export const LoginForm = () => {
             const userCredential = await login(emailRef.current.value, passwordRef.current.value)
             let uid = userCredential.user.uid;
 
-            const db = getFirestore();
-            getDoc(doc(db, 'users', uid)).then((snapshot) => {
-                const data = snapshot.data()
-                
-                console.log(data)
-                console.log('state before setState')
-                console.log(state)
+            const db = getFirestore()
 
-                console.log('data.coach')
-                console.log(data.coach)
-                console.log('data.recruiter')
-                console.log(data.recruiter)
-                if (data != null){
-                    console.log('we went inside the if statement')
-                    
-                        setState({
-                            coach: true
-                        })
-                    
-                    
-                        setState({
-                            recruiter: data.recruiter
-                        })
-                    
+            const snapshot = (await getDoc(doc(db, 'users', uid))).data()
+
+            if (snapshot != null){
+
+                if (snapshot.coach == true){
+                    c = 1;
+
+                } else if (snapshot.coach == true){
+                    r = 1;
+
                 }
-    
-                console.log('state after setState')
-                console.log(state)
-
-            });
-
-            if ((state.coach)){
+            }
+            if (c === 1){
                 history.push("/coach_dashboard")
-            } else if ((state.recruiter)){
+            } else if (r === 1){
                 history.push("/recruiter_dashboard")
             } else {
                 history.push("/player_dashboard")
@@ -127,4 +112,3 @@ export const LoginForm = () => {
     )
 }
 
-export default LoginForm
