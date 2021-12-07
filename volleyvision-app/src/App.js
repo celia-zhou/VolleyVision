@@ -26,6 +26,7 @@ import NewGenerateStatsForm from "./components/Statistics/NewGenerateStatsForm";
 import ContactUs from "./pages/contactForm";
 import Recruiter_Dashboard from "./pages/recruiter_dashboard";
 import Match_Summary from "./pages/match_summary";
+import Recruiter_Match_Summary from "./pages/recruiter_match_summary";
 import AddMatch from "./pages/add_match";
 import { GenStatsForm } from "./components/Statistics/GenStatsForm";
 import match_gen_stats_page from "./pages/match_gen_stats_page";
@@ -79,6 +80,10 @@ function App() {
               component={coach_match_gen_stats_page}
             />
             <PrivateRoute path="/match_summary/:id" component={Match_Summary} />
+            <PrivateRoute
+              path="/recruiter_match_summary/:playerId/:matchId"
+              component={Recruiter_Match_Summary}
+            />
             <PrivateRoute
               path="/selected_player_recruiter/:id"
               component={recruiter_player}

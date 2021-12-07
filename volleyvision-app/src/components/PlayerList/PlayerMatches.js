@@ -103,7 +103,6 @@ export default function ColumnGroupingTable() {
       });
 
       setDataRows(fireRows);
-
     });
   });
 
@@ -121,7 +120,9 @@ export default function ColumnGroupingTable() {
                 Toolbar: GridToolbar,
               }}
               onCellClick={(params, event) => {
-                history.push("/match_summary/" + params.id);
+                console.log("/recruiter_match_summary/" + id + "/" + params.id);
+                let string = `/recruiter_match_summary/${id}/${params.id}`;
+                history.push(string);
               }}
             />
           </div>
