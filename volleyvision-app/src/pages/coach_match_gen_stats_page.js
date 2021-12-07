@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { GenStatsForm } from "../components/Statistics/GenStatsForm";
 import CommentForm from "../components/Statistics/CommentForm";
 import ShotChart from "../components/ShotChart/ShotChart";
-import SetsForm from "../components/Statistics/SetsForm";
+import SetsForm from "../components/Statistics/CoachSetsForm";
 import MatchVideoPlayer from "../components/Statistics/MatchVideo";
 
 const Title_Container = styled.div`
@@ -63,18 +63,18 @@ const Sets_Container = styled.div`
   width: 500px;
 `;
 
-const match_gen_stats_page = () => {
+const coach_match_gen_stats_page = () => {
   return (
     <div>
       <SideBar />
-      <VidContainer>
+      {/* <VidContainer>
         <MatchVideoPlayer />
-      </VidContainer>
+      </VidContainer> */}
 
       <Title_Container>
         <b>Generate Statistics</b>
       </Title_Container>
-      <List_Container1>
+      {/* <List_Container1>
         <GenStatsForm />
       </List_Container1>
 
@@ -84,7 +84,7 @@ const match_gen_stats_page = () => {
 
       <Chart_Container>
         <ShotChart />
-      </Chart_Container>
+      </Chart_Container> */}
 
       <Sets_Container>
         <SetsForm />
@@ -95,4 +95,4 @@ const match_gen_stats_page = () => {
   );
 };
 
-export default match_gen_stats_page;
+export default coach_match_gen_stats_page;

@@ -31,6 +31,7 @@ import { GenStatsForm } from "./components/Statistics/GenStatsForm";
 import match_gen_stats_page from "./pages/match_gen_stats_page";
 import recruiter_player from "./pages/recruiter_player";
 import coach_player from "./pages/coach_player";
+import coach_match_gen_stats_page from "./pages/coach_match_gen_stats_page";
 
 //import components
 //import { fb } from './components/firebaseConfig';
@@ -72,6 +73,10 @@ function App() {
             <PrivateRoute
               path="/match_gen_stats/:id"
               component={match_gen_stats_page}
+            />
+            <PrivateRoute
+              path="/coach_match_gen_stats/:playerId/:matchId"
+              component={coach_match_gen_stats_page}
             />
             <PrivateRoute path="/match_summary/:id" component={Match_Summary} />
             <PrivateRoute
