@@ -1,20 +1,29 @@
-import React, {useRef, useState } from "react";
+import React, {useRef, useState, useEffect } from "react";
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from "../authcontext";
 import { Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
+import { getAuth } from "firebase/auth";
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore/lite";
+import { useParams } from "react-router-dom";
 
-export default function LoginForm() {
+
+export const LoginForm = () => {
 
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { login } = useAuth()
-    // const { login, currentUser } = useAuth()
+    const { login} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
+    const [state, setState] = useState({coach: false, recruiter: false});
+
+    const db = getFirestore();
+    const auth = getAuth();
+    const currUser = auth.currentUser;
 
     async function handleSubmit(e) {
+
         e.preventDefault()
 
         try {
@@ -28,50 +37,38 @@ export default function LoginForm() {
         setLoading(false)
     }
 
-    async function handleClickPlayer(e) {
+
+
+    async function handleClickLogin(e) {
         e.preventDefault()
 
         try {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/player_dashboard")
         } catch {
             setError('Failed to login')
         }
-
-        setLoading(false)
-    }
-
-    async function handleClickCoach(e) {
-        e.preventDefault()
-
         try {
             setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/coach_dashboard")
+            
+            if (currUser.coach){
+                history.push("/coach_dashboard")
+            } else if (currUser.recruiter){
+                history.push("/recruiter_dashboard")
+            } else {
+                history.push("/player_dashboard")
+            }
+             
+            
         } catch {
-            setError('Failed to login')
+            setError('Failed to load dashboard')
         }
 
         setLoading(false)
     }
 
-    async function handleClickRecruiter(e) {
-        e.preventDefault()
 
-        try {
-            setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/recruiter_dashboard")
-        } catch {
-            setError('Failed to login')
-        }
-
-        setLoading(false)
-    }
 
     return (
         <>
@@ -96,16 +93,8 @@ export default function LoginForm() {
                             <Form.Control type="password" ref={passwordRef} required />
                         </Form.Group>
                         <br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickPlayer}>
-                            Log In As Player
-                        </Button>
-                        <br /><br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickCoach}>
-                            Log In As Coach
-                        </Button>
-                        <br /><br />
-                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickRecruiter}>
-                            Log In As Recruiter
+                        <Button disabled={loading} className="w-100" type="submit" onClick={handleClickLogin}>
+                            Log In 
                         </Button>
                     </Form>
                     <div className = "w-100 text-center mt-2">
@@ -119,3 +108,5 @@ export default function LoginForm() {
         </>
     )
 }
+
+export default LoginForm;

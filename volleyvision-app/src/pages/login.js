@@ -1,7 +1,6 @@
 import React from "react";
 import LoginForm from "../components/AccountAuth/forms/loginform";
-import NavBar from "../components/NavBar/NavBar";
-
+import NavBar from "../components/NavBar/Navbar";
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "../components/AccountAuth/authcontext";
 

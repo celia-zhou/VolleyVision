@@ -23,7 +23,9 @@ export function AuthProvider({children}) {
                 firstName: userFirstName,
                 lastName: userLastName,
                 gradYear: userGradYear,
-                email: userEmail
+                email: userEmail,
+                coach: false,
+                recruiter: false
             });
           });
     }

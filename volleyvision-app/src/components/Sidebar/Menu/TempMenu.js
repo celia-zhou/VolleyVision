@@ -41,6 +41,7 @@ export default function TemporaryDrawer() {
 
     try {
       await logout()
+      history.push("/login")
     } catch {
       setError('Failed to logout')
     }
