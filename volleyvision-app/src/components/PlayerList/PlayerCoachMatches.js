@@ -3,44 +3,33 @@ import Paper from "@mui/material/Paper";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const columns = [
-  { field: "firstName", headerName: "First Name", resizable: true, flex: 0.7 },
+  { field: "date", headerName: "Date", type: "date", flex: 0.5 },
   {
-    field: "lastName",
-    headerName: "Last Name",
+    field: "opponent",
+    headerName: "Opponent",
     // width: 150,
-    resizable: true,
     flex: 0.7,
   },
-  { field: "team", headerName: "Team", flex: 0.6 },
+  { field: "partner", headerName: "Partner", flex: 0.7 },
   {
-    field: "school",
-    headerName: "School",
-    resizable: true,
+    field: "tournament",
+    headerName: "Tournament",
     // width: 150,
-    flex: 0.6,
+    flex: 0.7,
   },
   {
-    field: "gpa",
-    headerName: "GPA",
-    resizable: true,
+    field: "location",
+    headerName: "Location",
     // width: 110,
-    flex: 0.3,
+    flex: 0.7,
   },
-  { field: "age", headerName: "Age", resizable: true, flex: 0.3 },
+  { field: "score", headerName: "Score", flex: 0.4 },
   {
-    field: "gradYear",
-    headerName: "Grad Year",
-    resizable: true,
-    // width: 110,
-    flex: 0.3,
-  },
-  {
-    field: "jerseyNum",
-    headerName: "Jersey Number",
-    resizable: true,
+    field: "result",
+    headerName: "Result",
     // width: 110,
     flex: 0.4,
   },
@@ -48,25 +37,23 @@ const columns = [
 
 function createData(
   userId,
-  userFirstName,
-  userLastName,
-  userTeam,
-  userJerseyNum,
-  userAge,
-  userSchool,
-  userGradYear,
-  userGpa
+  userDate,
+  userOpponent,
+  userPartner,
+  userTournament,
+  userLocation,
+  userScore,
+  userResult
 ) {
   return {
     id: userId,
-    firstName: userFirstName,
-    lastName: userLastName,
-    team: userTeam,
-    jerseyNum: userJerseyNum,
-    age: userAge,
-    school: userSchool,
-    gradYear: userGradYear,
-    gpa: userGpa,
+    date: userDate,
+    opponent: userOpponent,
+    partner: userPartner,
+    tournament: userTournament,
+    location: userLocation,
+    score: userScore,
+    result: userResult,
   };
 }
 
@@ -74,28 +61,24 @@ export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [dataRows, setDataRows] = React.useState([]);
-  const [docId, setDocId] = React.useState("");
+  const [playerName, setPlayerName] = React.useState([]);
   const history = useHistory();
+  const { id } = useParams();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value);
+    setRowsPerPage(+event.target.value);
     setPage(0);
-  };
-
-  const handleDocId = (id) => {
-    // sessionStorage.setItem("matchId", id);
-    setDocId(id);
   };
 
   React.useEffect(() => {
     const db = getFirestore();
     const auth = getAuth();
-    const currUser = auth.currentUser;
-    const matchesRef = collection(db, "users");
+    const path = `users/${id}/matches`;
+    const matchesRef = collection(db, path);
     let fireRows = [];
 
     getDocs(matchesRef).then((snapshot) => {
@@ -104,18 +87,17 @@ export default function ColumnGroupingTable() {
         ...doc.data(),
       }));
 
-      fireData.map((profile) => {
+      fireData.map((currMatch) => {
         fireRows.push(
           createData(
-            profile.id,
-            profile.firstName,
-            profile.lastName,
-            profile.team,
-            profile.jerseyNum,
-            profile.age,
-            profile.school,
-            profile.gradYear,
-            profile.gpa
+            currMatch.id,
+            currMatch.date,
+            currMatch.opponent,
+            currMatch.partner,
+            currMatch.tournament,
+            currMatch.location,
+            currMatch.score,
+            currMatch.result
           )
         );
       });
@@ -132,15 +114,13 @@ export default function ColumnGroupingTable() {
             <DataGrid
               rows={dataRows}
               columns={columns}
-              pageSize={10}
+              pageSize={5}
               rowsPerPageOptions={[5]}
               components={{
                 Toolbar: GridToolbar,
               }}
               onCellClick={(params, event) => {
-                console.log("selected player");
-                console.log(params.id);
-                history.push("/selected_player_recruiter/" + params.id);
+                history.push("/match_gen_stats/" + params.id);
               }}
             />
           </div>

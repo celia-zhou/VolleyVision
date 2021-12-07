@@ -138,9 +138,8 @@ export default function ColumnGroupingTable() {
                 Toolbar: GridToolbar,
               }}
               onCellClick={(params, event) => {
-                console.log("selected player");
                 console.log(params.id);
-                history.push("/selected_player_recruiter/" + params.id);
+                history.push("/selected_player_coach/" + params.id);
               }}
             />
           </div>
