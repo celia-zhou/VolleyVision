@@ -21,6 +21,18 @@ export const LoginForm = () => {
     const db = getFirestore();
     const auth = getAuth();
     const currUser = auth.currentUser;
+    let path = `users/${currUser.uid}`
+
+    getDoc(doc(db, path)).then((snapshot) => {
+        const data = snapshot.data()
+        
+        if(data != null) {
+          setState({
+            coach: data.coach,
+            recruiter: data.recruiter
+          })  ;
+        }
+    });
 
     async function handleSubmit(e) {
 
@@ -36,8 +48,6 @@ export const LoginForm = () => {
 
         setLoading(false)
     }
-
-
 
     async function handleClickLogin(e) {
         e.preventDefault()
@@ -109,4 +119,4 @@ export const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default LoginForm
