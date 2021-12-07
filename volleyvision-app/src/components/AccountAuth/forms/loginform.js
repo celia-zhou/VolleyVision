@@ -7,7 +7,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore/lite";
 import { useParams } from "react-router-dom";
 
-
 export const LoginForm = () => {
 
     const emailRef = useRef()
@@ -18,57 +17,76 @@ export const LoginForm = () => {
     const history = useHistory()
     const [state, setState] = useState({coach: false, recruiter: false});
 
-    const db = getFirestore();
-    const auth = getAuth();
-    const currUser = auth.currentUser;
-
-    async function handleSubmit(e) {
-
-        e.preventDefault()
-
-        try {
-            setError('')
-            setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-        } catch {
-            setError('Failed to login')
-        }
-
-        setLoading(false)
-    }
-
-
-
     async function handleClickLogin(e) {
         e.preventDefault()
 
         try {
             setError('')
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-        } catch {
-            setError('Failed to login')
-        }
-        try {
-            setError('')
-            
-            if (currUser.coach){
+            const userCredential = await login(emailRef.current.value, passwordRef.current.value)
+            let uid = userCredential.user.uid;
+
+            const db = getFirestore();
+            getDoc(doc(db, 'users', uid)).then((snapshot) => {
+                const data = snapshot.data()
+                
+                console.log(data)
+                console.log('state before setState')
+                console.log(state)
+
+                console.log('data.coach')
+                console.log(data.coach)
+                console.log('data.recruiter')
+                console.log(data.recruiter)
+                if (data != null){
+                    console.log('we went inside the if statement')
+                    
+                        setState({
+                            coach: true
+                        })
+                    
+                    
+                        setState({
+                            recruiter: data.recruiter
+                        })
+                    
+                }
+    
+                console.log('state after setState')
+                console.log(state)
+
+            });
+
+            if ((state.coach)){
                 history.push("/coach_dashboard")
-            } else if (currUser.recruiter){
+            } else if ((state.recruiter)){
                 history.push("/recruiter_dashboard")
             } else {
                 history.push("/player_dashboard")
             }
-             
-            
-        } catch {
-            setError('Failed to load dashboard')
-        }
 
+        } catch {
+            setError('Failed to login')
+        }
         setLoading(false)
     }
 
+    
 
+    // async function handleSubmit(e) {
+
+    //     e.preventDefault()
+
+    //     try {
+    //         setError('')
+    //         setLoading(true)
+    //         await login(emailRef.current.value, passwordRef.current.value)
+    //     } catch {
+    //         setError('Failed to login')
+    //     }
+
+    //     setLoading(false)
+    // }
 
     return (
         <>
@@ -83,7 +101,7 @@ export const LoginForm = () => {
                     </p> */}
                     {error && <Alert variant="danger">{error}</Alert>}
                 
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleClickLogin}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
@@ -109,4 +127,4 @@ export const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default LoginForm
