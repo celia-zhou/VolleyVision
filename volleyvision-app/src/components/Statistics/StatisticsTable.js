@@ -84,23 +84,28 @@ export default function ColumnGroupingTable() {
         ...doc.data(),
       }));
 
-      fireData.map((currMatch) => {
-        fireRows.push(
-          createData(
-            currMatch.kills,
-            currMatch.errors,
-            currMatch.attempts,
-            currMatch.aces,
-            currMatch.digs,
-            currMatch.blocks
-          )
-        );
-        // this.setState({
-        //   rows: [...this.state.rows, createData(<Link to="/match_summary">{currMatch.opp}</Link>, currMatch.date, currMatch.partner, currMatch.tournament, currMatch.location, currMatch.score, currMatch.result)]
-        // });
-      });
-
-      setDataRows(fireRows);
+      if (fireData.length === 0) {
+        alert('No stats found.  Please go to Generate Stats to record statistics for this match.')
+      }
+      else {
+        fireData.map((currMatch) => {
+          fireRows.push(
+            createData(
+              currMatch.kills,
+              currMatch.errors,
+              currMatch.attempts,
+              currMatch.aces,
+              currMatch.digs,
+              currMatch.blocks
+            )
+          );
+          // this.setState({
+          //   rows: [...this.state.rows, createData(<Link to="/match_summary">{currMatch.opp}</Link>, currMatch.date, currMatch.partner, currMatch.tournament, currMatch.location, currMatch.score, currMatch.result)]
+          // });
+        });
+  
+        setDataRows(fireRows);  
+      }
     });
   });
 

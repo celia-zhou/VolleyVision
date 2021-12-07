@@ -68,24 +68,26 @@ export default function ColumnGroupingTable({ match }) {
     getDoc(setsRef).then((snapshot) => {
       const fireData = snapshot.data();
 
-      fireRows.push(
-        createData(
-          "Home",
-          fireData.setOneHome,
-          fireData.setTwoHome,
-          fireData.setThreeHome
-        )
-      );
-      fireRows.push(
-        createData(
-          oppData,
-          fireData.setOneOpp,
-          fireData.setTwoOpp,
-          fireData.setThreeOpp
-        )
-      );
+      if(fireData != null) {
+        fireRows.push(
+          createData(
+            "Home",
+            fireData.setOneHome,
+            fireData.setTwoHome,
+            fireData.setThreeHome
+          )
+        );
+        fireRows.push(
+          createData(
+            oppData,
+            fireData.setOneOpp,
+            fireData.setTwoOpp,
+            fireData.setThreeOpp
+          )
+        );
 
-      setDataRows(fireRows);
+        setDataRows(fireRows);
+      }
     });
   });
 
